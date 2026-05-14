@@ -5,6 +5,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const quotes = [
   "\"We don't deliver demos. We deliver running systems.\"",
@@ -42,7 +43,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: [20, -5, 0] }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0.0, 0.2, 1] }}
-            className="font-urbanist font-black text-5xl md:text-7xl lg:text-[80px] leading-[1.1] tracking-tight text-white mb-6 max-w-5xl mx-auto"
+            className="font-urbanist font-black text-4xl sm:text-5xl md:text-7xl lg:text-[80px] leading-[1.1] tracking-tight text-white mb-6 max-w-5xl mx-auto break-words"
           >
             Your Competitors Are Running on AI.<br className="hidden md:block" />
             <Highlight className="text-white dark:text-white">
@@ -76,9 +77,13 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 w-full"
         >
-          <Button size="lg" className="bg-[#006AF0] hover:bg-[#006AF0]/90 text-white w-full sm:w-auto text-base px-8 h-14 rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,106,240,0.5)]">
-            Book a Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <HoverBorderGradient
+            containerClassName="rounded-md w-full sm:w-auto"
+            as="button"
+            className="bg-[#006AF0] text-white flex items-center justify-center space-x-2 text-base px-8 h-14 w-full sm:w-auto transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,106,240,0.5)]"
+          >
+            <span>Book a Strategy Call</span> <ArrowRight className="ml-2 h-5 w-5" />
+          </HoverBorderGradient>
           <Button size="lg" variant="outline" className="border-[#027C88]/50 text-[#027C88] hover:bg-[#027C88]/10 hover:border-[#027C88] w-full sm:w-auto text-base px-8 h-14 bg-transparent rounded-md transition-all duration-300 backdrop-blur-sm">
             See How It Works ↓
           </Button>

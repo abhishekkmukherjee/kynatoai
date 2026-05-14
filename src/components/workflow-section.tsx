@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const steps = [
   { step: "01", title: "Diagnose", desc: "We map your business against two filters: where is revenue leaking, and where are hours being wasted? A specific gap analysis against your actual operations.", timeline: "5–7 business days" },
@@ -74,9 +75,13 @@ export function WorkflowSection() {
           viewport={{ once: true }}
           className="mt-24 text-center"
         >
-          <Button size="lg" className="bg-[#006AF0] hover:bg-[#006AF0]/90 text-white px-10 h-16 text-lg rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,106,240,0.5)]">
-            Start with a 30-Minute Strategy Call
-          </Button>
+          <HoverBorderGradient
+            containerClassName="rounded-md"
+            as="button"
+            className="bg-[#006AF0] text-white flex items-center justify-center space-x-2 text-lg px-10 h-16 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,106,240,0.5)]"
+          >
+            <span>Start with a 30-Minute Strategy Call</span>
+          </HoverBorderGradient>
         </motion.div>
       </div>
     </section>

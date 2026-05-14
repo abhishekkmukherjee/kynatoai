@@ -1,11 +1,12 @@
 "use client";
 import { WobbleCard } from "@/components/ui/wobble-card";
+import { SparklesCore } from "@/components/ui/sparkles";
 import { Search, Inbox, Database, Cog, Building2, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function ProblemSection() {
   return (
-    <section className="py-24 md:py-32 bg-black relative">
+    <section className="py-24 md:py-32 bg-black relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#027C88] opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
 
@@ -122,17 +123,34 @@ export function ProblemSection() {
           </WobbleCard>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-24 text-center"
-        >
-          <p className="font-urbanist font-semibold text-xl md:text-2xl text-white max-w-4xl mx-auto border-l-2 border-accent-teal pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6 md:pl-0 inline-block">
-            The businesses that close this gap in the next 12 months will own their categories
-            for the decade after. The ones that don&apos;t will spend that decade catching up.
-          </p>
-        </motion.div>
+        <div className="mt-24 h-[30rem] md:h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/5 relative">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-urbanist font-bold text-center text-white relative z-20 max-w-4xl px-4 tracking-tight leading-snug">
+            The businesses that close this gap in the next 12 months will own their categories for the decade after.
+            <span className="text-neutral-400 text-lg md:text-xl lg:text-2xl block mt-4 font-roboto font-normal">
+              The ones that don&apos;t will spend that decade catching up.
+            </span>
+          </h2>
+          <div className="w-full max-w-[40rem] h-40 relative mt-8">
+            {/* Gradients */}
+            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#027C88] to-transparent h-[2px] w-3/4 blur-sm" />
+            <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#027C88] to-transparent h-px w-3/4" />
+            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#006AF0] to-transparent h-[5px] w-1/4 blur-sm" />
+            <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#006AF0] to-transparent h-px w-1/4" />
+    
+            {/* Core component */}
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={1200}
+              className="w-full h-full"
+              particleColor="#FFFFFF"
+            />
+    
+            {/* Radial Gradient to prevent sharp edges */}
+            <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+          </div>
+        </div>
       </div>
     </section>
   );

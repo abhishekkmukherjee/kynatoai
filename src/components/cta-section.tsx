@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { LampContainer } from "@/components/ui/lamp";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 export function CtaSection() {
   return (
@@ -48,9 +49,13 @@ export function CtaSection() {
           transition={{ delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 w-full"
         >
-          <Button size="lg" className="bg-[#006AF0] hover:bg-[#006AF0]/90 text-white w-full sm:w-auto text-lg px-10 h-16 rounded-md shadow-[0_0_30px_rgba(0,106,240,0.3)] transition-all hover:shadow-[0_0_50px_rgba(0,106,240,0.5)]">
-            Book Your Strategy Call <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <HoverBorderGradient
+            containerClassName="rounded-md w-full sm:w-auto"
+            as="button"
+            className="bg-[#006AF0] text-white flex items-center justify-center space-x-2 text-lg px-10 h-16 w-full sm:w-auto shadow-[0_0_30px_rgba(0,106,240,0.3)] transition-all hover:shadow-[0_0_50px_rgba(0,106,240,0.5)]"
+          >
+            <span>Book Your Strategy Call</span> <ArrowRight className="ml-2 h-5 w-5" />
+          </HoverBorderGradient>
           <Button size="lg" variant="outline" className="border-white/10 text-white hover:bg-white/5 hover:border-white/20 w-full sm:w-auto text-lg px-10 h-16 bg-[#09090B] rounded-md transition-all">
             Send Us a Message
           </Button>

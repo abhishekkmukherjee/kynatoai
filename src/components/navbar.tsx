@@ -15,6 +15,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ModeToggle } from "./theme-toggle"
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 
 const services = [
   {
@@ -137,9 +138,13 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <ModeToggle />
             <div className="hidden md:block">
-              <Button className="bg-accent-blue hover:bg-accent-blue/90 text-white font-medium">
-                Book a Strategy Call
-              </Button>
+              <HoverBorderGradient
+                containerClassName="rounded-md"
+                as="button"
+                className="bg-accent-blue text-white font-medium flex items-center justify-center space-x-2 px-4 py-2 text-sm h-10 w-full"
+              >
+                <span>Book a Strategy Call</span>
+              </HoverBorderGradient>
             </div>
             <div className="md:hidden">
               <Button variant="ghost" size="icon">
@@ -153,9 +158,13 @@ export function Navbar() {
       
       {/* Mobile Sticky CTA */}
       <div className="md:hidden fixed bottom-0 left-0 w-full p-4 bg-background/95 backdrop-blur border-t z-50">
-        <Button className="w-full bg-accent-blue hover:bg-accent-blue/90 text-white font-medium shadow-lg">
-          Book a Strategy Call
-        </Button>
+        <HoverBorderGradient
+          containerClassName="rounded-md w-full"
+          as="button"
+          className="bg-accent-blue text-white font-medium flex items-center justify-center space-x-2 h-10 w-full shadow-lg"
+        >
+          <span>Book a Strategy Call</span>
+        </HoverBorderGradient>
       </div>
     </header>
   )

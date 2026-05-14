@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
 
 const practices = [
   {
@@ -75,7 +76,9 @@ export function PracticeAreasSection() {
             className="font-urbanist font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6"
           >
             One System. Four Practice Areas.<br />
-            Everything Compounds.
+            <PointerHighlight containerClassName="mt-2 inline-block">
+              <span>Everything Compounds.</span>
+            </PointerHighlight>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
