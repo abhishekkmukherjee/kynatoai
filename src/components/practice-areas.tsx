@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
@@ -14,9 +14,10 @@ const practices = [
     features: [
       { t: "Technical SEO and Site Health", d: "Core Web Vitals optimisation, crawlability, schema markup deployment, Knowledge Graph entity registration." },
       { t: "Generative Engine Optimisation (GEO)", d: "GEO builds your business's presence in AI-generated answers on ChatGPT, Perplexity, and Gemini through citation authority building." },
-      { t: "Answer Engine Optimisation (AEO)", d: "AEO targets Featured Snippets and AI Overviews through FAQ schema and answer-first content architecture." }
+      { t: "Answer Engine Optimisation (AEO)", d: "AEO targets Featured Snippets and AI Overviews through FAQ schema and answer-first content architecture." },
     ],
-    outcome: "Organic traffic that compounds month on month. AI citations in ChatGPT and Perplexity that drive inbound trust. Visibility that works while you sleep."
+    outcome: "Organic traffic that compounds month on month. AI citations in ChatGPT and Perplexity that drive inbound trust. Visibility that works while you sleep.",
+    accentColor: "#027C88",
   },
   {
     id: "02",
@@ -27,9 +28,10 @@ const practices = [
     features: [
       { t: "Inbound Lead Capture", d: "Landing page CRO, AI-powered website chatbots, interactive lead magnets, WhatsApp Business API lead integration." },
       { t: "Outbound Lead Generation", d: "LinkedIn outreach automation, cold email sequencing, AI-personalised outbound copy at scale." },
-      { t: "AI Lead Scoring and Nurturing", d: "Signal-weighted lead scoring models, qualification bots, AI-powered nurturing sequences." }
+      { t: "AI Lead Scoring and Nurturing", d: "Signal-weighted lead scoring models, qualification bots, AI-powered nurturing sequences." },
     ],
-    outcome: "A lead pipeline that generates, qualifies, and nurtures — around the clock. From first click to booked call, automated."
+    outcome: "A lead pipeline that generates, qualifies, and nurtures — around the clock. From first click to booked call, automated.",
+    accentColor: "#006AF0",
   },
   {
     id: "03",
@@ -40,9 +42,10 @@ const practices = [
     features: [
       { t: "Knowledge AI and Custom RAG Systems", d: "Custom Retrieval-Augmented Generation (RAG) systems that give businesses a searchable AI layer over their own documents and compliance data." },
       { t: "Agentic AI and Workflow Automation", d: "Multi-step, autonomous AI agents that handle complex operational tasks end to end — running without human input for standard cases." },
-      { t: "Voice AI and Intelligent Phone", d: "AI-powered IVR replacement, missed-call answering agents with CRM logging, vernacular and multilingual voice bots." }
+      { t: "Voice AI and Intelligent Phone", d: "AI-powered IVR replacement, missed-call answering agents with CRM logging, vernacular and multilingual voice bots." },
     ],
-    outcome: "Hours of manual work automated — replaced by systems that run 24/7. Kynato automates the work between your first lead and your last invoice."
+    outcome: "Hours of manual work automated — replaced by systems that run 24/7. Kynato automates the work between your first lead and your last invoice.",
+    accentColor: "#027C88",
   },
   {
     id: "04",
@@ -53,43 +56,51 @@ const practices = [
     features: [
       { t: "Unified Search Intelligence", d: "Multi-engine analytics dashboard consolidating Google, Bing, and AI engine impressions." },
       { t: "AI Visibility Tracking", d: "AI share of voice tracking, sentiment analysis in AI-generated brand mentions, competitor citation tracking." },
-      { t: "Marketing ROI & Automation Performance", d: "Lead velocity rate tracking, CAC vs LTV modelling, automation error rate and hours-saved tracking." }
+      { t: "Marketing ROI & Automation Performance", d: "Lead velocity rate tracking, CAC vs LTV modelling, automation error rate and hours-saved tracking." },
     ],
-    outcome: "Complete visibility into your growth and operational efficiency — delivered in plain language without needing a data team."
-  }
+    outcome: "Complete visibility into your growth and operational efficiency — delivered in plain language without needing a data team.",
+    accentColor: "#006AF0",
+  },
 ];
 
 export function PracticeAreasSection() {
   return (
-    <section className="py-24 md:py-32 bg-[#09090B]">
+    <section className="py-28 md:py-36 bg-[#030305] relative overflow-hidden">
+
+      {/* Background */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
       <div className="container mx-auto px-4">
+
+        {/* Header */}
         <div className="mb-24 max-w-3xl">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.span
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block mb-4 font-roboto uppercase tracking-widest text-sm font-semibold text-accent-teal"
+            className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase"
           >
-            THE INTELLIGENCE ECOSYSTEM
+            The Intelligence Ecosystem
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-urbanist font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6"
+            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.02em] text-white mb-6"
           >
-            One System. Four Practice Areas.<br />
-            <PointerHighlight containerClassName="mt-2 inline-block">
-              <span>Everything Compounds.</span>
+            One System. Four Practice Areas.{" "}
+            <PointerHighlight containerClassName="mt-1 inline-block">
+              <span className="gradient-text-teal">Everything Compounds.</span>
             </PointerHighlight>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-roboto text-muted-foreground text-lg leading-relaxed max-w-2xl"
+            className="font-roboto text-white/40 text-base md:text-lg leading-relaxed max-w-2xl"
           >
             Kynato doesn&apos;t sell AI software or run one-off campaigns. We build, integrate,
             and directly operate AI-powered systems across four interconnected practice areas —
@@ -97,59 +108,102 @@ export function PracticeAreasSection() {
           </motion.p>
         </div>
 
-        <div className="space-y-32">
-          {practices.map((practice, idx) => (
-            <div key={practice.id} className="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
-              {/* Sticky Header Column */}
-              <div className="md:col-span-5 md:sticky md:top-32">
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-4xl font-urbanist font-bold text-white/20">{practice.id}</span>
-                  <span className="px-3 py-1 bg-accent-teal/10 border border-accent-teal/20 text-accent-teal rounded-full text-xs font-bold tracking-widest">
-                    {practice.tag}
-                  </span>
-                </div>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-white font-urbanist">{practice.title}</h3>
-                <p className="text-muted-foreground leading-relaxed mb-8 text-lg font-roboto">
-                  {practice.desc}
-                </p>
-                <Link
-                  href={practice.href}
-                  className="inline-flex items-center text-white hover:text-accent-teal font-semibold group transition-colors"
-                >
-                  View Full Capability <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+        {/* Practice Cards */}
+        <div className="space-y-6">
+          {practices.map((practice) => (
+            <motion.div
+              key={practice.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" as const }}
+              className="group relative rounded-2xl border border-white/[0.06] bg-black/40 backdrop-blur-sm overflow-hidden hover:border-white/[0.1] transition-all duration-500"
+            >
+              {/* Top accent */}
+              <div
+                className="absolute top-0 left-0 right-0 h-px"
+                style={{ background: `linear-gradient(90deg, transparent 0%, ${practice.accentColor}50 40%, ${practice.accentColor}80 50%, ${practice.accentColor}50 60%, transparent 100%)` }}
+              />
 
-              {/* Scrolling Content Column */}
-              <div className="md:col-span-7">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-black border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent-teal opacity-[0.02] blur-3xl pointer-events-none" />
-                  
-                  <div className="space-y-10 relative z-10">
+              {/* Corner glow */}
+              <div
+                className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none"
+                style={{ background: practice.accentColor }}
+              />
+
+              <div className="grid md:grid-cols-12 gap-0">
+
+                {/* Left Column */}
+                <div className="md:col-span-4 p-8 md:p-10 md:border-r border-white/[0.04]">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-[3rem] font-urbanist font-black text-white/[0.06] leading-none select-none">
+                      {practice.id}
+                    </span>
+                    <span
+                      className="px-3 py-1 rounded-full text-[10px] font-black tracking-[0.15em] uppercase border"
+                      style={{
+                        color: practice.accentColor,
+                        borderColor: `${practice.accentColor}30`,
+                        background: `${practice.accentColor}10`,
+                      }}
+                    >
+                      {practice.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-urbanist font-black text-2xl md:text-[1.6rem] text-white mb-5 leading-snug">
+                    {practice.title}
+                  </h3>
+                  <p className="font-roboto text-white/40 text-sm leading-relaxed mb-8">
+                    {practice.desc}
+                  </p>
+                  <Link
+                    href={practice.href}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-white group/link transition-colors"
+                  >
+                    View Full Capability
+                    <ArrowRight className="h-3.5 w-3.5 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+
+                {/* Right Column */}
+                <div className="md:col-span-8 p-8 md:p-10">
+                  <div className="space-y-6">
                     {practice.features.map((feature, fIdx) => (
-                      <div key={fIdx}>
-                        <h4 className="font-bold text-xl text-white mb-3 font-urbanist">{feature.t}</h4>
-                        <p className="text-muted-foreground text-base leading-relaxed font-roboto">
-                          {feature.d}
-                        </p>
+                      <div key={fIdx} className="flex gap-4 group/feat">
+                        <div
+                          className="mt-1 w-5 h-5 rounded-full flex items-center justify-center shrink-0 border"
+                          style={{
+                            background: `${practice.accentColor}12`,
+                            borderColor: `${practice.accentColor}25`,
+                          }}
+                        >
+                          <Check className="h-2.5 w-2.5" style={{ color: practice.accentColor }} />
+                        </div>
+                        <div>
+                          <h4 className="font-urbanist font-bold text-base text-white mb-1.5 group-hover/feat:text-white/90 transition-colors">
+                            {feature.t}
+                          </h4>
+                          <p className="font-roboto text-white/35 text-sm leading-relaxed">
+                            {feature.d}
+                          </p>
+                        </div>
                       </div>
                     ))}
-                    
-                    <div className="bg-white/[0.02] p-6 rounded-xl border-l-4 border-accent-teal">
-                      <p className="text-sm font-medium text-white/80 leading-relaxed">
-                        <span className="text-accent-teal font-bold mr-2">Outcome:</span> 
+
+                    {/* Outcome */}
+                    <div
+                      className="mt-8 p-5 rounded-xl border-l-2 bg-white/[0.02]"
+                      style={{ borderColor: practice.accentColor }}
+                    >
+                      <p className="text-sm text-white/55 font-roboto leading-relaxed">
+                        <span className="font-bold mr-2" style={{ color: practice.accentColor }}>Outcome:</span>
                         {practice.outcome}
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

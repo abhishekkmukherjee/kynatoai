@@ -1,11 +1,9 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { Spotlight } from "@/components/ui/spotlight";
-import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import Link from "next/link";
 
 const quotes = [
   "\"We don't deliver demos. We deliver running systems.\"",
@@ -14,139 +12,167 @@ const quotes = [
   "\"Kynato automates the work between your first lead and your last invoice.\""
 ];
 
+const stats = [
+  { value: "5+", label: "Industry\nVerticals" },
+  { value: "5", label: "AI\nCapabilities" },
+  { value: "∞", label: "Compound\nLeverage" },
+  { value: "48h", label: "Avg. time\nto first insight" },
+];
+
+
 export function HeroSection() {
   const [quoteIndex, setQuoteIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setQuoteIndex((prev) => (prev + 1) % quotes.length);
-    }, 4000);
+    const interval = setInterval(() => setQuoteIndex((p) => (p + 1) % quotes.length), 4000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-black flex flex-col items-center justify-center min-h-[90vh]">
-      <HeroHighlight containerClassName="pt-32 pb-20 md:pt-48 md:pb-32 w-full min-h-[90vh] flex flex-col items-center justify-center">
-        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#027C88" />
-        
-        <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-block mb-6 font-roboto uppercase tracking-widest text-sm font-semibold text-accent-teal"
-          >
-            INDIA&apos;S B2B AI AGENCY — MAKE INTELLIGENCE WORK.
-          </motion.span>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: [20, -5, 0] }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0.0, 0.2, 1] }}
-            className="font-urbanist font-black text-4xl sm:text-5xl md:text-7xl lg:text-[80px] leading-[1.1] tracking-tight text-white mb-6 max-w-5xl mx-auto break-words"
-          >
-            Your Competitors Are Running on AI.<br className="hidden md:block" />
-            <Highlight className="text-white dark:text-white">
-              Are You Still Running on People?
-            </Highlight>
-          </motion.h1>
-        
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden">
+
+      {/* ── Layered Background ── */}
+      {/* Grid */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-100 pointer-events-none" />
+      {/* Radial fade over grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(2,124,136,0.12),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_80%,rgba(0,106,240,0.07),transparent)] pointer-events-none" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
+
+      {/* Floating glow orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#027C88]/[0.06] blur-[120px] pointer-events-none animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#006AF0]/[0.05] blur-[100px] pointer-events-none animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+
+      {/* ── Content ── */}
+      <div className="relative z-20 container mx-auto px-4 flex flex-col items-center text-center pt-32 pb-24">
+
+
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm text-xs font-semibold text-white/60 tracking-widest uppercase">
+            <Zap className="h-3 w-3 text-accent-teal" />
+            India&apos;s B2B AI Agency — Make Intelligence Work
+          </span>
+        </motion.div>
+
+        {/* H1 */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="font-urbanist font-black text-[clamp(2.8rem,7vw,5.5rem)] leading-[1.05] tracking-[-0.02em] text-white max-w-5xl mx-auto mb-6"
+        >
+          Your Competitors Are{" "}
+          <span className="gradient-text-teal">Running on AI.</span>
+          <br className="hidden sm:block" />
+          Are You Still Running{" "}
+          <span className="relative inline-block">
+            on People?
+            <span className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-teal/50 to-transparent" />
+          </span>
+        </motion.h1>
+
+        {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-roboto font-light text-xl md:text-2xl text-accent-teal mb-6"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="font-roboto text-lg md:text-xl text-accent-teal/90 font-light mb-5 tracking-wide"
         >
           We don&apos;t sell AI. We deploy it where your revenue lives.
         </motion.p>
-        
+
+        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="font-roboto text-[#D0D5DD] text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="font-roboto text-[#8A9BB0] text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Kynato builds and operates SEO and AI Visibility systems, automated lead engines,
           Agentic workflows, and Knowledge AI — so your business captures more, converts more,
           and runs on less. Measured by revenue gained or hours saved. Nothing else.
         </motion.p>
-        
+
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 w-full"
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 w-full"
         >
           <HoverBorderGradient
-            containerClassName="rounded-md w-full sm:w-auto"
+            containerClassName="rounded-xl w-full sm:w-auto"
             as="button"
-            className="bg-[#006AF0] text-white flex items-center justify-center space-x-2 text-base px-8 h-14 w-full sm:w-auto transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,106,240,0.5)]"
+            className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 w-full sm:w-auto shadow-[0_0_30px_rgba(0,106,240,0.35)] hover:shadow-[0_0_50px_rgba(0,106,240,0.5)] transition-shadow"
           >
-            <span>Book a Strategy Call</span> <ArrowRight className="ml-2 h-5 w-5" />
+            Book a Strategy Call <ArrowRight className="h-4 w-4" />
           </HoverBorderGradient>
-          <Button size="lg" variant="outline" className="border-[#027C88]/50 text-[#027C88] hover:bg-[#027C88]/10 hover:border-[#027C88] w-full sm:w-auto text-base px-8 h-14 bg-transparent rounded-md transition-all duration-300 backdrop-blur-sm">
+
+          <Link href="#how-we-work" className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.05] text-white/70 hover:text-white text-sm font-medium transition-all w-full sm:w-auto backdrop-blur-sm">
             See How It Works ↓
-          </Button>
+          </Link>
         </motion.div>
 
+        {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-400 font-roboto mb-12"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-white/35 font-roboto mb-10"
         >
-          <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-accent-teal" /> Build & Operate — Not Build & Leave</span>
-          <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-accent-teal" /> Ranked in Google AND AI Search</span>
-          <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-accent-teal" /> Revenue Gained or Hours Saved</span>
+          {["Build & Operate — Not Build & Leave", "Ranked in Google AND AI Search", "Revenue Gained or Hours Saved"].map((item) => (
+            <span key={item} className="flex items-center gap-1.5">
+              <CheckCircle2 className="h-3.5 w-3.5 text-accent-teal/60 shrink-0" />
+              {item}
+            </span>
+          ))}
         </motion.div>
 
-        {/* Brand philosophy strip */}
-        <motion.div 
+        {/* Rotating Quote */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="h-8 mb-16 overflow-hidden relative w-full max-w-2xl"
+          className="h-6 mb-16 overflow-hidden relative w-full max-w-xl"
         >
-          <motion.p
-            key={quoteIndex}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-            className="font-roboto text-sm text-muted-foreground absolute w-full text-center"
-          >
-            {quotes[quoteIndex]}
-          </motion.p>
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={quoteIndex}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4 }}
+              className="font-roboto text-xs text-white/25 absolute w-full text-center italic"
+            >
+              {quotes[quoteIndex]}
+            </motion.p>
+          </AnimatePresence>
         </motion.div>
 
         {/* Stats Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="w-full max-w-5xl border-t border-white/10 pt-10 mt-auto"
+          transition={{ duration: 0.6, delay: 1 }}
+          className="w-full max-w-3xl"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center md:text-left">
-              <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">5+</div>
-              <div className="text-sm font-roboto text-muted-foreground">Industry<br />Verticals</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">5</div>
-              <div className="text-sm font-roboto text-muted-foreground">AI<br />Capabilities</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">∞</div>
-              <div className="text-sm font-roboto text-muted-foreground">Compound<br />Leverage</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">48 hrs</div>
-              <div className="text-sm font-roboto text-muted-foreground">Avg. time<br />to first insight</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.06]">
+            {stats.map((stat, i) => (
+              <div key={i} className="bg-black/60 backdrop-blur-sm px-6 py-5 text-center hover:bg-white/[0.02] transition-colors">
+                <div className="font-urbanist font-black text-3xl md:text-4xl text-white mb-1 gradient-text-teal">{stat.value}</div>
+                <div className="text-[11px] font-roboto text-white/30 leading-snug whitespace-pre-line">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
-      </HeroHighlight>
     </section>
   );
 }
