@@ -192,17 +192,17 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "SEO and AI Visibility",
-                      "url": "https://kynato.com/services/seo",
-                      "description": "Technical SEO, Content SEO, Local SEO, and AI Visibility strategy for businesses in India and globally. Covers Core Web Vitals, schema markup, Knowledge Graph entity registration, and topical authority."
+                      "name": "SEO and Organic Visibility",
+                      "url": "https://kynato.com/services/search-ai-visibility/seo/",
+                      "description": "Technical SEO, content strategy, local SEO, off-page SEO, and Knowledge Graph entity building — designed to drive compounding organic growth for businesses in India and globally."
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Generative Engine Optimisation (GEO)",
-                      "url": "https://kynato.com/services/geo-optimisation",
+                      "name": "AI Search Visibility and Generative Engine Optimisation (GEO)",
+                      "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/",
                       "description": "GEO builds your business's presence in AI-generated answers on ChatGPT, Perplexity, Google AI Overviews, and Gemini through citation authority building, prompt-gap content, and E-E-A-T amplification for AI engines."
                     }
                   },
@@ -210,8 +210,8 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Answer Engine Optimisation (AEO)",
-                      "url": "https://kynato.com/services/aeo",
+                      "name": "Answer Engine Optimisation (AEO) and Featured Snippet Capture",
+                      "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/aeo/",
                       "description": "AEO captures Featured Snippets, People Also Ask positions, and Google AI Overviews through FAQ schema, answer-first content architecture, and conversational keyword optimisation."
                     }
                   },
@@ -219,8 +219,8 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "B2B Lead Generation",
-                      "url": "https://kynato.com/services/lead-generation",
+                      "name": "Inbound Lead Architecture and B2B Lead Generation",
+                      "url": "https://kynato.com/services/demand-generation/inbound-lead-architecture/",
                       "description": "AI-powered inbound and outbound lead generation — LinkedIn outreach automation, cold email sequencing, WhatsApp lead capture, landing page CRO, and AI lead scoring and nurturing."
                     }
                   },
@@ -228,8 +228,8 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Knowledge AI and RAG Systems",
-                      "url": "https://kynato.com/services/knowledge-ai",
+                      "name": "Custom RAG Systems and Knowledge AI",
+                      "url": "https://kynato.com/services/knowledge-applied-ai/rag-systems/",
                       "description": "Custom Retrieval-Augmented Generation (RAG) systems, AI knowledge bases, document intelligence pipelines, and AI assistants for CA firms, healthcare providers, legal teams, and B2B operations."
                     }
                   },
@@ -237,17 +237,17 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Agentic AI and Workflow Automation",
-                      "url": "https://kynato.com/services/agentic-automation",
-                      "description": "Multi-step autonomous AI agents for document collection, CRM updates, compliance reminders, invoice automation, HR onboarding, and complex operational workflows."
+                      "name": "Agentic Workflow Systems and Core Automation",
+                      "url": "https://kynato.com/services/agentic-automation/agentic-workflows/",
+                      "description": "Multi-step autonomous AI agents for document collection, CRM updates, compliance reminders, invoice automation, HR onboarding, WhatsApp automation, Voice AI, and complex operational workflows."
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Business Performance Analytics",
-                      "url": "https://kynato.com/services/analytics",
+                      "name": "Intelligence, Analytics, and AI Visibility Tracking",
+                      "url": "https://kynato.com/services/intelligence-analytics/search-intelligence/",
                       "description": "Unified search intelligence, AI visibility tracking, marketing ROI analytics, and automation performance dashboards — delivered in plain language without a data team."
                     }
                   }
@@ -372,49 +372,37 @@ export default function RootLayout({
               "name": "Kynato AI Agency Services",
               "description": "Complete list of AI agency services offered by Kynato Nexinnovations LLP",
               "url": "https://kynato.com",
-              "numberOfItems": 7,
+              "numberOfItems": 5,
               "itemListElement": [
                 {
                   "@type": "ListItem",
                   "position": 1,
-                  "name": "SEO and AI Visibility",
-                  "url": "https://kynato.com/services/seo"
+                  "name": "Search & AI Visibility",
+                  "url": "https://kynato.com/services/search-ai-visibility/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
-                  "name": "Generative Engine Optimisation (GEO)",
-                  "url": "https://kynato.com/services/geo-optimisation"
+                  "name": "Demand Generation",
+                  "url": "https://kynato.com/services/demand-generation/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
-                  "name": "Answer Engine Optimisation (AEO)",
-                  "url": "https://kynato.com/services/aeo"
+                  "name": "Knowledge & Applied AI",
+                  "url": "https://kynato.com/services/knowledge-applied-ai/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 4,
-                  "name": "B2B Lead Generation",
-                  "url": "https://kynato.com/services/lead-generation"
+                  "name": "Agentic Automation",
+                  "url": "https://kynato.com/services/agentic-automation/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 5,
-                  "name": "Knowledge AI and RAG Systems",
-                  "url": "https://kynato.com/services/knowledge-ai"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 6,
-                  "name": "Agentic AI and Workflow Automation",
-                  "url": "https://kynato.com/services/agentic-automation"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 7,
-                  "name": "Business Performance Analytics",
-                  "url": "https://kynato.com/services/analytics"
+                  "name": "Intelligence & Analytics",
+                  "url": "https://kynato.com/services/intelligence-analytics/"
                 }
               ]
             })

@@ -132,8 +132,8 @@ export function HeroSection() {
               <div className="text-sm font-roboto text-muted-foreground">Industry<br />Verticals</div>
             </div>
             <div className="text-center md:text-left">
-              <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">4</div>
-              <div className="text-sm font-roboto text-muted-foreground">Practice<br />Areas</div>
+              <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">5</div>
+              <div className="text-sm font-roboto text-muted-foreground">AI<br />Capabilities</div>
             </div>
             <div className="text-center md:text-left">
               <div className="text-4xl md:text-5xl font-urbanist font-bold mb-2 text-white">∞</div>

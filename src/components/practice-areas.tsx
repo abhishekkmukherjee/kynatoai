@@ -1,14 +1,15 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 
 const practices = [
   {
     id: "01",
-    tag: "GROWTH",
+    tag: "SEARCH & AI VISIBILITY",
     title: "Search Engine Optimisation and AI Visibility",
+    href: "/services/search-ai-visibility/seo/",
     desc: "Search has split into two channels. Traditional search (Google, Bing) is one. AI-generated answers (ChatGPT, Perplexity, Gemini, Google AI Overviews) is the other. Your buyers use both. You need to appear in both.",
     features: [
       { t: "Technical SEO and Site Health", d: "Core Web Vitals optimisation, crawlability, schema markup deployment, Knowledge Graph entity registration." },
@@ -19,8 +20,9 @@ const practices = [
   },
   {
     id: "02",
-    tag: "GROWTH",
+    tag: "DEMAND GENERATION",
     title: "B2B Lead Generation and AI-Powered Conversion",
+    href: "/services/demand-generation/inbound-lead-architecture/",
     desc: "Most lead generation breaks down in one of two places: capture or follow-up. Kynato designs and operates inbound and outbound lead engines that handle both.",
     features: [
       { t: "Inbound Lead Capture", d: "Landing page CRO, AI-powered website chatbots, interactive lead magnets, WhatsApp Business API lead integration." },
@@ -31,8 +33,9 @@ const practices = [
   },
   {
     id: "03",
-    tag: "INTELLIGENCE",
+    tag: "KNOWLEDGE & APPLIED AI",
     title: "Knowledge AI, RAG Systems, and Agentic Automation",
+    href: "/services/knowledge-applied-ai/rag-systems/",
     desc: "Two separate problems. One integrated solution. Kynato builds the AI layer over your own knowledge — and the autonomous systems that act on it.",
     features: [
       { t: "Knowledge AI and Custom RAG Systems", d: "Custom Retrieval-Augmented Generation (RAG) systems that give businesses a searchable AI layer over their own documents and compliance data." },
@@ -43,8 +46,9 @@ const practices = [
   },
   {
     id: "04",
-    tag: "MEASURE",
+    tag: "INTELLIGENCE & ANALYTICS",
     title: "Unified Search, AI Visibility, and Business Analytics",
+    href: "/services/intelligence-analytics/search-intelligence/",
     desc: "Every system Kynato builds is instrumented from day one. Clients always know what is working, what isn't, and what is being done about it.",
     features: [
       { t: "Unified Search Intelligence", d: "Multi-engine analytics dashboard consolidating Google, Bing, and AI engine impressions." },
@@ -108,9 +112,12 @@ export function PracticeAreasSection() {
                 <p className="text-muted-foreground leading-relaxed mb-8 text-lg font-roboto">
                   {practice.desc}
                 </p>
-                <Button variant="link" className="px-0 text-white hover:text-accent-teal font-semibold group flex items-center">
-                  View Full Services <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link
+                  href={practice.href}
+                  className="inline-flex items-center text-white hover:text-accent-teal font-semibold group transition-colors"
+                >
+                  View Full Capability <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
 
               {/* Scrolling Content Column */}
