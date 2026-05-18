@@ -289,3 +289,234 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(2,124,136,0.7);
 }
+
+/* ── Light mode overrides for dark-coded sections ───────────────────── */
+:root:not(.dark) {
+  /* Remap hard-coded dark backgrounds */
+  --section-bg: #f8f9fb;
+  --section-bg-alt: #f0f2f6;
+  --section-border: rgba(0,0,0,0.06);
+  --card-bg: rgba(255,255,255,0.7);
+  --card-border: rgba(0,0,0,0.07);
+}
+
+/* Light mode — component-level overrides */
+:root:not(.dark) .bg-black,
+:root:not(.dark) [class*="bg-[#030305]"],
+:root:not(.dark) [class*="bg-[#09090B]"] {
+  background-color: var(--section-bg) !important;
+}
+
+:root:not(.dark) .text-white {
+  color: #0a0a0a !important;
+}
+:root:not(.dark) .text-white\/40,
+:root:not(.dark) .text-white\/35,
+:root:not(.dark) .text-white\/30,
+:root:not(.dark) .text-white\/25,
+:root:not(.dark) .text-white\/20,
+:root:not(.dark) .text-\[\#8A9BB0\] {
+  color: rgba(10,10,10,0.5) !important;
+}
+:root:not(.dark) .text-white\/60,
+:root:not(.dark) .text-white\/55,
+:root:not(.dark) .text-white\/45,
+:root:not(.dark) .text-white\/50,
+:root:not(.dark) .text-white\/70,
+:root:not(.dark) .text-white\/80,
+:root:not(.dark) .text-white\/90 {
+  color: rgba(10,10,10,0.65) !important;
+}
+
+/* Light mode — borders */
+:root:not(.dark) .border-white\/\[0\.06\],
+:root:not(.dark) .border-white\/\[0\.04\],
+:root:not(.dark) .border-white\/\[0\.08\],
+:root:not(.dark) .border-white\/\[0\.1\],
+:root:not(.dark) .border-white\/5 {
+  border-color: rgba(0,0,0,0.07) !important;
+}
+
+/* Light mode — glass cards */
+:root:not(.dark) .glass-card {
+  background: rgba(255,255,255,0.75) !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+}
+:root:not(.dark) .glass-card-hover:hover,
+:root:not(.dark) .premium-card:hover {
+  background: rgba(255,255,255,0.9) !important;
+  border-color: rgba(2,124,136,0.25) !important;
+  box-shadow: 0 4px 30px rgba(2,124,136,0.08) !important;
+}
+:root:not(.dark) .premium-card {
+  background: rgba(255,255,255,0.65) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — grid patterns */
+:root:not(.dark) .bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+:root:not(.dark) .bg-grid-fine {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+}
+:root:not(.dark) .bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+}
+
+/* Light mode — section top line */
+:root:not(.dark) .section-line-top::before {
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06) 30%, rgba(2,124,136,0.2) 50%, rgba(0,0,0,0.06) 70%, transparent);
+}
+
+/* Light mode — backdrop blur backgrounds */
+:root:not(.dark) .bg-black\/40,
+:root:not(.dark) .bg-black\/60,
+:root:not(.dark) .bg-black\/70,
+:root:not(.dark) .bg-black\/75,
+:root:not(.dark) .bg-black\/80,
+:root:not(.dark) .bg-black\/95 {
+  background-color: rgba(248,249,251,0.85) !important;
+}
+:root:not(.dark) .bg-white\/\[0\.02\],
+:root:not(.dark) .bg-white\/\[0\.03\],
+:root:not(.dark) .bg-white\/\[0\.04\],
+:root:not(.dark) .bg-white\/\[0\.05\] {
+  background-color: rgba(0,0,0,0.03) !important;
+}
+
+/* Light mode — navigation */
+:root:not(.dark) header {
+  background-color: rgba(248,249,251,0.85) !important;
+}
+
+/* Light mode — gradient text: white-start gradient is invisible on light bg */
+:root:not(.dark) .gradient-text-teal,
+:root:not(.dark) .gradient-text-vivid {
+  background: linear-gradient(135deg, #027C88 0%, #006AF0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light mode — black fade overlay divs: swap black → section bg so fades blend */
+:root:not(.dark) [class*="from-black"] {
+  --tw-gradient-from: var(--section-bg);
+}
+:root:not(.dark) [class*="via-black"] {
+  --tw-gradient-via: transparent;
+}
+:root:not(.dark) [class*="to-[#09090B]"],
+:root:not(.dark) [class*="to-[#030305]"] {
+  --tw-gradient-to: var(--section-bg);
+}
+
+/* Fine grid pattern — 40px cells */
+.bg-grid-fine {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* SVG noise texture for depth */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+/* Premium card — richer glass with animated hover border */
+.premium-card {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.premium-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(2,124,136,0.3);
+  box-shadow: 0 0 0 1px rgba(2,124,136,0.08), 0 0 60px rgba(2,124,136,0.06), 0 20px 40px rgba(0,0,0,0.4);
+  transform: translateY(-1px);
+}
+
+/* Gradient border wrapper */
+.gradient-border-wrap {
+  position: relative;
+  border-radius: inherit;
+}
+.gradient-border-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(2,124,136,0.5) 0%, rgba(0,106,240,0.2) 50%, rgba(2,124,136,0.1) 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gradient-border-wrap:hover::before {
+  opacity: 1;
+}
+
+/* Section top separator line */
+.section-line-top {
+  position: relative;
+}
+.section-line-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(2,124,136,0.2) 50%, rgba(255,255,255,0.08) 70%, transparent);
+}
+
+/* Shimmer animation for premium elements */
+@keyframes shimmer-move {
+  0% { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(200%) skewX(-12deg); }
+}
+
+.shimmer-on-hover {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-on-hover::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transform: translateX(-100%) skewX(-12deg);
+  transition: none;
+}
+.shimmer-on-hover:hover::after {
+  animation: shimmer-move 0.7s ease forwards;
+}
+
+/* Gradient text — vivid version */
+.gradient-text-vivid {
+  background: linear-gradient(135deg, #00d4e8 0%, #027C88 40%, #006AF0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated ping glow */
+@keyframes ping-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(2,124,136,0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(2,124,136,0); }
+}
+.animate-ping-glow {
+  animation: ping-glow 2s ease-in-out infinite;
+}

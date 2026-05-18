@@ -65,11 +65,11 @@ const practices = [
 
 export function PracticeAreasSection() {
   return (
-    <section className="py-28 md:py-36 bg-[#030305] relative overflow-hidden">
+    <section className="py-28 md:py-36 bg-[#030305] relative overflow-hidden section-line-top">
 
       {/* Background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
 
       <div className="container mx-auto px-4">
 
@@ -88,7 +88,7 @@ export function PracticeAreasSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.02em] text-white mb-6"
+            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6"
           >
             One System. Four Practice Areas.{" "}
             <PointerHighlight containerClassName="mt-1 inline-block">
@@ -109,96 +109,104 @@ export function PracticeAreasSection() {
         </div>
 
         {/* Practice Cards */}
-        <div className="space-y-6">
+        <div className="space-y-5">
           {practices.map((practice) => (
             <motion.div
               key={practice.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" as const }}
-              className="group relative rounded-2xl border border-white/[0.06] bg-black/40 backdrop-blur-sm overflow-hidden hover:border-white/[0.1] transition-all duration-500"
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative rounded-2xl overflow-hidden shimmer-on-hover"
             >
-              {/* Top accent */}
+              {/* Gradient border on hover */}
               <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: `linear-gradient(90deg, transparent 0%, ${practice.accentColor}50 40%, ${practice.accentColor}80 50%, ${practice.accentColor}50 60%, transparent 100%)` }}
+                className="absolute inset-0 rounded-2xl transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"
+                style={{ background: `linear-gradient(135deg, ${practice.accentColor}20 0%, transparent 50%, ${practice.accentColor}10 100%)`, outline: `1px solid ${practice.accentColor}20` }}
               />
 
-              {/* Corner glow */}
-              <div
-                className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none"
-                style={{ background: practice.accentColor }}
-              />
+              {/* Card itself */}
+              <div className="relative border border-white/[0.06] group-hover:border-white/[0.1] transition-colors duration-500 rounded-2xl bg-black/40 backdrop-blur-sm">
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-px transition-opacity duration-500"
+                  style={{ background: `linear-gradient(90deg, transparent 0%, ${practice.accentColor}50 40%, ${practice.accentColor}80 50%, ${practice.accentColor}50 60%, transparent 100%)` }}
+                />
 
-              <div className="grid md:grid-cols-12 gap-0">
+                {/* Corner glow */}
+                <div
+                  className="absolute top-0 right-0 w-72 h-72 rounded-full blur-[120px] opacity-0 group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none"
+                  style={{ background: practice.accentColor }}
+                />
 
-                {/* Left Column */}
-                <div className="md:col-span-4 p-8 md:p-10 md:border-r border-white/[0.04]">
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="text-[3rem] font-urbanist font-black text-white/[0.06] leading-none select-none">
-                      {practice.id}
-                    </span>
-                    <span
-                      className="px-3 py-1 rounded-full text-[10px] font-black tracking-[0.15em] uppercase border"
-                      style={{
-                        color: practice.accentColor,
-                        borderColor: `${practice.accentColor}30`,
-                        background: `${practice.accentColor}10`,
-                      }}
+                <div className="grid md:grid-cols-12 gap-0">
+                  {/* Left Column */}
+                  <div className="md:col-span-4 p-8 md:p-10 md:border-r border-white/[0.04]">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-[3rem] font-urbanist font-black text-white/[0.05] leading-none select-none">
+                        {practice.id}
+                      </span>
+                      <span
+                        className="px-3 py-1 rounded-full text-[10px] font-black tracking-[0.12em] uppercase border transition-all duration-300"
+                        style={{
+                          color: practice.accentColor,
+                          borderColor: `${practice.accentColor}28`,
+                          background: `${practice.accentColor}0c`,
+                        }}
+                      >
+                        {practice.tag}
+                      </span>
+                    </div>
+                    <h3 className="font-urbanist font-black text-2xl md:text-[1.6rem] text-white mb-5 leading-snug">
+                      {practice.title}
+                    </h3>
+                    <p className="font-roboto text-white/35 text-sm leading-relaxed mb-8">
+                      {practice.desc}
+                    </p>
+                    <Link
+                      href={practice.href}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white group/link transition-all duration-300"
                     >
-                      {practice.tag}
-                    </span>
+                      View Full Capability
+                      <ArrowRight className="h-3.5 w-3.5 group-hover/link:translate-x-1 transition-transform duration-300" />
+                    </Link>
                   </div>
-                  <h3 className="font-urbanist font-black text-2xl md:text-[1.6rem] text-white mb-5 leading-snug">
-                    {practice.title}
-                  </h3>
-                  <p className="font-roboto text-white/40 text-sm leading-relaxed mb-8">
-                    {practice.desc}
-                  </p>
-                  <Link
-                    href={practice.href}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-white group/link transition-colors"
-                  >
-                    View Full Capability
-                    <ArrowRight className="h-3.5 w-3.5 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
 
-                {/* Right Column */}
-                <div className="md:col-span-8 p-8 md:p-10">
-                  <div className="space-y-6">
-                    {practice.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex gap-4 group/feat">
-                        <div
-                          className="mt-1 w-5 h-5 rounded-full flex items-center justify-center shrink-0 border"
-                          style={{
-                            background: `${practice.accentColor}12`,
-                            borderColor: `${practice.accentColor}25`,
-                          }}
-                        >
-                          <Check className="h-2.5 w-2.5" style={{ color: practice.accentColor }} />
+                  {/* Right Column */}
+                  <div className="md:col-span-8 p-8 md:p-10">
+                    <div className="space-y-5">
+                      {practice.features.map((feature, fIdx) => (
+                        <div key={fIdx} className="flex gap-4 group/feat">
+                          <div
+                            className="mt-1 w-5 h-5 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300"
+                            style={{
+                              background: `${practice.accentColor}10`,
+                              borderColor: `${practice.accentColor}22`,
+                            }}
+                          >
+                            <Check className="h-2.5 w-2.5" style={{ color: practice.accentColor }} />
+                          </div>
+                          <div>
+                            <h4 className="font-urbanist font-bold text-base text-white mb-1.5 transition-colors">
+                              {feature.t}
+                            </h4>
+                            <p className="font-roboto text-white/30 text-sm leading-relaxed">
+                              {feature.d}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-urbanist font-bold text-base text-white mb-1.5 group-hover/feat:text-white/90 transition-colors">
-                            {feature.t}
-                          </h4>
-                          <p className="font-roboto text-white/35 text-sm leading-relaxed">
-                            {feature.d}
-                          </p>
-                        </div>
+                      ))}
+
+                      {/* Outcome */}
+                      <div
+                        className="mt-6 p-5 rounded-xl border-l-2 bg-white/[0.02] backdrop-blur-sm"
+                        style={{ borderColor: practice.accentColor }}
+                      >
+                        <p className="text-sm text-white/50 font-roboto leading-relaxed">
+                          <span className="font-bold mr-2" style={{ color: practice.accentColor }}>Outcome:</span>
+                          {practice.outcome}
+                        </p>
                       </div>
-                    ))}
-
-                    {/* Outcome */}
-                    <div
-                      className="mt-8 p-5 rounded-xl border-l-2 bg-white/[0.02]"
-                      style={{ borderColor: practice.accentColor }}
-                    >
-                      <p className="text-sm text-white/55 font-roboto leading-relaxed">
-                        <span className="font-bold mr-2" style={{ color: practice.accentColor }}>Outcome:</span>
-                        {practice.outcome}
-                      </p>
                     </div>
                   </div>
                 </div>

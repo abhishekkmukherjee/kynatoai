@@ -50,21 +50,21 @@ const items = [
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.07 } },
 };
 
 const cardAnim = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" as const } },
 };
 
 export function ProblemSection() {
   return (
-    <section className="py-28 md:py-36 bg-black relative overflow-hidden">
+    <section className="py-28 md:py-36 bg-black relative overflow-hidden section-line-top">
 
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-40 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#027C88]/[0.04] blur-[140px] rounded-full pointer-events-none" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-35 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#027C88]/[0.04] blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
 
@@ -83,7 +83,7 @@ export function ProblemSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-urbanist font-black text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-white mb-6"
+            className="font-urbanist font-black text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6"
           >
             Every Quarter You Wait,{" "}
             <span className="gradient-text-teal">the Gap Widens.</span>
@@ -93,7 +93,7 @@ export function ProblemSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-roboto text-white/45 text-lg leading-relaxed max-w-2xl"
+            className="font-roboto text-white/40 text-lg leading-relaxed max-w-2xl"
           >
             AI isn&apos;t coming. It&apos;s already restructuring which businesses win categories and which
             ones get left behind. Here&apos;s what the gap looks like on the ground:
@@ -114,32 +114,36 @@ export function ProblemSection() {
               <motion.div
                 key={i}
                 variants={cardAnim}
-                className={`${item.span} relative group rounded-2xl p-7 glass-card glass-card-hover overflow-hidden cursor-default`}
+                className={`${item.span} relative group rounded-2xl p-7 overflow-hidden cursor-default premium-card`}
               >
                 {/* Top accent line */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-px opacity-60"
-                  style={{ background: `linear-gradient(90deg, transparent, ${item.accent}80, transparent)` }}
+                  className="absolute top-0 left-0 right-0 h-px opacity-70"
+                  style={{ background: `linear-gradient(90deg, transparent, ${item.accent}70, transparent)` }}
                 />
 
-                {/* Background glow on hover */}
+                {/* Corner glow on hover */}
                 <div
-                  className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-[0.07] transition-opacity duration-700 pointer-events-none"
+                  className="absolute -top-20 -right-20 w-56 h-56 rounded-full blur-[90px] opacity-0 group-hover:opacity-[0.08] transition-opacity duration-700 pointer-events-none"
+                  style={{ background: item.accent }}
+                />
+                <div
+                  className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full blur-[70px] opacity-0 group-hover:opacity-[0.04] transition-opacity duration-700 pointer-events-none"
                   style={{ background: item.accent }}
                 />
 
                 {/* Icon */}
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 shrink-0"
-                  style={{ background: `${item.accent}15`, border: `1px solid ${item.accent}25` }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: `${item.accent}12`, border: `1px solid ${item.accent}22` }}
                 >
-                  <Icon className="h-4 w-4" style={{ color: item.accent }} />
+                  <Icon className="h-4 w-4 transition-colors duration-300" style={{ color: item.accent }} />
                 </div>
 
-                <h3 className="font-urbanist font-bold text-xl text-white mb-3 leading-snug">
+                <h3 className="font-urbanist font-bold text-xl text-white mb-3 leading-snug group-hover:text-white transition-colors">
                   {item.title}
                 </h3>
-                <p className="font-roboto text-white/40 text-sm leading-relaxed">
+                <p className="font-roboto text-white/35 text-sm leading-relaxed group-hover:text-white/45 transition-colors">
                   {item.description}
                 </p>
               </motion.div>
@@ -153,10 +157,15 @@ export function ProblemSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-24 relative rounded-3xl overflow-hidden border border-white/[0.06] bg-black/60 backdrop-blur-sm"
+          className="mt-24 relative rounded-3xl overflow-hidden"
         >
-          {/* Inner glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-accent-teal/40 to-transparent" />
+          {/* Gradient border */}
+          <div className="absolute inset-0 rounded-3xl p-px" style={{ background: "linear-gradient(135deg, rgba(2,124,136,0.25) 0%, rgba(0,106,240,0.1) 50%, rgba(2,124,136,0.15) 100%)" }}>
+            <div className="h-full w-full rounded-3xl bg-black/70 backdrop-blur-sm" />
+          </div>
+
+          {/* Inner glow line */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-accent-teal/40 to-transparent" />
 
           <div className="relative px-8 py-16 text-center">
             <h2 className="font-urbanist font-black text-2xl md:text-3xl lg:text-4xl text-white max-w-4xl mx-auto leading-tight mb-4">
@@ -164,19 +173,19 @@ export function ProblemSection() {
               <span className="gradient-text-teal">will own their categories</span>{" "}
               for the decade after.
             </h2>
-            <p className="font-roboto text-white/35 text-base md:text-lg">
+            <p className="font-roboto text-white/30 text-base md:text-lg">
               The ones that don&apos;t will spend that decade catching up.
             </p>
           </div>
 
           {/* Sparkles */}
-          <div className="relative h-32 -mt-4">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-teal/30 to-transparent" />
+          <div className="relative h-28 -mt-4">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-teal/25 to-transparent" />
             <SparklesCore
               background="transparent"
               minSize={0.3}
-              maxSize={0.8}
-              particleDensity={800}
+              maxSize={0.7}
+              particleDensity={700}
               className="w-full h-full"
               particleColor="#027C88"
             />

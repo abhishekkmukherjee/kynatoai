@@ -6,6 +6,12 @@ const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World)
   ssr: false,
 });
 
+const statsData = [
+  { value: "70%", desc: "Reduction in client query resolution time for firms using Kynato Knowledge AI" },
+  { value: "60%", desc: "Reduction in document collection time for operations teams on Kynato Agentic Automation" },
+  { value: "3×", desc: "More referrals from satisfied clients within the first 90-day review cycle" },
+];
+
 export function StatsSection() {
   const globeConfig = {
     pointSize: 4,
@@ -49,61 +55,69 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-[#09090B] relative overflow-hidden min-h-screen flex flex-col justify-center">
+    <section className="py-24 md:py-32 bg-[#09090B] relative overflow-hidden min-h-screen flex flex-col justify-center section-line-top">
       {/* Background glow */}
-      <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#027C88] opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#027C88] opacity-[0.04] blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#006AF0] opacity-[0.02] blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 text-center relative z-20">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-block mb-4 font-roboto uppercase tracking-widest text-sm font-semibold text-accent-teal"
+          className="inline-block mb-5 font-roboto uppercase tracking-[0.25em] text-[11px] font-bold text-accent-teal"
         >
-          OUTCOMES THAT COMPOUND
+          Outcomes That Compound
         </motion.span>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-urbanist font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-20"
+          className="font-urbanist font-black text-4xl md:text-5xl lg:text-6xl text-white mb-20 tracking-[-0.025em] leading-tight"
         >
           Revenue Gained or Hours Saved.<br />
-          Here&apos;s What That Looks Like.
+          <span className="gradient-text-teal">Here&apos;s What That Looks Like.</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto border-t border-white/5 pt-16">
-          {[
-            { value: "70%", desc: "Reduction in client query resolution time for firms using Kynato Knowledge AI" },
-            { value: "60%", desc: "Reduction in document collection time for operations teams on Kynato Agentic Automation" },
-            { value: "3×", desc: "More referrals from satisfied clients within the first 90-day review cycle" },
-          ].map((stat, i) => (
-            <motion.div 
+        {/* Stats grid */}
+        <div className="grid md:grid-cols-3 gap-0 max-w-5xl mx-auto">
+          {statsData.map((stat, i) => (
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 + (i * 0.1) }}
-              className="group"
+              className="group relative px-8 py-10 text-center"
+              style={{ borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.05)" : "none" }}
             >
-              <div className="text-7xl md:text-8xl font-black text-white mb-6 tracking-tighter group-hover:scale-105 transition-transform duration-500">{stat.value}</div>
-              <div className="w-16 h-1 bg-accent-teal mx-auto mb-8 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <p className="text-muted-foreground text-lg leading-relaxed font-roboto px-4">{stat.desc}</p>
+              {/* Hover glow */}
+              <div className="absolute inset-0 bg-white/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+
+              <div className="font-urbanist font-black text-7xl md:text-8xl gradient-text-teal mb-5 tracking-tighter group-hover:scale-105 transition-transform duration-500">
+                {stat.value}
+              </div>
+              <div className="w-12 h-0.5 bg-gradient-to-r from-accent-teal/40 to-accent-blue/40 mx-auto mb-6 group-hover:w-20 transition-all duration-500" />
+              <p className="text-white/40 text-base leading-relaxed font-roboto px-4 group-hover:text-white/55 transition-colors duration-500">
+                {stat.desc}
+              </p>
             </motion.div>
           ))}
         </div>
 
-        <motion.p 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="mt-12 md:mt-24 text-white/40 font-roboto text-sm max-w-2xl mx-auto uppercase tracking-widest mb-10"
+          className="mt-16 md:mt-24 inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm"
         >
-          Every number above is measured. None is estimated. We instrument every system
-          from day one precisely so that this section gets longer every quarter.
-        </motion.p>
+          <div className="w-px h-4 bg-gradient-to-b from-transparent via-accent-teal/60 to-transparent" />
+          <p className="text-white/30 font-roboto text-xs uppercase tracking-[0.2em]">
+            Every number above is measured. None is estimated. We instrument every system from day one.
+          </p>
+        </motion.div>
       </div>
 
       <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-[#09090B] z-10" />

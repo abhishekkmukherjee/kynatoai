@@ -36,11 +36,11 @@ const steps = [
 
 export function WorkflowSection() {
   return (
-    <section id="how-we-work" className="py-28 md:py-36 bg-black relative overflow-hidden">
+    <section id="how-we-work" className="py-28 md:py-36 bg-black relative overflow-hidden section-line-top">
 
       {/* Background */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#006AF0]/[0.03] blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0 bg-dot-pattern opacity-25 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[#006AF0]/[0.03] blur-[180px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
 
@@ -59,67 +59,85 @@ export function WorkflowSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.02em] text-white"
+            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white max-w-3xl mx-auto"
           >
             From Diagnosis to Running System —{" "}
             <span className="gradient-text-blue">Not a Slideshow. Not a Demo.</span>
           </motion.h2>
         </div>
 
-        {/* Steps */}
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {steps.map((item, i) => (
+        {/* Steps — with visual connector */}
+        <div className="max-w-5xl mx-auto relative">
+
+          {/* Connector line (desktop only) */}
+          <div className="hidden md:block absolute top-[3.5rem] left-0 right-0 h-px pointer-events-none overflow-hidden">
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="group relative rounded-2xl p-7 glass-card glass-card-hover overflow-hidden"
-            >
-              {/* Top line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: `linear-gradient(90deg, transparent, ${item.accentColor}60, transparent)` }}
-              />
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="h-full origin-left"
+              style={{ background: "linear-gradient(90deg, rgba(2,124,136,0.4) 0%, rgba(0,106,240,0.4) 33%, rgba(2,124,136,0.4) 66%, rgba(0,106,240,0.4) 100%)" }}
+            />
+          </div>
 
-              {/* Step number background */}
-              <div
-                className="absolute -right-4 -bottom-4 font-urbanist font-black text-[7rem] leading-none text-white/[0.02] select-none pointer-events-none"
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+            {steps.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
+                className="group relative premium-card rounded-2xl p-7 overflow-hidden"
               >
-                {item.step}
-              </div>
+                {/* Top line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-px"
+                  style={{ background: `linear-gradient(90deg, transparent, ${item.accentColor}60, transparent)` }}
+                />
 
-              {/* Content */}
-              <div className="relative">
-                <div className="flex items-center gap-3 mb-5">
-                  <span
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-black border"
+                {/* Step number background */}
+                <div className="absolute -right-3 -bottom-3 font-urbanist font-black text-[6rem] leading-none text-white/[0.015] select-none pointer-events-none">
+                  {item.step}
+                </div>
+
+                {/* Step indicator with connector dot */}
+                <div className="relative mb-6">
+                  <div
+                    className="relative w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black border group-hover:scale-110 transition-transform duration-300"
                     style={{
                       color: item.accentColor,
-                      borderColor: `${item.accentColor}30`,
-                      background: `${item.accentColor}10`,
+                      borderColor: `${item.accentColor}28`,
+                      background: `${item.accentColor}0c`,
                     }}
                   >
                     {item.step}
-                  </span>
-                  <span
-                    className="text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-full border"
-                    style={{
-                      color: item.accentColor,
-                      borderColor: `${item.accentColor}25`,
-                      background: `${item.accentColor}08`,
-                    }}
-                  >
-                    {item.timeline}
-                  </span>
+                    {/* Connector dot above */}
+                    <div
+                      className="absolute -top-[1.75rem] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full hidden md:block"
+                      style={{ background: item.accentColor, boxShadow: `0 0 8px ${item.accentColor}80` }}
+                    />
+                  </div>
                 </div>
 
+                {/* Timeline pill */}
+                <span
+                  className="inline-block text-[10px] font-bold tracking-[0.12em] uppercase px-3 py-1 rounded-full border mb-5"
+                  style={{
+                    color: item.accentColor,
+                    borderColor: `${item.accentColor}20`,
+                    background: `${item.accentColor}08`,
+                  }}
+                >
+                  {item.timeline}
+                </span>
+
                 <h3 className="font-urbanist font-black text-xl text-white mb-3">{item.title}</h3>
-                <p className="font-roboto text-white/40 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+                <p className="font-roboto text-white/35 text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* CTA */}
@@ -127,12 +145,13 @@ export function WorkflowSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
           className="mt-16 text-center"
         >
           <HoverBorderGradient
             containerClassName="rounded-xl inline-flex"
             as="button"
-            className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 shadow-[0_0_30px_rgba(0,106,240,0.3)] hover:shadow-[0_0_50px_rgba(0,106,240,0.5)] transition-shadow"
+            className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 shadow-[0_0_35px_rgba(0,106,240,0.35)] hover:shadow-[0_0_60px_rgba(0,106,240,0.55)] transition-shadow duration-300"
           >
             Start with a 30-Minute Strategy Call <ArrowRight className="h-4 w-4" />
           </HoverBorderGradient>

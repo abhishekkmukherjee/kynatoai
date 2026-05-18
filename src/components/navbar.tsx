@@ -16,6 +16,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
+import { ModeToggle } from "@/components/theme-toggle"
 
 const capabilities = [
   {
@@ -94,16 +95,21 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-black/70 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_0_rgba(255,255,255,0.04)]"
+            ? "bg-black/75 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_30px_rgba(0,0,0,0.5)]"
             : "bg-transparent"
         }`}
       >
+        {/* Scrolled state — top border glow */}
+        {isScrolled && (
+          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-accent-teal/15 to-transparent pointer-events-none" />
+        )}
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
 
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
-              <span className="font-urbanist font-black text-xl tracking-tight gradient-text-teal group-hover:opacity-90 transition-opacity">
+              <span className="font-urbanist font-black text-[1.3rem] tracking-[-0.02em] gradient-text-teal group-hover:opacity-85 transition-opacity duration-300">
                 KYNATO
               </span>
             </Link>
@@ -177,11 +183,12 @@ export function Navbar() {
 
             {/* Right Actions */}
             <div className="flex items-center gap-3">
+              <ModeToggle />
               <div className="hidden lg:block">
                 <HoverBorderGradient
                   containerClassName="rounded-lg"
                   as="button"
-                  className="bg-white/[0.05] backdrop-blur-sm text-white font-medium flex items-center justify-center gap-2 px-5 text-sm h-9 hover:bg-white/[0.08] transition-colors"
+                  className="bg-[#006AF0]/80 backdrop-blur-sm text-white font-semibold flex items-center justify-center gap-2 px-5 text-sm h-9 hover:bg-[#006AF0] shadow-[0_0_20px_rgba(0,106,240,0.25)] hover:shadow-[0_0_35px_rgba(0,106,240,0.45)] transition-all duration-300"
                 >
                   <span>Book a Strategy Call</span>
                 </HoverBorderGradient>
