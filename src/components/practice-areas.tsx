@@ -24,11 +24,11 @@ const practices = [
     tag: "DEMAND GENERATION",
     title: "B2B Lead Generation and AI-Powered Conversion",
     href: "/services/demand-generation/inbound-lead-architecture/",
-    desc: "Most lead generation breaks down in one of two places: capture or follow-up. Kynato designs and operates inbound and outbound lead engines that handle both.",
+    desc: "Most lead generation breaks down in one of two places: capture or follow-up. Kynato designs and operates inbound and outbound lead engines that handle both — from first click to booked call.",
     features: [
-      { t: "Inbound Lead Capture", d: "Landing page CRO, AI-powered website chatbots, interactive lead magnets, WhatsApp Business API lead integration." },
-      { t: "Outbound Lead Generation", d: "LinkedIn outreach automation, cold email sequencing, AI-personalised outbound copy at scale." },
-      { t: "AI Lead Scoring and Nurturing", d: "Signal-weighted lead scoring models, qualification bots, AI-powered nurturing sequences." },
+      { t: "Inbound Lead Architecture", d: "Landing page CRO, AI-powered website chatbots, interactive lead magnets, and WhatsApp Business API lead integration." },
+      { t: "Outbound and Paid Acquisition", d: "LinkedIn outreach automation, cold email sequencing with domain warm-up, and Google and Meta Ads with lead quality optimisation." },
+      { t: "AI Lead Scoring and Nurturing", d: "Signal-weighted lead scoring models, qualification bots, and AI-powered nurturing sequences for every funnel stage." },
     ],
     outcome: "A lead pipeline that generates, qualifies, and nurtures — around the clock. From first click to booked call, automated.",
     accentColor: "#006AF0",
@@ -36,30 +36,44 @@ const practices = [
   {
     id: "03",
     tag: "KNOWLEDGE & APPLIED AI",
-    title: "Knowledge AI, RAG Systems, and Agentic Automation",
+    title: "Custom RAG Systems and AI Knowledge Intelligence",
     href: "/services/knowledge-applied-ai/rag-systems/",
-    desc: "Two separate problems. One integrated solution. Kynato builds the AI layer over your own knowledge — and the autonomous systems that act on it.",
+    desc: "Your organisation already holds the knowledge. Kynato builds the AI layer over it — so your team and customers can query documents, circulars, and records in seconds rather than hours.",
     features: [
-      { t: "Knowledge AI and Custom RAG Systems", d: "Custom Retrieval-Augmented Generation (RAG) systems that give businesses a searchable AI layer over their own documents and compliance data." },
-      { t: "Agentic AI and Workflow Automation", d: "Multi-step, autonomous AI agents that handle complex operational tasks end to end — running without human input for standard cases." },
-      { t: "Voice AI and Intelligent Phone", d: "AI-powered IVR replacement, missed-call answering agents with CRM logging, vernacular and multilingual voice bots." },
+      { t: "Custom RAG Systems", d: "Retrieval-Augmented Generation systems that give businesses a searchable AI layer over their own documents, compliance data, and knowledge bases." },
+      { t: "AI Assistant Deployment", d: "Internal and customer-facing AI assistants on WhatsApp and web — connected to your knowledge base, with access controls and vernacular language support." },
+      { t: "Document Intelligence and Regulatory Search", d: "AI pipelines that extract, classify, and search across legal documents, GST circulars, RBI notifications, and case law." },
     ],
-    outcome: "Hours of manual work automated — replaced by systems that run 24/7. Kynato automates the work between your first lead and your last invoice.",
-    accentColor: "#027C88",
+    outcome: "Every employee with an AI assistant that knows your documents as well as your best team member. Every query answered in seconds, with source attribution.",
+    accentColor: "#7C3AED",
   },
   {
     id: "04",
+    tag: "AGENTIC AUTOMATION",
+    title: "Agentic Workflows and Business Process Automation",
+    href: "/services/agentic-automation/agentic-workflows/",
+    desc: "Kynato designs and deploys autonomous AI systems that handle complex multi-step operations — and automates the operational backbone that consumes your team's time every day.",
+    features: [
+      { t: "Agentic Workflow Systems", d: "Single and multi-agent AI pipelines that reason, use tools, handle edge cases, and complete complex operational work without constant human oversight." },
+      { t: "Core Business Automation", d: "Document collection, compliance reminders, CRM auto-update, invoice generation, HR onboarding, and RPA — all automated and connected." },
+      { t: "Conversational and Voice AI", d: "WhatsApp automation, AI phone answering, LinkedIn and email outreach, and omnichannel messaging — with vernacular language support." },
+    ],
+    outcome: "Hours of manual work eliminated every week. Systems that run 24/7 and hand off to humans only when genuinely required.",
+    accentColor: "#D97706",
+  },
+  {
+    id: "05",
     tag: "INTELLIGENCE & ANALYTICS",
     title: "Unified Search, AI Visibility, and Business Analytics",
     href: "/services/intelligence-analytics/search-intelligence/",
-    desc: "Every system Kynato builds is instrumented from day one. Clients always know what is working, what isn't, and what is being done about it.",
+    desc: "Every system Kynato builds is instrumented from day one. Clients always know what is working, what isn't, and what is being done about it — in plain numbers, not activity reports.",
     features: [
-      { t: "Unified Search Intelligence", d: "Multi-engine analytics dashboard consolidating Google, Bing, and AI engine impressions." },
-      { t: "AI Visibility Tracking", d: "AI share of voice tracking, sentiment analysis in AI-generated brand mentions, competitor citation tracking." },
-      { t: "Marketing ROI & Automation Performance", d: "Lead velocity rate tracking, CAC vs LTV modelling, automation error rate and hours-saved tracking." },
+      { t: "Unified Search Intelligence", d: "Multi-engine analytics dashboard consolidating Google, Bing, and AI engine impressions with weekly plain-English briefings from a smart analytical agent." },
+      { t: "AI Visibility and Citation Tracking", d: "AI share of voice, sentiment analysis in AI-generated brand mentions, and multi-LLM citation tracking across ChatGPT, Perplexity, Gemini, and Claude." },
+      { t: "Marketing ROI and Automation Performance", d: "Lead attribution, campaign ROI, funnel conversion analysis, automation hours-saved metrics, and predictive analytics for churn and demand." },
     ],
-    outcome: "Complete visibility into your growth and operational efficiency — delivered in plain language without needing a data team.",
-    accentColor: "#006AF0",
+    outcome: "Complete visibility into your growth and operational efficiency — delivered in plain language. No data team required.",
+    accentColor: "#059669",
   },
 ];
 
@@ -90,9 +104,9 @@ export function PracticeAreasSection() {
             transition={{ delay: 0.1 }}
             className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6"
           >
-            One System. Four Practice Areas.{" "}
+            Five Capabilities.{" "}
             <PointerHighlight containerClassName="mt-1 inline-block">
-              <span className="gradient-text-teal">Everything Compounds.</span>
+              <span className="gradient-text-teal">One Intelligence Ecosystem.</span>
             </PointerHighlight>
           </motion.h2>
           <motion.p
@@ -103,8 +117,8 @@ export function PracticeAreasSection() {
             className="font-roboto text-white/40 text-base md:text-lg leading-relaxed max-w-2xl"
           >
             Kynato doesn&apos;t sell AI software or run one-off campaigns. We build, integrate,
-            and directly operate AI-powered systems across four interconnected practice areas —
-            designed so that every capability feeds the next.
+            and directly operate AI-powered systems across five interconnected capabilities —
+            designed so that every service feeds the next. Measured by revenue gained or hours saved.
           </motion.p>
         </div>
 

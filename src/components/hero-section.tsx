@@ -121,13 +121,15 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 w-full"
         >
-          <HoverBorderGradient
-            containerClassName="rounded-xl w-full sm:w-auto"
-            as="button"
-            className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 w-full sm:w-auto shadow-[0_0_40px_rgba(0,106,240,0.4)] hover:shadow-[0_0_70px_rgba(0,106,240,0.6)] transition-all duration-300"
-          >
-            Book a Strategy Call <ArrowRight className="h-4 w-4" />
-          </HoverBorderGradient>
+          <Link href="/strategy" className="w-full sm:w-auto">
+            <HoverBorderGradient
+              containerClassName="rounded-xl w-full sm:w-auto"
+              as="span"
+              className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 w-full sm:w-auto shadow-[0_0_40px_rgba(0,106,240,0.4)] hover:shadow-[0_0_70px_rgba(0,106,240,0.6)] transition-all duration-300"
+            >
+              Book a Strategy Call <ArrowRight className="h-4 w-4" />
+            </HoverBorderGradient>
+          </Link>
 
           <Link
             href="#how-we-work"
@@ -142,11 +144,11 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-white/30 font-roboto mb-12"
+          className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-white/60 font-roboto mb-12"
         >
           {["Build & Operate — Not Build & Leave", "Ranked in Google AND AI Search", "Revenue Gained or Hours Saved"].map((item) => (
             <span key={item} className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3.5 w-3.5 text-accent-teal/50 shrink-0" />
+              <CheckCircle2 className="h-3.5 w-3.5 text-accent-teal shrink-0" />
               {item}
             </span>
           ))}

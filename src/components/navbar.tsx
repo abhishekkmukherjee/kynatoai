@@ -185,13 +185,15 @@ export function Navbar() {
             <div className="flex items-center gap-3">
               <ModeToggle />
               <div className="hidden lg:block">
-                <HoverBorderGradient
-                  containerClassName="rounded-lg"
-                  as="button"
-                  className="bg-[#006AF0]/80 backdrop-blur-sm text-white font-semibold flex items-center justify-center gap-2 px-5 text-sm h-9 hover:bg-[#006AF0] shadow-[0_0_20px_rgba(0,106,240,0.25)] hover:shadow-[0_0_35px_rgba(0,106,240,0.45)] transition-all duration-300"
-                >
-                  <span>Book a Strategy Call</span>
-                </HoverBorderGradient>
+                <Link href="/strategy">
+                  <HoverBorderGradient
+                    containerClassName="rounded-lg"
+                    as="span"
+                    className="bg-[#006AF0]/80 backdrop-blur-sm text-white font-semibold flex items-center justify-center gap-2 px-5 text-sm h-9 hover:bg-[#006AF0] shadow-[0_0_20px_rgba(0,106,240,0.25)] hover:shadow-[0_0_35px_rgba(0,106,240,0.45)] transition-all duration-300"
+                  >
+                    <span>Book a Strategy Call</span>
+                  </HoverBorderGradient>
+                </Link>
               </div>
               <div className="lg:hidden">
                 <Button
@@ -254,13 +256,15 @@ export function Navbar() {
                 ))}
               </div>
               <div className="border-t border-white/[0.06] pt-4">
-                <HoverBorderGradient
-                  containerClassName="rounded-lg w-full"
-                  as="button"
-                  className="bg-white/[0.05] text-white font-medium flex items-center justify-center h-11 w-full"
-                >
-                  <span>Book a Strategy Call</span>
-                </HoverBorderGradient>
+                <Link href="/strategy" onClick={() => setMobileOpen(false)}>
+                  <HoverBorderGradient
+                    containerClassName="rounded-lg w-full"
+                    as="span"
+                    className="bg-white/[0.05] text-white font-medium flex items-center justify-center h-11 w-full"
+                  >
+                    <span>Book a Strategy Call</span>
+                  </HoverBorderGradient>
+                </Link>
               </div>
             </nav>
           </motion.div>
@@ -269,13 +273,15 @@ export function Navbar() {
 
       {/* Mobile Sticky CTA */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full px-4 py-3 bg-black/80 backdrop-blur-xl border-t border-white/[0.06] z-50">
-        <HoverBorderGradient
-          containerClassName="rounded-lg w-full"
-          as="button"
-          className="bg-[#006AF0] text-white font-medium flex items-center justify-center h-11 w-full shadow-[0_0_20px_rgba(0,106,240,0.3)]"
-        >
-          <span>Book a Strategy Call</span>
-        </HoverBorderGradient>
+        <Link href="/strategy">
+          <HoverBorderGradient
+            containerClassName="rounded-lg w-full"
+            as="span"
+            className="bg-[#006AF0] text-white font-medium flex items-center justify-center h-11 w-full shadow-[0_0_20px_rgba(0,106,240,0.3)]"
+          >
+            <span>Book a Strategy Call</span>
+          </HoverBorderGradient>
+        </Link>
       </div>
     </>
   )

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { ArrowRight } from "lucide-react";
 
@@ -148,13 +149,15 @@ export function WorkflowSection() {
           transition={{ delay: 0.2 }}
           className="mt-16 text-center"
         >
-          <HoverBorderGradient
-            containerClassName="rounded-xl inline-flex"
-            as="button"
-            className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 shadow-[0_0_35px_rgba(0,106,240,0.35)] hover:shadow-[0_0_60px_rgba(0,106,240,0.55)] transition-shadow duration-300"
-          >
-            Start with a 30-Minute Strategy Call <ArrowRight className="h-4 w-4" />
-          </HoverBorderGradient>
+          <Link href="/strategy">
+            <HoverBorderGradient
+              containerClassName="rounded-xl inline-flex"
+              as="span"
+              className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-8 h-12 shadow-[0_0_35px_rgba(0,106,240,0.35)] hover:shadow-[0_0_60px_rgba(0,106,240,0.55)] transition-shadow duration-300"
+            >
+              Start with a 30-Minute Strategy Call <ArrowRight className="h-4 w-4" />
+            </HoverBorderGradient>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -162,14 +162,16 @@ export default function WhoWeArePage() {
             <p className="font-roboto text-muted-foreground text-lg mb-10 leading-relaxed">
               Book a 30-minute Strategy Call. We map your current operations against two filters — where is revenue leaking, and where are hours being wasted — and identify the highest-return system to build first.
             </p>
-            <HoverBorderGradient
-              containerClassName="rounded-md mx-auto"
-              as="button"
-              className="bg-[#006AF0] text-white flex items-center justify-center space-x-2 text-base px-10 h-14"
-            >
-              <span>Book a Strategy Call</span>
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </HoverBorderGradient>
+            <Link href="/strategy" className="inline-block">
+              <HoverBorderGradient
+                containerClassName="rounded-md mx-auto"
+                as="span"
+                className="bg-[#006AF0] text-white flex items-center justify-center space-x-2 text-base px-10 h-14"
+              >
+                <span>Book a Strategy Call</span>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </HoverBorderGradient>
+            </Link>
           </div>
         </section>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const checks = [
@@ -82,17 +83,19 @@ export function CtaSection() {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
           >
-            <HoverBorderGradient
-              containerClassName="rounded-xl w-full sm:w-auto"
-              as="button"
-              className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-10 h-13 w-full sm:w-auto shadow-[0_0_50px_rgba(0,106,240,0.45)] hover:shadow-[0_0_80px_rgba(0,106,240,0.65)] transition-all duration-300"
-            >
-              Book Your Strategy Call <ArrowRight className="h-4 w-4" />
-            </HoverBorderGradient>
+            <Link href="/strategy" className="w-full sm:w-auto">
+              <HoverBorderGradient
+                containerClassName="rounded-xl w-full sm:w-auto"
+                as="span"
+                className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-10 h-13 w-full sm:w-auto shadow-[0_0_50px_rgba(0,106,240,0.45)] hover:shadow-[0_0_80px_rgba(0,106,240,0.65)] transition-all duration-300"
+              >
+                Book Your Strategy Call <ArrowRight className="h-4 w-4" />
+              </HoverBorderGradient>
+            </Link>
 
-            <button className="inline-flex items-center justify-center h-13 px-8 rounded-xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.12] text-white/55 hover:text-white text-sm font-medium transition-all duration-300 w-full sm:w-auto backdrop-blur-sm">
+            <Link href="/contact" className="inline-flex items-center justify-center h-13 px-8 rounded-xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.12] text-white/55 hover:text-white text-sm font-medium transition-all duration-300 w-full sm:w-auto backdrop-blur-sm">
               Send Us a Message
-            </button>
+            </Link>
           </motion.div>
 
           {/* Trust checks */}
@@ -104,8 +107,8 @@ export function CtaSection() {
             className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-14"
           >
             {checks.map((c) => (
-              <span key={c} className="flex items-center gap-1.5 text-xs text-white/22 font-roboto">
-                <CheckCircle2 className="h-3.5 w-3.5 text-accent-teal/40 shrink-0" />
+              <span key={c} className="flex items-center gap-1.5 text-sm text-white/70 font-roboto">
+                <CheckCircle2 className="h-3.5 w-3.5 text-accent-teal shrink-0" />
                 {c}
               </span>
             ))}
@@ -120,7 +123,7 @@ export function CtaSection() {
             className="inline-flex items-center gap-4 px-7 py-3.5 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm"
           >
             <div className="w-px h-5 rounded-full bg-gradient-to-b from-transparent via-accent-teal/50 to-transparent" />
-            <p className="font-roboto italic text-white/28 text-sm">
+            <p className="font-roboto italic text-white/60 text-sm">
               &quot;Revenue gained or hours saved. Everything else is noise.&quot; — Kynato
             </p>
           </motion.div>

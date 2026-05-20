@@ -3,7 +3,6 @@ import Link from "next/link"
 import { ArrowRight, MapPin, Clock } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 
 export const metadata: Metadata = {
   title: "Careers | Kynato — AI Agency India",

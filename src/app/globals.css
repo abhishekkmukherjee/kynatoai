@@ -520,3 +520,21 @@
 .animate-ping-glow {
   animation: ping-glow 2s ease-in-out infinite;
 }
+
+/* ── Site-wide layout: responsive container ─────────────────────────── */
+.container {
+  max-width: 1280px !important;
+  padding-left: clamp(1.25rem, 5vw, 3rem) !important;
+  padding-right: clamp(1.25rem, 5vw, 3rem) !important;
+}
+
+/* Light mode — preserve white text on colored button/element backgrounds */
+/* hbg-content targets HoverBorderGradient inner div; also covers direct bg- class buttons */
+:root:not(.dark) .hbg-content,
+:root:not(.dark) .hbg-content *,
+:root:not(.dark) a.bg-\[\#006AF0\],
+:root:not(.dark) a.bg-\[\#006AF0\] *,
+:root:not(.dark) button.bg-\[\#006AF0\],
+:root:not(.dark) button.bg-\[\#006AF0\] * {
+  color: #ffffff !important;
+}
