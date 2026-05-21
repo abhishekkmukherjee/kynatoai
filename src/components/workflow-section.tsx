@@ -1,5 +1,3 @@
-"use client";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { ArrowRight } from "lucide-react";
@@ -47,24 +45,13 @@ export function WorkflowSection() {
 
         {/* Header */}
         <div className="text-center mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase"
-          >
+          <span className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase">
             How We Work
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white max-w-3xl mx-auto"
-          >
+          </span>
+          <h2 className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white max-w-3xl mx-auto">
             From Diagnosis to Running System —{" "}
             <span className="gradient-text-blue">Not a Slideshow. Not a Demo.</span>
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Steps — with visual connector */}
@@ -72,24 +59,16 @@ export function WorkflowSection() {
 
           {/* Connector line (desktop only) */}
           <div className="hidden md:block absolute top-[3.5rem] left-0 right-0 h-px pointer-events-none overflow-hidden">
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="h-full origin-left"
+            <div
+              className="h-full w-full"
               style={{ background: "linear-gradient(90deg, rgba(2,124,136,0.4) 0%, rgba(0,106,240,0.4) 33%, rgba(2,124,136,0.4) 66%, rgba(0,106,240,0.4) 100%)" }}
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
             {steps.map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
                 className="group relative premium-card rounded-2xl p-7 overflow-hidden"
               >
                 {/* Top line */}
@@ -136,19 +115,13 @@ export function WorkflowSection() {
 
                 <h3 className="font-urbanist font-black text-xl text-white mb-3">{item.title}</h3>
                 <p className="font-roboto text-white/35 text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-16 text-center"
-        >
+        <div className="mt-16 text-center">
           <Link href="/strategy">
             <HoverBorderGradient
               containerClassName="rounded-xl inline-flex"
@@ -158,7 +131,7 @@ export function WorkflowSection() {
               Start with a 30-Minute Strategy Call <ArrowRight className="h-4 w-4" />
             </HoverBorderGradient>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

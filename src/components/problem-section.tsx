@@ -1,6 +1,4 @@
-"use client";
 import { Search, Inbox, Database, Cog, Building2, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
 import { SparklesCore } from "@/components/ui/sparkles";
 
 const items = [
@@ -48,16 +46,6 @@ const items = [
   },
 ];
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.07 } },
-};
-
-const cardAnim = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" as const } },
-};
-
 export function ProblemSection() {
   return (
     <section className="py-28 md:py-36 bg-black relative overflow-hidden section-line-top">
@@ -70,50 +58,26 @@ export function ProblemSection() {
 
         {/* Header */}
         <div className="mb-20 max-w-3xl">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase"
-          >
+          <span className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase">
             The Reality in 2026
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-urbanist font-black text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6"
-          >
+          </span>
+          <h2 className="font-urbanist font-black text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6">
             Every Quarter You Wait,{" "}
             <span className="gradient-text-teal">the Gap Widens.</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="font-roboto text-white/40 text-lg leading-relaxed max-w-2xl"
-          >
+          </h2>
+          <p className="font-roboto text-white/40 text-lg leading-relaxed max-w-2xl">
             AI isn&apos;t coming. It&apos;s already restructuring which businesses win categories and which
             ones get left behind. Here&apos;s what the gap looks like on the ground:
-          </motion.p>
+          </p>
         </div>
 
         {/* Cards Grid */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
           {items.map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={i}
-                variants={cardAnim}
                 className={`${item.span} relative group rounded-2xl p-7 overflow-hidden cursor-default premium-card`}
               >
                 {/* Top accent line */}
@@ -146,19 +110,13 @@ export function ProblemSection() {
                 <p className="font-roboto text-white/35 text-sm leading-relaxed group-hover:text-white/45 transition-colors">
                   {item.description}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Bottom Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-24 relative rounded-3xl overflow-hidden"
-        >
+        <div className="mt-24 relative rounded-3xl overflow-hidden">
           {/* Gradient border */}
           <div className="absolute inset-0 rounded-3xl p-px" style={{ background: "linear-gradient(135deg, rgba(2,124,136,0.25) 0%, rgba(0,106,240,0.1) 50%, rgba(2,124,136,0.15) 100%)" }}>
             <div className="h-full w-full rounded-3xl bg-black/70 backdrop-blur-sm" />
@@ -191,7 +149,7 @@ export function ProblemSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

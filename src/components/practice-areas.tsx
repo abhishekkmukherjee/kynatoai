@@ -1,7 +1,5 @@
-"use client";
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 
 const practices = [
@@ -89,48 +87,27 @@ export function PracticeAreasSection() {
 
         {/* Header */}
         <div className="mb-24 max-w-3xl">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase"
-          >
+          <span className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase">
             The Intelligence Ecosystem
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6"
-          >
+          </span>
+          <h2 className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6">
             Five Capabilities.{" "}
             <PointerHighlight containerClassName="mt-1 inline-block">
               <span className="gradient-text-teal">One Intelligence Ecosystem.</span>
             </PointerHighlight>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="font-roboto text-white/40 text-base md:text-lg leading-relaxed max-w-2xl"
-          >
+          </h2>
+          <p className="font-roboto text-white/40 text-base md:text-lg leading-relaxed max-w-2xl">
             Kynato doesn&apos;t sell AI software or run one-off campaigns. We build, integrate,
             and directly operate AI-powered systems across five interconnected capabilities —
             designed so that every service feeds the next. Measured by revenue gained or hours saved.
-          </motion.p>
+          </p>
         </div>
 
         {/* Practice Cards */}
         <div className="space-y-5">
           {practices.map((practice) => (
-            <motion.div
+            <div
               key={practice.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group relative rounded-2xl overflow-hidden shimmer-on-hover"
             >
               {/* Gradient border on hover */}
@@ -225,7 +202,7 @@ export function PracticeAreasSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -316,7 +316,7 @@
 :root:not(.dark) .text-white\/25,
 :root:not(.dark) .text-white\/20,
 :root:not(.dark) .text-\[\#8A9BB0\] {
-  color: rgba(10,10,10,0.5) !important;
+  color: rgba(10,10,10,0.72) !important;
 }
 :root:not(.dark) .text-white\/60,
 :root:not(.dark) .text-white\/55,
@@ -325,7 +325,12 @@
 :root:not(.dark) .text-white\/70,
 :root:not(.dark) .text-white\/80,
 :root:not(.dark) .text-white\/90 {
-  color: rgba(10,10,10,0.65) !important;
+  color: rgba(10,10,10,0.90) !important;
+}
+
+/* Nav hover: prevent white text on light background */
+:root:not(.dark) .hover\:text-white:hover {
+  color: #0a0a0a !important;
 }
 
 /* Light mode — borders */
@@ -380,6 +385,7 @@
 :root:not(.dark) .bg-black\/70,
 :root:not(.dark) .bg-black\/75,
 :root:not(.dark) .bg-black\/80,
+:root:not(.dark) .bg-black\/90,
 :root:not(.dark) .bg-black\/95 {
   background-color: rgba(248,249,251,0.85) !important;
 }
@@ -393,6 +399,13 @@
 /* Light mode — navigation */
 :root:not(.dark) header {
   background-color: rgba(248,249,251,0.85) !important;
+}
+
+/* Light mode — paragraph readability: bump text-sm (14px) → 16px */
+:root:not(.dark) p.text-sm,
+:root:not(.dark) p.font-roboto {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
 }
 
 /* Light mode — gradient text: white-start gradient is invisible on light bg */
@@ -537,4 +550,44 @@
 :root:not(.dark) button.bg-\[\#006AF0\],
 :root:not(.dark) button.bg-\[\#006AF0\] * {
   color: #ffffff !important;
+}
+
+/* ── Dark mode — text brightness & paragraph readability ─────────────── */
+
+/* All semi-transparent white text → much brighter */
+.dark .text-white\/15,
+.dark .text-white\/20,
+.dark .text-white\/25,
+.dark .text-white\/30,
+.dark .text-white\/35 {
+  color: rgba(255,255,255,0.82) !important;
+}
+.dark .text-white\/40,
+.dark .text-white\/45,
+.dark .text-white\/50 {
+  color: rgba(255,255,255,0.90) !important;
+}
+.dark .text-white\/55,
+.dark .text-white\/60,
+.dark .text-white\/70 {
+  color: rgba(255,255,255,0.95) !important;
+}
+
+/* All <p> tags in dark mode — force near-white */
+.dark p {
+  color: rgba(255,255,255,0.92) !important;
+}
+
+/* Bump font size only for standard-class paragraphs (not explicit-px labels) */
+.dark p.text-sm,
+.dark p.text-base,
+.dark p.text-lg,
+.dark p.font-roboto {
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+}
+
+/* Also brighten hex-coded grey used on page-level paragraphs */
+.dark .text-\[\#D0D5DD\] {
+  color: rgba(255,255,255,0.92) !important;
 }
