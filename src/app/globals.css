@@ -685,6 +685,17 @@ h1, h2, h3, h4 {
   word-break:    break-word;
 }
 
+/* ─── Section rule labels: reduce tracking on mobile so they don't overflow */
+/* tracking-[0.35em] at 10px = 3.5px/char — "[ THE INTELLIGENCE ECOSYSTEM ]" = ~460px on a 375px phone */
+.section-rule span {
+  letter-spacing: 0.1em;           /* mobile: compact */
+}
+@media (min-width: 640px) {
+  .section-rule span {
+    letter-spacing: 0.35em;        /* sm+: full tracking */
+  }
+}
+
 /* ─── Prevent horizontal scroll on all viewports */
 body        { overflow-x: hidden; max-width: 100vw; }
 html        { overflow-x: hidden; }

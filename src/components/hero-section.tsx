@@ -27,22 +27,22 @@ export function HeroSection() {
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-24 sm:pt-28 md:pt-32 pb-14 sm:pb-18 md:pb-24">
 
         {/* Section label */}
-        <div className="hero-line-1 flex items-center gap-4 mb-12">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-[#00FF88]/70">
-            [ THE INTELLIGENCE ECOSYSTEM ]
+        <div className="hero-line-1 flex items-center gap-3 mb-6 sm:mb-10">
+          <span className="font-jakarta text-[10px] font-bold tracking-[0.08em] sm:tracking-[0.25em] uppercase text-[#00FF88]/70 shrink-0">
+            THE INTELLIGENCE ECOSYSTEM
           </span>
-          <div className="h-px w-16 bg-[#00FF88]/30" />
+          <div className="h-px w-10 sm:w-16 bg-[#00FF88]/30 shrink-0" />
         </div>
 
         {/* Eyebrow */}
-        <p className="hero-line-2 font-jakarta text-[11px] font-semibold text-white/35 tracking-[0.25em] uppercase mb-6">
-          For Founders · Startups · Growth Teams · Operations Leaders
+        <p className="hero-line-2 font-jakarta text-[11px] font-semibold text-white/35 tracking-[0.04em] sm:tracking-[0.15em] uppercase mb-4 sm:mb-6">
+          Founders · Startups · Growth Teams · Operations Leaders
         </p>
 
         {/* H1 */}
         <h1
-          className="hero-line-3 font-syne font-black text-white leading-[1.0] tracking-[-0.035em] mb-8 max-w-4xl"
-          style={{ fontSize: "clamp(3rem, 7.5vw, 6.5rem)" }}
+          className="hero-line-3 font-syne font-black text-white leading-[1.05] tracking-[-0.02em] sm:tracking-[-0.035em] mb-5 sm:mb-8"
+          style={{ fontSize: "clamp(2rem, 7.5vw, 6.5rem)" }}
         >
           The Intelligence
           <br />
@@ -54,12 +54,12 @@ export function HeroSection() {
         </h1>
 
         {/* Manifesto */}
-        <p className="hero-line-4 font-jakarta text-lg md:text-xl text-white/40 font-light mb-5 italic max-w-xl">
+        <p className="hero-line-4 font-jakarta text-base sm:text-lg md:text-xl text-white/40 font-light mb-4 sm:mb-5 italic max-w-xl">
           &ldquo;We don&apos;t sell AI. We deploy it where your revenue lives.&rdquo;
         </p>
 
         {/* Subheadline */}
-        <p className="hero-line-4 font-jakarta text-base md:text-lg text-white/50 max-w-[520px] leading-relaxed mb-12">
+        <p className="hero-line-4 font-jakarta text-base md:text-lg text-white/50 max-w-[520px] leading-relaxed mb-8 sm:mb-12">
           Kynato is an AI services consultancy based in India that functions as an intelligence
           ecosystem, building and operating growth, intelligence, and automation systems
           for B2B businesses.

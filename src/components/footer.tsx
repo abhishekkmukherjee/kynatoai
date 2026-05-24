@@ -4,10 +4,10 @@ export function Footer() {
   return (
     <footer className="kyn-footer bg-[#080808] border-t border-white/[0.04] relative overflow-hidden">
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10 pt-16 pb-0">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10 pt-10 md:pt-16 pb-0">
 
         {/* 4-column footer grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 mb-10 md:mb-16">
 
           {/* Column 1 — Brand */}
           <div className="lg:col-span-3 space-y-5">
@@ -19,7 +19,7 @@ export function Footer() {
                 Make Intelligence Work.
               </span>
             </div>
-            <p className="font-jakarta text-white/30 text-[13px] leading-relaxed max-w-[240px]">
+            <p className="font-jakarta text-white/30 text-[13px] leading-relaxed max-w-full md:max-w-[240px]">
               AI intelligence ecosystem building and operating growth, knowledge, and automation systems for Indian B2B businesses.
             </p>
             <a
@@ -66,7 +66,7 @@ export function Footer() {
           </div>
 
           {/* Column 2 — Capabilities */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-7">
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-2 gap-5 sm:gap-7">
             <div className="space-y-6">
               <div>
                 <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
@@ -244,7 +244,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="border-t border-white/[0.06] py-5 md:py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4">
           <div className="font-jakarta text-[12px] text-white/20">
             <p>© 2026 Kynato Nexinnovations LLP. All rights reserved.</p>
             <div className="mt-1 flex items-center gap-3">
