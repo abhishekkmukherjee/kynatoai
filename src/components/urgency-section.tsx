@@ -29,7 +29,7 @@ export function UrgencySection() {
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
           <div className="lg:col-span-5">
             <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
               Enterprise-grade AI. Built for how India actually works.
@@ -54,7 +54,7 @@ export function UrgencySection() {
         </div>
 
         {/* Stat cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 md:mb-16">
           {statCards.map((card, i) => (
             <div
               key={i}

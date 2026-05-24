@@ -24,7 +24,7 @@ export function HeroSection() {
       </span>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-32 pb-24">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-24 sm:pt-28 md:pt-32 pb-14 sm:pb-18 md:pb-24">
 
         {/* Section label */}
         <div className="hero-line-1 flex items-center gap-4 mb-12">

@@ -26,7 +26,7 @@ export function MetricsSection() {
         </div>
 
         {/* Header — asymmetric */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
           <div className="lg:col-span-5">
             <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
               Outcomes That Compound
@@ -42,7 +42,7 @@ export function MetricsSection() {
         </div>
 
         {/* Three metric cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 md:mb-14">
           {metricCards.map((card, i) => (
             <div
               key={i}

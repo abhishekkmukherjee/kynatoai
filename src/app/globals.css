@@ -659,3 +659,32 @@ p.text-\[12px\] {
 .dark .text-white\/60,
 .dark .text-white\/65,
 .dark .text-white\/70          { color: rgba(255,255,255,0.92) !important; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE LAYOUT — mobile-first spacing fixes
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Section vertical padding: smooth ramp from 56px mobile → 144px desktop */
+section.section-dark {
+  padding-top:    clamp(3.5rem, 10vw, 9rem) !important;
+  padding-bottom: clamp(3.5rem, 10vw, 9rem) !important;
+}
+section.closing-cta {
+  padding-top:    clamp(3.5rem, 10vw, 9rem) !important;
+  padding-bottom: clamp(4rem, 11vw, 11rem) !important;
+}
+
+/* ─── Section rule: responsive bottom margin */
+.section-rule {
+  margin-bottom: clamp(1.75rem, 5vw, 4rem) !important;
+}
+
+/* ─── Headings: break long words on narrow screens */
+h1, h2, h3, h4 {
+  overflow-wrap: break-word;
+  word-break:    break-word;
+}
+
+/* ─── Prevent horizontal scroll on all viewports */
+body        { overflow-x: hidden; max-width: 100vw; }
+html        { overflow-x: hidden; }

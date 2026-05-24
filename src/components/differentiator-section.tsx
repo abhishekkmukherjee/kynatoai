@@ -52,7 +52,7 @@ export function DifferentiatorSection() {
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-16">
           <div className="lg:col-span-6">
             <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
               The Kynato Difference
@@ -73,7 +73,7 @@ export function DifferentiatorSection() {
         </div>
 
         {/* Differentiator cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 md:mb-14">
           {differentiators.map((d, i) => (
             <div key={i} className="border border-white/[0.08] bg-white/[0.03] rounded-2xl p-8 hover:border-white/[0.14] transition-all duration-300">
               {d.tagline && (
@@ -88,7 +88,7 @@ export function DifferentiatorSection() {
         </div>
 
         {/* Not badges */}
-        <div className="flex flex-wrap gap-2 mb-12">
+        <div className="flex flex-wrap gap-2 mb-8 md:mb-12">
           {notBadges.map((badge) => (
             <span
               key={badge}

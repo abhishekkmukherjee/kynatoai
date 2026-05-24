@@ -45,7 +45,7 @@ export function WorkflowSection() {
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
           <div className="lg:col-span-7">
             <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
               How We Work
@@ -61,9 +61,9 @@ export function WorkflowSection() {
         </div>
 
         {/* Steps */}
-        <div className="space-y-0 mb-16">
+        <div className="space-y-0 mb-10 md:mb-16">
           {steps.map((item, i) => (
-            <div key={i} className="grid grid-cols-1 lg:grid-cols-12 gap-6 py-10 border-t border-white/[0.06]">
+            <div key={i} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-7 lg:py-10 border-t border-white/[0.06]">
 
               {/* Step number + title */}
               <div className="lg:col-span-3">

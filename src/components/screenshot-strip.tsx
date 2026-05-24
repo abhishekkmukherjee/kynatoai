@@ -34,7 +34,7 @@ export function ScreenshotStrip() {
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-16">
           <div className="lg:col-span-6">
             <h2
               className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em]"

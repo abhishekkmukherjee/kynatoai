@@ -42,7 +42,7 @@ export function TestamentSection() {
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
           <div className="lg:col-span-7">
             <h2
               className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em]"
@@ -55,7 +55,7 @@ export function TestamentSection() {
         </div>
 
         {/* Testimonial cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 md:mb-14">
           {testimonials.map((t, i) => (
             <div
               key={i}

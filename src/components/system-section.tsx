@@ -62,7 +62,7 @@ export function SystemSection() {
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12 md:mb-24">
           <div className="lg:col-span-5">
             <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
               The Intelligence Ecosystem
@@ -96,7 +96,7 @@ export function SystemSection() {
           {capabilities.map((cap) => (
             <div
               key={cap.id}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-12 border-t border-white/[0.06] group"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 py-8 lg:py-12 border-t border-white/[0.06] group"
             >
               {/* Number */}
               <div className="lg:col-span-1 flex items-start">
