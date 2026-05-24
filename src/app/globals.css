@@ -4,14 +4,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Tailwind theme (resolves CSS vars → utility classes) ──────────── */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-jakarta);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-urbanist);
-  --font-urbanist: var(--font-urbanist);
-  --font-roboto: var(--font-roboto-condensed);
+  --font-heading: var(--font-syne);
+  --font-syne: var(--font-syne);
+  --font-jakarta: var(--font-jakarta);
+  /* legacy aliases kept so any remaining uses don't break */
+  --font-urbanist: var(--font-syne);
+  --font-roboto: var(--font-jakarta);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,31 +52,23 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --radius-4xl: calc(var(--radius) * 2.6);
   --color-accent-teal: #027C88;
   --color-accent-blue: #006AF0;
-  
+  --color-accent: #00FF88;
+
   --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
   --animate-spotlight: spotlight 2s ease .75s 1 forwards;
-  
-  @keyframes scroll {
-    to {
-      transform: translate(calc(-50% - 0.5rem));
-    }
-  }
 
+  @keyframes scroll {
+    to { transform: translate(calc(-50% - 0.5rem)); }
+  }
   @keyframes spotlight {
-    0% {
-      opacity: 0;
-      transform: translate(-72%, -62%) scale(0.5);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%,-40%) scale(1);
-    }
+    0%   { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+    100% { opacity: 1; transform: translate(-50%,-40%) scale(1); }
   }
 }
 
+/* ─── Light mode (shadcn base palette) ──────────────────────────────── */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -106,53 +102,60 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* ── Kynato design-token extras (light) ──────────── */
+  --section-light-bg: #F8F9FB;
+  --section-dark-bg:  #0A0A0A;
+  --kyn-card-bg:      #FFFFFF;
+  --kyn-text-primary: #0A0A0A;
+  --kyn-text-secondary: #4B5563;
+  --kyn-border:       #E5E7EB;
 }
 
+/* ─── Dark mode ─────────────────────────────────────────────────────── */
 .dark {
-  /* Zinc-950 / Black */
-  --background: #000000;
-  --foreground: #FAFAFA;
-  
-  /* Cards: Zinc-900 */
+  --background: #080808;
+  --foreground: #F5F5F5;
   --card: #09090B;
   --card-foreground: #FAFAFA;
-  
   --popover: #09090B;
   --popover-foreground: #FAFAFA;
-  
   --primary: #FAFAFA;
   --primary-foreground: #09090B;
-  
   --secondary: #27272A;
   --secondary-foreground: #FAFAFA;
-  
   --muted: #27272A;
   --muted-foreground: #A1A1AA;
-  
   --accent: #27272A;
   --accent-foreground: #FAFAFA;
-  
   --destructive: #7F1D1D;
-  --border: rgba(255, 255, 255, 0.05); /* white/5 borders */
-  --input: rgba(255, 255, 255, 0.05);
-  --ring: #027C88; /* Teal #027C88 */
-  
+  --border: rgba(255,255,255,0.05);
+  --input: rgba(255,255,255,0.05);
+  --ring: #027C88;
   --chart-1: #027C88;
   --chart-2: #006AF0;
   --chart-3: #27272A;
   --chart-4: #3F3F46;
   --chart-5: #52525B;
-  
   --sidebar: #09090B;
   --sidebar-foreground: #FAFAFA;
   --sidebar-primary: #027C88;
   --sidebar-primary-foreground: #FAFAFA;
   --sidebar-accent: #27272A;
   --sidebar-accent-foreground: #FAFAFA;
-  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --sidebar-border: rgba(255,255,255,0.05);
   --sidebar-ring: #027C88;
+
+  /* ── Kynato design-token extras (dark) ──────────── */
+  --section-light-bg: #1A1D21;
+  --section-dark-bg:  #0A0A0A;
+  --kyn-card-bg:      #1A1D21;
+  --kyn-text-primary: #FFFFFF;
+  --kyn-text-secondary: rgba(255,255,255,0.6);
+  --kyn-border:       rgba(255,255,255,0.08);
 }
 
+/* ─── Base layer ────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -166,57 +169,218 @@
   }
 }
 
-/* Premium background patterns */
+/* ─── Dark-mode section text (scoped so light-mode override can flip it) ── */
+.dark .hero-section,
+.dark .section-dark,
+.dark .closing-cta {
+  color: white !important;
+}
+/* Footer dark only in dark mode */
+.dark footer.kyn-footer {
+  background: #080808 !important;
+  color: white !important;
+}
+
+/* ─── Liquid glass — closing CTA only ──────────────────────────────── */
+.liquid-glass {
+  background: rgba(255,255,255,0.01);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0)   40%, rgba(255,255,255,0)   60%,
+    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── CSS animations ────────────────────────────────────────────────── */
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-rise          { animation: fade-rise 0.8s ease-out both; }
+.animate-fade-rise-delay    { animation: fade-rise 0.8s ease-out 0.2s both; }
+.animate-fade-rise-delay-2  { animation: fade-rise 0.8s ease-out 0.4s both; }
+
+/* ─── Hero stagger animations (CSS only, no JS library) ─────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-line-1 { animation: fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.05s both; }
+.hero-line-2 { animation: fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.18s both; }
+.hero-line-3 { animation: fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.32s both; }
+.hero-line-4 { animation: fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.46s both; }
+.hero-line-5 { animation: fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.60s both; }
+
+/* ─── Link underline-grow hover ─────────────────────────────────────── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #00FF88;
+  transition: width 0.3s ease;
+}
+.link-underline:hover::after { width: 100%; }
+
+/* ─── Accent glow ───────────────────────────────────────────────────── */
+.glow-accent { box-shadow: 0 0 40px rgba(0,255,136,0.12), 0 0 80px rgba(0,255,136,0.06); }
+
+/* ─── Hero gradient headline text ───────────────────────────────────── */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #00FF88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+:root:not(.dark) .hero-gradient-text {
+  background: linear-gradient(135deg, #0a0a0a 0%, #007a40 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Hero bottom fade — flip to light colour in light mode ─────────── */
+:root:not(.dark) .hero-bottom-fade {
+  background: linear-gradient(to top, var(--section-bg) 0%, transparent 100%);
+}
+
+/* ─── Section divider line ──────────────────────────────────────────── */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(1deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.8; }
+}
+@keyframes shimmer-move {
+  0%   { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(200%) skewX(-12deg); }
+}
+@keyframes ping-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(2,124,136,0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(2,124,136,0); }
+}
+
+.animate-float          { animation: float 8s ease-in-out infinite; }
+.animate-gradient-shift { background-size: 200% 200%; animation: gradient-shift 4s ease infinite; }
+.animate-pulse-glow     { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-ping-glow      { animation: ping-glow 2s ease-in-out infinite; }
+
+/* ─── Background patterns ───────────────────────────────────────────── */
 .bg-grid-pattern {
   background-image:
     linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 72px 72px;
 }
-
+.bg-grid-fine {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
 .bg-dot-pattern {
   background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 28px 28px;
 }
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
 
-/* Gradient text */
+/* ─── Gradient text ─────────────────────────────────────────────────── */
 .gradient-text-teal {
   background: linear-gradient(135deg, #ffffff 0%, #03b5c5 60%, #006AF0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .gradient-text-blue {
   background: linear-gradient(135deg, #027C88 0%, #006AF0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.gradient-text-vivid {
+  background: linear-gradient(135deg, #00d4e8 0%, #027C88 40%, #006AF0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-/* Glass card */
+/* ─── Card utilities ────────────────────────────────────────────────── */
 .glass-card {
   background: rgba(255,255,255,0.02);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.06);
 }
-
 .glass-card-hover {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .glass-card-hover:hover {
   background: rgba(255,255,255,0.04);
-  border-color: rgba(2, 124, 136, 0.25);
-  box-shadow: 0 0 40px rgba(2, 124, 136, 0.06);
+  border-color: rgba(2,124,136,0.25);
+  box-shadow: 0 0 40px rgba(2,124,136,0.06);
+}
+.premium-card {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+.premium-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(2,124,136,0.3);
+  box-shadow: 0 0 0 1px rgba(2,124,136,0.08), 0 0 60px rgba(2,124,136,0.06), 0 20px 40px rgba(0,0,0,0.4);
+  transform: translateY(-1px);
 }
 
-/* Gradient border */
+/* ─── Gradient border ───────────────────────────────────────────────── */
 .gradient-border-teal {
   position: relative;
 }
-
 .gradient-border-teal::before {
   content: '';
   position: absolute;
@@ -230,237 +394,6 @@
   mask-composite: exclude;
   pointer-events: none;
 }
-
-/* Glow effects */
-.glow-teal {
-  box-shadow: 0 0 60px rgba(2, 124, 136, 0.15), 0 0 120px rgba(2, 124, 136, 0.08);
-}
-
-.glow-blue {
-  box-shadow: 0 0 60px rgba(0, 106, 240, 0.15), 0 0 120px rgba(0, 106, 240, 0.08);
-}
-
-/* Keyframes */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-12px) rotate(1deg); }
-  66% { transform: translateY(-6px) rotate(-1deg); }
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-float {
-  animation: float 8s ease-in-out infinite;
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #000;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(2,124,136,0.4);
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(2,124,136,0.7);
-}
-
-/* ── Light mode overrides for dark-coded sections ───────────────────── */
-:root:not(.dark) {
-  /* Remap hard-coded dark backgrounds */
-  --section-bg: #f8f9fb;
-  --section-bg-alt: #f0f2f6;
-  --section-border: rgba(0,0,0,0.06);
-  --card-bg: rgba(255,255,255,0.7);
-  --card-border: rgba(0,0,0,0.07);
-}
-
-/* Light mode — component-level overrides */
-:root:not(.dark) .bg-black,
-:root:not(.dark) [class*="bg-[#030305]"],
-:root:not(.dark) [class*="bg-[#09090B]"] {
-  background-color: var(--section-bg) !important;
-}
-
-:root:not(.dark) .text-white {
-  color: #0a0a0a !important;
-}
-:root:not(.dark) .text-white\/40,
-:root:not(.dark) .text-white\/35,
-:root:not(.dark) .text-white\/30,
-:root:not(.dark) .text-white\/25,
-:root:not(.dark) .text-white\/20,
-:root:not(.dark) .text-\[\#8A9BB0\] {
-  color: rgba(10,10,10,0.72) !important;
-}
-:root:not(.dark) .text-white\/60,
-:root:not(.dark) .text-white\/55,
-:root:not(.dark) .text-white\/45,
-:root:not(.dark) .text-white\/50,
-:root:not(.dark) .text-white\/70,
-:root:not(.dark) .text-white\/80,
-:root:not(.dark) .text-white\/90 {
-  color: rgba(10,10,10,0.90) !important;
-}
-
-/* Nav hover: prevent white text on light background */
-:root:not(.dark) .hover\:text-white:hover {
-  color: #0a0a0a !important;
-}
-
-/* Light mode — borders */
-:root:not(.dark) .border-white\/\[0\.06\],
-:root:not(.dark) .border-white\/\[0\.04\],
-:root:not(.dark) .border-white\/\[0\.08\],
-:root:not(.dark) .border-white\/\[0\.1\],
-:root:not(.dark) .border-white\/5 {
-  border-color: rgba(0,0,0,0.07) !important;
-}
-
-/* Light mode — glass cards */
-:root:not(.dark) .glass-card {
-  background: rgba(255,255,255,0.75) !important;
-  border-color: rgba(0,0,0,0.07) !important;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-}
-:root:not(.dark) .glass-card-hover:hover,
-:root:not(.dark) .premium-card:hover {
-  background: rgba(255,255,255,0.9) !important;
-  border-color: rgba(2,124,136,0.25) !important;
-  box-shadow: 0 4px 30px rgba(2,124,136,0.08) !important;
-}
-:root:not(.dark) .premium-card {
-  background: rgba(255,255,255,0.65) !important;
-  border-color: rgba(0,0,0,0.06) !important;
-}
-
-/* Light mode — grid patterns */
-:root:not(.dark) .bg-grid-pattern {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-}
-:root:not(.dark) .bg-grid-fine {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-}
-:root:not(.dark) .bg-dot-pattern {
-  background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
-}
-
-/* Light mode — section top line */
-:root:not(.dark) .section-line-top::before {
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06) 30%, rgba(2,124,136,0.2) 50%, rgba(0,0,0,0.06) 70%, transparent);
-}
-
-/* Light mode — backdrop blur backgrounds */
-:root:not(.dark) .bg-black\/40,
-:root:not(.dark) .bg-black\/60,
-:root:not(.dark) .bg-black\/70,
-:root:not(.dark) .bg-black\/75,
-:root:not(.dark) .bg-black\/80,
-:root:not(.dark) .bg-black\/90,
-:root:not(.dark) .bg-black\/95 {
-  background-color: rgba(248,249,251,0.85) !important;
-}
-:root:not(.dark) .bg-white\/\[0\.02\],
-:root:not(.dark) .bg-white\/\[0\.03\],
-:root:not(.dark) .bg-white\/\[0\.04\],
-:root:not(.dark) .bg-white\/\[0\.05\] {
-  background-color: rgba(0,0,0,0.03) !important;
-}
-
-/* Light mode — navigation */
-:root:not(.dark) header {
-  background-color: rgba(248,249,251,0.85) !important;
-}
-
-/* Light mode — paragraph readability: bump text-sm (14px) → 16px */
-:root:not(.dark) p.text-sm,
-:root:not(.dark) p.font-roboto {
-  font-size: 1rem !important;
-  line-height: 1.7 !important;
-}
-
-/* Light mode — gradient text: white-start gradient is invisible on light bg */
-:root:not(.dark) .gradient-text-teal,
-:root:not(.dark) .gradient-text-vivid {
-  background: linear-gradient(135deg, #027C88 0%, #006AF0 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Light mode — black fade overlay divs: swap black → section bg so fades blend */
-:root:not(.dark) [class*="from-black"] {
-  --tw-gradient-from: var(--section-bg);
-}
-:root:not(.dark) [class*="via-black"] {
-  --tw-gradient-via: transparent;
-}
-:root:not(.dark) [class*="to-[#09090B]"],
-:root:not(.dark) [class*="to-[#030305]"] {
-  --tw-gradient-to: var(--section-bg);
-}
-
-/* Fine grid pattern — 40px cells */
-.bg-grid-fine {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* SVG noise texture for depth */
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 300px 300px;
-}
-
-/* Premium card — richer glass with animated hover border */
-.premium-card {
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-}
-
-.premium-card:hover {
-  background: rgba(255,255,255,0.04);
-  border-color: rgba(2,124,136,0.3);
-  box-shadow: 0 0 0 1px rgba(2,124,136,0.08), 0 0 60px rgba(2,124,136,0.06), 0 20px 40px rgba(0,0,0,0.4);
-  transform: translateY(-1px);
-}
-
-/* Gradient border wrapper */
 .gradient-border-wrap {
   position: relative;
   border-radius: inherit;
@@ -475,119 +408,254 @@
   opacity: 0;
   transition: opacity 0.4s ease;
 }
-.gradient-border-wrap:hover::before {
-  opacity: 1;
-}
+.gradient-border-wrap:hover::before { opacity: 1; }
 
-/* Section top separator line */
-.section-line-top {
-  position: relative;
-}
+/* ─── Glow effects ──────────────────────────────────────────────────── */
+.glow-teal { box-shadow: 0 0 60px rgba(2,124,136,0.15), 0 0 120px rgba(2,124,136,0.08); }
+.glow-blue { box-shadow: 0 0 60px rgba(0,106,240,0.15), 0 0 120px rgba(0,106,240,0.08); }
+
+/* ─── Section separator line ────────────────────────────────────────── */
+.section-line-top { position: relative; }
 .section-line-top::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
+  top: 0; left: 10%; right: 10%;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(2,124,136,0.2) 50%, rgba(255,255,255,0.08) 70%, transparent);
 }
 
-/* Shimmer animation for premium elements */
-@keyframes shimmer-move {
-  0% { transform: translateX(-100%) skewX(-12deg); }
-  100% { transform: translateX(200%) skewX(-12deg); }
-}
-
-.shimmer-on-hover {
-  position: relative;
-  overflow: hidden;
-}
+/* ─── Shimmer hover ─────────────────────────────────────────────────── */
+.shimmer-on-hover { position: relative; overflow: hidden; }
 .shimmer-on-hover::after {
   content: '';
   position: absolute;
-  top: 0; bottom: 0;
-  left: 0;
+  top: 0; bottom: 0; left: 0;
   width: 40%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
   transform: translateX(-100%) skewX(-12deg);
   transition: none;
 }
-.shimmer-on-hover:hover::after {
-  animation: shimmer-move 0.7s ease forwards;
-}
+.shimmer-on-hover:hover::after { animation: shimmer-move 0.7s ease forwards; }
 
-/* Gradient text — vivid version */
-.gradient-text-vivid {
-  background: linear-gradient(135deg, #00d4e8 0%, #027C88 40%, #006AF0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #000; }
+::-webkit-scrollbar-thumb  { background: rgba(2,124,136,0.4); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(2,124,136,0.7); }
 
-/* Animated ping glow */
-@keyframes ping-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(2,124,136,0.6); }
-  50% { box-shadow: 0 0 0 6px rgba(2,124,136,0); }
-}
-.animate-ping-glow {
-  animation: ping-glow 2s ease-in-out infinite;
-}
-
-/* ── Site-wide layout: responsive container ─────────────────────────── */
+/* ─── Container ─────────────────────────────────────────────────────── */
 .container {
   max-width: 1280px !important;
-  padding-left: clamp(1.25rem, 5vw, 3rem) !important;
+  padding-left:  clamp(1.25rem, 5vw, 3rem) !important;
   padding-right: clamp(1.25rem, 5vw, 3rem) !important;
 }
 
-/* Light mode — preserve white text on colored button/element backgrounds */
-/* hbg-content targets HoverBorderGradient inner div; also covers direct bg- class buttons */
-:root:not(.dark) .hbg-content,
-:root:not(.dark) .hbg-content *,
-:root:not(.dark) a.bg-\[\#006AF0\],
-:root:not(.dark) a.bg-\[\#006AF0\] *,
-:root:not(.dark) button.bg-\[\#006AF0\],
-:root:not(.dark) button.bg-\[\#006AF0\] * {
-  color: #ffffff !important;
+/* ─── Section containers — smooth responsive horizontal padding ─────── */
+/* Replaces the hard px-6 → lg:px-12 jump (24px → 48px at 1024px) with  */
+/* a continuous clamp so every screen size feels proportionate.           */
+.max-w-\[1280px\] {
+  padding-left:  clamp(1.25rem, 5vw, 3.5rem) !important;
+  padding-right: clamp(1.25rem, 5vw, 3.5rem) !important;
 }
 
-/* ── Dark mode — text brightness & paragraph readability ─────────────── */
+/* Page root — prevent any horizontal overflow */
+#__next,
+main {
+  overflow-x: hidden;
+}
 
-/* All semi-transparent white text → much brighter */
+/* ════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   In light mode, the whole page flips light. The base section-dark
+   "color: white" rule is overridden here for all page sections.
+   Only the footer (kyn-footer) stays permanently dark.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root:not(.dark) {
+  --section-bg:     #f8f9fb;
+  --section-bg-alt: #f0f2f5;
+  --section-border: rgba(0,0,0,0.06);
+  --card-border:    rgba(0,0,0,0.07);
+}
+
+/* ── Remap all dark section backgrounds to light equivalents ── */
+:root:not(.dark) [class*="bg-[#080808]"],
+:root:not(.dark) [class*="bg-[#0A0A0A]"],
+:root:not(.dark) [class*="bg-[#0E0E0E]"],
+:root:not(.dark) .bg-black {
+  background-color: var(--section-bg) !important;
+}
+:root:not(.dark) [class*="bg-[#0C0C0C]"],
+:root:not(.dark) [class*="bg-[#111214]"],
+:root:not(.dark) [class*="bg-[#030305]"],
+:root:not(.dark) [class*="bg-[#09090B]"] {
+  background-color: var(--section-bg-alt) !important;
+}
+
+/* ── Override the base "section-dark = white text" rule in light mode ── */
+:root:not(.dark) .section-dark,
+:root:not(.dark) .hero-section,
+:root:not(.dark) .closing-cta {
+  color: #1a1a1a !important;
+}
+
+/* ── Accent green: #00FF88 is invisible on light bg — darken it ── */
+/* catches text-[#00FF88], text-[#00FF88]/70, text-[#00FF88]/50, etc. */
+:root:not(.dark) [class*="text-[#00FF88]"] { color: #007a40 !important; }
+/* catches border-[#00FF88]/*, bg-[#00FF88]/* stays as-is (filled buttons) */
+:root:not(.dark) [class*="border-[#00FF88]"] { border-color: #007a40 !important; }
+
+/* ── Section divider line — visible on light bg ── */
+:root:not(.dark) .section-rule::after {
+  background: rgba(0,0,0,0.10) !important;
+}
+
+/* ── Text: remap white utility classes → readable dark values ── */
+/* arbitrary bracket opacity variants like text-white/[0.04] */
+:root:not(.dark) [class*="text-white/["]    { color: rgba(0,0,0,0.55) !important; }
+
+:root:not(.dark) .text-white                { color: #1a1a1a !important; }
+:root:not(.dark) .text-white\/5             { color: rgba(0,0,0,0.50) !important; }
+:root:not(.dark) .text-white\/10            { color: rgba(0,0,0,0.52) !important; }
+:root:not(.dark) .text-white\/15            { color: rgba(0,0,0,0.55) !important; }
+:root:not(.dark) .text-white\/20            { color: rgba(0,0,0,0.58) !important; }
+:root:not(.dark) .text-white\/25            { color: rgba(0,0,0,0.62) !important; }
+:root:not(.dark) .text-white\/30            { color: rgba(0,0,0,0.68) !important; }
+:root:not(.dark) .text-white\/35            { color: rgba(0,0,0,0.73) !important; }
+:root:not(.dark) .text-white\/40            { color: rgba(0,0,0,0.78) !important; }
+:root:not(.dark) .text-white\/45            { color: rgba(0,0,0,0.82) !important; }
+:root:not(.dark) .text-white\/50            { color: rgba(0,0,0,0.85) !important; }
+:root:not(.dark) .text-white\/55            { color: rgba(0,0,0,0.87) !important; }
+:root:not(.dark) .text-white\/60            { color: rgba(0,0,0,0.88) !important; }
+:root:not(.dark) .text-white\/65            { color: rgba(0,0,0,0.90) !important; }
+:root:not(.dark) .text-white\/70            { color: rgba(0,0,0,0.90) !important; }
+:root:not(.dark) .text-white\/75            { color: rgba(0,0,0,0.92) !important; }
+:root:not(.dark) .text-white\/80            { color: rgba(0,0,0,0.93) !important; }
+:root:not(.dark) .text-white\/90            { color: rgba(0,0,0,0.95) !important; }
+:root:not(.dark) .hover\:text-white:hover   { color: #1a1a1a !important; }
+:root:not(.dark) .text-\[\#8A9BB0\]         { color: rgba(0,0,0,0.62) !important; }
+:root:not(.dark) .text-\[\#D0D5DD\]         { color: rgba(0,0,0,0.65) !important; }
+
+/* ── Borders: remap white/opacity borders to subtle dark ── */
+:root:not(.dark) .border-white\/\[0\.04\],
+:root:not(.dark) .border-white\/\[0\.06\],
+:root:not(.dark) .border-white\/\[0\.08\],
+:root:not(.dark) .border-white\/\[0\.1\],
+:root:not(.dark) .border-white\/\[0\.12\],
+:root:not(.dark) .border-white\/\[0\.13\],
+:root:not(.dark) .border-white\/\[0\.14\],
+:root:not(.dark) .border-white\/\[0\.15\],
+:root:not(.dark) .border-white\/5           { border-color: rgba(0,0,0,0.08) !important; }
+
+/* ── Card / panel backgrounds ── */
+:root:not(.dark) .bg-white\/\[0\.02\],
+:root:not(.dark) .bg-white\/\[0\.03\],
+:root:not(.dark) .bg-white\/\[0\.04\],
+:root:not(.dark) .bg-white\/\[0\.05\],
+:root:not(.dark) .bg-white\/\[0\.06\],
+:root:not(.dark) .bg-white\/\[0\.07\],
+:root:not(.dark) .bg-white\/\[0\.08\]       { background-color: rgba(0,0,0,0.04) !important; }
+
+/* ── Backdrop / overlay ── */
+:root:not(.dark) .bg-black\/40,
+:root:not(.dark) .bg-black\/60,
+:root:not(.dark) .bg-black\/70,
+:root:not(.dark) .bg-black\/75,
+:root:not(.dark) .bg-black\/80,
+:root:not(.dark) .bg-black\/90,
+:root:not(.dark) .bg-black\/95              { background-color: rgba(0,0,0,0.45) !important; }
+
+/* ── Header / navbar ── */
+:root:not(.dark) header                     { background-color: rgba(248,249,251,0.95) !important;
+                                              border-bottom-color: rgba(0,0,0,0.07) !important; }
+
+/* ── Glass cards ── */
+:root:not(.dark) .glass-card {
+  background: rgba(255,255,255,0.8) !important;
+  border-color: rgba(0,0,0,0.07) !important;
+}
+:root:not(.dark) .premium-card {
+  background: rgba(255,255,255,0.7) !important;
+  border-color: rgba(0,0,0,0.07) !important;
+}
+
+/* ── Grid patterns ── */
+:root:not(.dark) .bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+:root:not(.dark) .bg-grid-fine {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+}
+:root:not(.dark) .bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px);
+}
+
+/* ── Gradient text ── */
+:root:not(.dark) .gradient-text-teal,
+:root:not(.dark) .gradient-text-vivid {
+  background: linear-gradient(135deg, #027C88 0%, #006AF0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   GLOBAL TYPOGRAPHY — applies in both modes
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Base paragraph size — bump all p text to at least 15px */
+p {
+  font-size: 0.9375rem;
+  line-height: 1.72;
+}
+
+/* Small-tagged paragraphs: override text-sm (14px) → 15px */
+p.text-sm,
+p.text-\[13px\],
+p.text-\[12px\] {
+  font-size: 0.9375rem !important;
+  line-height: 1.7 !important;
+}
+
+/* font-bold / font-semibold — ensure weight is visually distinct */
+.font-bold   { font-weight: 700 !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-black  { font-weight: 900 !important; }
+
+/* Dark mode paragraph colour */
+.dark p { color: rgba(255,255,255,0.88) !important; }
+
+/* Light mode paragraph colour */
+:root:not(.dark) p { color: rgba(0,0,0,0.82) !important; }
+
+/* ════════════════════════════════════════════════════════════════════
+   DARK MODE — readability floor for all text-white opacity variants
+   On #080808, text-white/25 is only ~1.85:1 contrast — unreadable.
+   These floors ensure every text token clears ~4.5:1 minimum.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* arbitrary bracket variants like text-white/[0.04], text-white/[0.1] */
+.dark [class*="text-white/["]  { color: rgba(255,255,255,0.52) !important; }
+
+.dark .text-white\/5,
+.dark .text-white\/10          { color: rgba(255,255,255,0.52) !important; }
+
 .dark .text-white\/15,
-.dark .text-white\/20,
-.dark .text-white\/25,
-.dark .text-white\/30,
-.dark .text-white\/35 {
-  color: rgba(255,255,255,0.82) !important;
-}
-.dark .text-white\/40,
+.dark .text-white\/20          { color: rgba(255,255,255,0.60) !important; }
+
+.dark .text-white\/25          { color: rgba(255,255,255,0.68) !important; }
+.dark .text-white\/30          { color: rgba(255,255,255,0.72) !important; }
+.dark .text-white\/35          { color: rgba(255,255,255,0.78) !important; }
+.dark .text-white\/40          { color: rgba(255,255,255,0.82) !important; }
+
 .dark .text-white\/45,
-.dark .text-white\/50 {
-  color: rgba(255,255,255,0.90) !important;
-}
+.dark .text-white\/50          { color: rgba(255,255,255,0.87) !important; }
+
 .dark .text-white\/55,
 .dark .text-white\/60,
-.dark .text-white\/70 {
-  color: rgba(255,255,255,0.95) !important;
-}
-
-/* All <p> tags in dark mode — force near-white */
-.dark p {
-  color: rgba(255,255,255,0.92) !important;
-}
-
-/* Bump font size only for standard-class paragraphs (not explicit-px labels) */
-.dark p.text-sm,
-.dark p.text-base,
-.dark p.text-lg,
-.dark p.font-roboto {
-  font-size: 1rem !important;
-  line-height: 1.75 !important;
-}
-
-/* Also brighten hex-coded grey used on page-level paragraphs */
-.dark .text-\[\#D0D5DD\] {
-  color: rgba(255,255,255,0.92) !important;
-}
+.dark .text-white\/65,
+.dark .text-white\/70          { color: rgba(255,255,255,0.92) !important; }

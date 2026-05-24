@@ -2,30 +2,20 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Menu, X, ArrowRight } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-
-import { Button } from "@/components/ui/button"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
-import { ModeToggle } from "@/components/theme-toggle"
+import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
 
 const capabilities = [
   {
     id: "cap-1",
-    title: "Search & AI Visibility",
+    title: "Search & Visibility",
     href: "/services/search-ai-visibility/seo/",
     services: [
-      { title: "SEO & Organic Visibility", href: "/services/search-ai-visibility/seo/", description: "Technical SEO, content strategy, local SEO, and link authority." },
-      { title: "AI Search Visibility & GEO", href: "/services/search-ai-visibility/ai-visibility/", description: "Get cited in ChatGPT, Perplexity, Gemini, and Google AI Overviews." },
+      { title: "SEO & AI Visibility", href: "/services/search-ai-visibility/seo/" },
+      { title: "GEO — AI Search", href: "/services/search-ai-visibility/ai-visibility/geo-optimisation/" },
+      { title: "AEO — Answer Engine", href: "/services/search-ai-visibility/ai-visibility/aeo/" },
+      { title: "AI Readiness Audit", href: "/services/search-ai-visibility/ai-visibility/ai-readiness-audit/" },
+      { title: "Local SEO India", href: "/services/search-ai-visibility/seo/local-seo/" },
     ],
   },
   {
@@ -33,9 +23,9 @@ const capabilities = [
     title: "Demand Generation",
     href: "/services/demand-generation/inbound-lead-architecture/",
     services: [
-      { title: "Inbound Lead Architecture", href: "/services/demand-generation/inbound-lead-architecture/", description: "Landing pages, chatbots, WhatsApp lead capture, and CRO." },
-      { title: "Outbound & Paid Acquisition", href: "/services/demand-generation/outbound-paid-acquisition/", description: "LinkedIn outreach, cold email sequencing, and paid ads." },
-      { title: "AI Lead Nurturing", href: "/services/demand-generation/ai-lead-nurturing/", description: "AI scoring, qualification bots, and automated follow-up sequences." },
+      { title: "Inbound Lead Architecture", href: "/services/demand-generation/inbound-lead-architecture/" },
+      { title: "Outbound & Paid", href: "/services/demand-generation/outbound-paid-acquisition/" },
+      { title: "AI Lead Scoring & Nurturing", href: "/services/demand-generation/ai-lead-nurturing/" },
     ],
   },
   {
@@ -43,9 +33,9 @@ const capabilities = [
     title: "Knowledge & Applied AI",
     href: "/services/knowledge-applied-ai/rag-systems/",
     services: [
-      { title: "Custom RAG Systems", href: "/services/knowledge-applied-ai/rag-systems/", description: "AI knowledge bases built over your documents and compliance data." },
-      { title: "AI Assistant Deployment", href: "/services/knowledge-applied-ai/ai-assistant/", description: "Custom AI assistants integrated into your workflows and tools." },
-      { title: "Document Intelligence", href: "/services/knowledge-applied-ai/document-intelligence/", description: "Automated document extraction, classification, and data pipelines." },
+      { title: "Knowledge AI & RAG", href: "/services/knowledge-applied-ai/rag-systems/" },
+      { title: "Document Intelligence", href: "/services/knowledge-applied-ai/document-intelligence/" },
+      { title: "AI Assistant Deployment", href: "/services/knowledge-applied-ai/ai-assistant/" },
     ],
   },
   {
@@ -53,9 +43,12 @@ const capabilities = [
     title: "Agentic Automation",
     href: "/services/agentic-automation/agentic-workflows/",
     services: [
-      { title: "Agentic Workflow Systems", href: "/services/agentic-automation/agentic-workflows/", description: "Multi-step autonomous AI agents for complex operational workflows." },
-      { title: "Core Process Automation", href: "/services/agentic-automation/core-automation/", description: "Connect and automate operations end to end across your stack." },
-      { title: "Conversational Automation & Voice AI", href: "/services/agentic-automation/conversational-automation/", description: "WhatsApp automation, Voice AI, and conversational lead capture." },
+      { title: "Agentic Workflow Design", href: "/services/agentic-automation/agentic-workflows/" },
+      { title: "Core Business Automation", href: "/services/agentic-automation/core-automation/" },
+      { title: "WhatsApp Automation", href: "/services/agentic-automation/conversational-automation/" },
+      { title: "Voice AI", href: "/services/agentic-automation/conversational-automation/voice-ai/" },
+      { title: "Content Production Automation", href: "/services/agentic-automation/conversational-automation/content-automation/" },
+      { title: "RPA", href: "/services/agentic-automation/core-automation/rpa/" },
     ],
   },
   {
@@ -63,225 +56,241 @@ const capabilities = [
     title: "Intelligence & Analytics",
     href: "/services/intelligence-analytics/search-intelligence/",
     services: [
-      { title: "Search Intelligence", href: "/services/intelligence-analytics/search-intelligence/", description: "Multi-engine search analytics and unified performance dashboards." },
-      { title: "AI Visibility Tracking", href: "/services/intelligence-analytics/ai-visibility-tracking/", description: "Citation frequency, sentiment, and competitor tracking across LLMs." },
-      { title: "Business Analytics", href: "/services/intelligence-analytics/business-analytics/", description: "Marketing ROI, pipeline modelling, and predictive analytics." },
+      { title: "Search & AI Analytics", href: "/services/intelligence-analytics/search-intelligence/" },
+      { title: "AI Visibility Tracking", href: "/services/intelligence-analytics/ai-visibility-tracking/" },
+      { title: "Business Performance", href: "/services/intelligence-analytics/business-analytics/" },
+      { title: "Predictive Analytics", href: "/services/intelligence-analytics/business-analytics/predictive-analytics/" },
+      { title: "Competitive Intelligence", href: "/services/intelligence-analytics/ai-visibility-tracking/competitive-intelligence/" },
     ],
   },
 ]
 
+const intelligenceLabLinks = [
+  { title: "Insights", href: "/intelligence-lab/" },
+  { title: "Perspectives", href: "/intelligence-lab/" },
+  { title: "Resources", href: "/intelligence-lab/" },
+  { title: "Founder Notes", href: "/intelligence-lab/" },
+  { title: "Case Studies", href: "/intelligence-lab/case-studies/" },
+]
+
 const navLinks = [
   { label: "Industries", href: "/industries" },
-  { label: "Insights", href: "/insights" },
-  { label: "Who We Are", href: "/who-we-are" },
-  { label: "Careers", href: "/careers" },
+  { label: "Who We Work With", href: "/who-we-are" },
+  { label: "About", href: "/who-we-are" },
 ]
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = React.useState(false)
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [scrolled, setScrolled] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
 
   React.useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 60)
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    setMounted(true)
+    const fn = () => setScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", fn, { passive: true })
+    return () => window.removeEventListener("scroll", fn)
   }, [])
 
   return (
     <>
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-black/75 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_30px_rgba(0,0,0,0.5)]"
+          scrolled
+            ? "bg-[#080808]/90 backdrop-blur-md border-b border-white/[0.06]"
             : "bg-transparent"
         }`}
       >
-        {/* Scrolled state — top border glow */}
-        {isScrolled && (
-          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-accent-teal/15 to-transparent pointer-events-none" />
-        )}
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
           <div className="flex h-16 items-center justify-between">
 
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
-              <span className="font-urbanist font-black text-[1.3rem] tracking-[-0.02em] gradient-text-teal group-hover:opacity-85 transition-opacity duration-300">
+            <Link href="/" className="flex-shrink-0">
+              <span className="font-syne font-black text-[1.25rem] tracking-[-0.02em] text-white hover:text-[#00FF88] transition-colors duration-300">
                 KYNATO
               </span>
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex lg:items-center">
-              <NavigationMenu>
-                <NavigationMenuList className="gap-0.5">
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-transparent text-white/70 hover:text-white text-sm font-medium transition-colors h-9">
-                      Capabilities
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="w-[920px] p-5 bg-black/90 backdrop-blur-2xl border border-white/[0.08] rounded-2xl shadow-2xl">
-                        <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
-                          <p className="text-[11px] font-bold text-white/30 tracking-[0.15em] uppercase">
-                            Five Capabilities — Built &amp; Operated by Kynato
-                          </p>
-                          <Link href="/services/" className="text-[11px] font-semibold text-accent-teal hover:text-accent-teal/80 flex items-center gap-1 transition-colors">
-                            All capabilities <ArrowRight className="h-3 w-3" />
+            <nav className="hidden lg:flex items-center gap-1">
+
+              {/* Capabilities dropdown */}
+              <div className="group relative">
+                <button className="px-4 py-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 flex items-center gap-1">
+                  Capabilities
+                  <span className="text-[10px] opacity-60">↓</span>
+                </button>
+                <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[900px]">
+                  <div className="bg-[#0E0E0E] border border-white/[0.08] rounded-2xl p-6 shadow-2xl">
+                    <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
+                      <span className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase">
+                        Five Capabilities — Built &amp; Operated by Kynato
+                      </span>
+                      <Link href="/services/" className="font-jakarta text-[11px] font-semibold text-[#00FF88]/70 hover:text-[#00FF88] transition-colors flex items-center gap-1">
+                        All capabilities <ArrowUpRight className="h-3 w-3" />
+                      </Link>
+                    </div>
+                    <div className="grid grid-cols-5 gap-4">
+                      {capabilities.map((cap) => (
+                        <div key={cap.id}>
+                          <Link href={cap.href} className="block font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.15em] uppercase mb-3 hover:text-[#00FF88] transition-colors">
+                            {cap.title}
                           </Link>
-                        </div>
-                        <div className="grid grid-cols-5 gap-3">
-                          {capabilities.map((cap) => (
-                            <div key={cap.id}>
-                              <Link href={cap.href} className="block text-[11px] font-bold text-accent-teal tracking-[0.1em] uppercase mb-3 hover:text-accent-teal/80 transition-colors">
-                                {cap.title}
+                          <div className="space-y-0.5">
+                            {cap.services.map((s) => (
+                              <Link
+                                key={s.href + s.title}
+                                href={s.href}
+                                className="block px-2 py-1.5 text-[12px] text-white/40 hover:text-white hover:bg-white/[0.04] rounded-lg transition-all duration-150"
+                              >
+                                {s.title}
                               </Link>
-                              <div className="space-y-1">
-                                {cap.services.map((service) => (
-                                  <NavigationMenuLink
-                                    key={service.href}
-                                    render={
-                                      <Link href={service.href} className="block select-none rounded-lg p-2.5 no-underline outline-none transition-all hover:bg-white/[0.04] group/item" />
-                                    }
-                                  >
-                                    <div className="text-[13px] font-medium text-white/80 group-hover/item:text-white leading-tight mb-1 transition-colors">
-                                      {service.title}
-                                    </div>
-                                    <p className="text-[11px] leading-snug text-white/30">
-                                      {service.description}
-                                    </p>
-                                  </NavigationMenuLink>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
-                        <div className="mt-4 pt-4 border-t border-white/[0.06]">
-                          <p className="text-[11px] text-white/25 font-roboto">
-                            Every system built and operated by Kynato — measured by revenue gained or hours saved.
-                          </p>
-                        </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-
-                  {navLinks.map((link) => (
-                    <NavigationMenuItem key={link.href}>
-                      <NavigationMenuLink
-                        render={<Link href={link.href} />}
-                        className={`${navigationMenuTriggerStyle()} bg-transparent text-white/70 hover:text-white text-sm font-medium h-9 transition-colors`}
-                      >
-                        {link.label}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
-
-            {/* Right Actions */}
-            <div className="flex items-center gap-3">
-              <ModeToggle />
-              <div className="hidden lg:block">
-                <Link href="/strategy">
-                  <HoverBorderGradient
-                    containerClassName="rounded-lg"
-                    as="span"
-                    className="bg-[#006AF0]/80 backdrop-blur-sm text-white font-semibold flex items-center justify-center gap-2 px-5 text-sm h-9 hover:bg-[#006AF0] shadow-[0_0_20px_rgba(0,106,240,0.25)] hover:shadow-[0_0_35px_rgba(0,106,240,0.45)] transition-all duration-300"
-                  >
-                    <span>Book a Strategy Call</span>
-                  </HoverBorderGradient>
-                </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="lg:hidden">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setMobileOpen(!mobileOpen)}
-                  className="text-white/70 hover:text-white hover:bg-white/[0.05] h-9 w-9"
+
+              {/* Intelligence Lab dropdown */}
+              <div className="group relative">
+                <button className="px-4 py-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 flex items-center gap-1">
+                  Intelligence Lab
+                  <span className="text-[10px] opacity-60">↓</span>
+                </button>
+                <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-3 w-[260px]">
+                  <div className="bg-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 shadow-2xl">
+                    <p className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase mb-3">Intelligence Lab</p>
+                    <div className="space-y-0.5">
+                      {intelligenceLabLinks.map((link) => (
+                        <Link
+                          key={link.title}
+                          href={link.href}
+                          className="block px-2 py-2 text-[13px] text-white/50 hover:text-white hover:bg-white/[0.04] rounded-lg transition-all duration-150"
+                        >
+                          {link.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="px-4 py-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200"
                 >
-                  {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </Button>
-              </div>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Right controls */}
+            <div className="flex items-center gap-2">
+              {/* Theme toggle */}
+              {mounted && (
+                <button
+                  onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                  className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/[0.12] text-white/40 hover:text-white hover:border-white/[0.25] transition-all duration-200"
+                  aria-label="Toggle theme"
+                >
+                  {resolvedTheme === "dark"
+                    ? <Sun className="h-4 w-4" />
+                    : <Moon className="h-4 w-4" />
+                  }
+                </button>
+              )}
+              <Link
+                href="/contact"
+                className="hidden lg:inline-flex items-center gap-2 px-5 h-9 border border-white/[0.15] rounded-lg text-[13px] font-semibold text-white hover:border-[#00FF88] hover:text-[#00FF88] transition-all duration-300 ml-1"
+              >
+                Talk to Our Team
+              </Link>
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="lg:hidden p-2 text-white/50 hover:text-white transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-black/95 backdrop-blur-2xl border-b border-white/[0.06] overflow-y-auto max-h-[85vh]"
-          >
-            <nav className="container mx-auto px-4 py-6 space-y-6">
-              <div>
-                <p className="text-[10px] font-bold text-white/30 tracking-[0.15em] uppercase mb-4">Capabilities</p>
-                <div className="space-y-5">
-                  {capabilities.map((cap) => (
-                    <div key={cap.id}>
-                      <p className="text-[11px] font-bold text-accent-teal tracking-[0.1em] uppercase mb-2">{cap.title}</p>
-                      <div className="pl-3 space-y-1 border-l border-white/[0.06]">
-                        {cap.services.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            className="block text-sm text-white/60 hover:text-white transition-colors py-1.5"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            {service.title}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+      <div
+        className={`lg:hidden fixed top-16 left-0 right-0 z-40 bg-[#080808]/98 backdrop-blur-2xl border-b border-white/[0.06] overflow-y-auto max-h-[85vh] transition-all duration-300 ${
+          mobileOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
+        <nav className="max-w-[1280px] mx-auto px-6 py-6 space-y-6">
+          <div>
+            <p className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase mb-4">Capabilities</p>
+            <div className="space-y-5">
+              {capabilities.map((cap) => (
+                <div key={cap.id}>
+                  <p className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.15em] uppercase mb-2">{cap.title}</p>
+                  <div className="pl-3 space-y-0.5 border-l border-white/[0.06]">
+                    {cap.services.map((s) => (
+                      <Link
+                        key={s.href + s.title}
+                        href={s.href}
+                        className="block font-jakarta text-sm text-white/40 hover:text-white transition-colors py-1.5"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="border-t border-white/[0.06] pt-4 space-y-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="block text-sm font-medium text-white/70 hover:text-white transition-colors py-2"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="border-t border-white/[0.06] pt-4">
-                <Link href="/strategy" onClick={() => setMobileOpen(false)}>
-                  <HoverBorderGradient
-                    containerClassName="rounded-lg w-full"
-                    as="span"
-                    className="bg-white/[0.05] text-white font-medium flex items-center justify-center h-11 w-full"
-                  >
-                    <span>Book a Strategy Call</span>
-                  </HoverBorderGradient>
-                </Link>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              ))}
+            </div>
+          </div>
 
-      {/* Mobile Sticky CTA */}
-      <div className="lg:hidden fixed bottom-0 left-0 w-full px-4 py-3 bg-black/80 backdrop-blur-xl border-t border-white/[0.06] z-50">
-        <Link href="/strategy">
-          <HoverBorderGradient
-            containerClassName="rounded-lg w-full"
-            as="span"
-            className="bg-[#006AF0] text-white font-medium flex items-center justify-center h-11 w-full shadow-[0_0_20px_rgba(0,106,240,0.3)]"
-          >
-            <span>Book a Strategy Call</span>
-          </HoverBorderGradient>
-        </Link>
+          <div className="border-t border-white/[0.06] pt-4">
+            <p className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase mb-3">Intelligence Lab</p>
+            <div className="space-y-0.5">
+              {intelligenceLabLinks.map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.href}
+                  className="block font-jakarta text-sm text-white/40 hover:text-white transition-colors py-1.5"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t border-white/[0.06] pt-4 space-y-0.5">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="block font-jakarta text-sm font-medium text-white/50 hover:text-white transition-colors py-2"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="border-t border-white/[0.06] pt-4 pb-2">
+            <Link
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center h-12 border border-[#00FF88]/50 rounded-xl font-jakarta text-sm font-semibold text-[#00FF88] hover:bg-[#00FF88] hover:text-black transition-all duration-300"
+            >
+              Talk to Our Team
+            </Link>
+          </div>
+        </nav>
       </div>
     </>
   )

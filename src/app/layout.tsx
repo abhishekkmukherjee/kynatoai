@@ -1,45 +1,49 @@
 import type { Metadata } from "next";
-import { Urbanist, Roboto_Condensed } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SidebarProvider } from "@/context/SidebarContext";
+import { ContactSidebar } from "@/components/ContactSidebar";
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
 });
 
-const robotoCondensed = Roboto_Condensed({
-  variable: "--font-roboto-condensed",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Kynato - AI Agency India | SEO, GEO, AI Visibility, RAG, Knowledge AI, Business Analytics & Agentic Automation",
-  description: "Kynato builds and operates SEO, AI Visibility, GEO (Generative Engine Optimisation), AEO (Answer Engine Optimisation), Knowledge AI, RAG Systems, Agentic Automation, and Lead Generation systems for startups, growth teams, and founders globally. India-headquartered. Built for outcomes — revenue gained or hours saved.",
-  keywords: "AI agency India, GEO agency India, generative engine optimisation India, AEO agency, answer engine optimisation, AI visibility India, RAG system India, Knowledge AI India, agentic automation India, agentic AI India, B2B lead generation AI India, SEO agency India, AI automation agency, ChatGPT ranking India, Perplexity visibility, Google AI Overviews optimisation, WhatsApp automation India, document intelligence India, voice AI India, AI agency for startups, AI agency for CA firms",
-  authors: [{ name: "Kynato Nexinnovations LLP" }],
+  title: "Kynato — AI Intelligence Ecosystem India | SEO, GEO, AEO, RAG, Agentic Automation, Knowledge AI & Business Analytics",
+  description: "Kynato is an AI services consultancy based in India that builds and operates intelligence ecosystems for B2B businesses — combining SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics. Measured by revenue gained or hours saved.",
+  keywords: "AI services consultancy India, GEO India, generative engine optimisation India, AEO, answer engine optimisation, AI visibility India, RAG system India, Knowledge AI India, agentic automation India, B2B lead generation AI India, SEO agency India, AI automation India, ChatGPT ranking India, Perplexity visibility, Google AI Overviews optimisation, WhatsApp automation India, document intelligence India, voice AI India, AI for CA firms, intelligence ecosystem India",
+  authors: [{ name: "Kynato" }],
   openGraph: {
     type: "website",
     url: "https://kynato.com/",
     siteName: "Kynato",
     locale: "en_IN",
-    title: "Kynato - AI Agency India | SEO, GEO, AI Visibility, RAG, Knowledge AI & Agentic Automation",
-    description: "Kynato builds and operates SEO, AI Visibility, GEO, AEO, Knowledge AI, RAG Systems, and Agentic Automation for startups and businesses globally. India-headquartered. Measured by revenue gained or hours saved.",
+    title: "Kynato — AI Intelligence Ecosystem India | SEO, GEO, AEO, RAG, Agentic Automation, Knowledge AI & Business Analytics",
+    description: "Kynato is an AI services consultancy based in India that builds and operates intelligence ecosystems for B2B businesses — combining SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics. Measured by revenue gained or hours saved.",
     images: [
       {
         url: "https://kynato.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Kynato — The Intelligence Ecosystem. AI Agency India.",
+        alt: "Kynato — The Intelligence Ecosystem. AI Services Consultancy India.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@KynatoAI",
-    creator: "@KynatoAI",
-    title: "Kynato - AI Agency India | GEO, AI Visibility, RAG, Knowledge AI & Agentic Automation",
-    description: "SEO, AI Visibility, GEO, AEO, Knowledge AI, RAG Systems, and Agentic Automation for startups and businesses globally. India-headquartered. Built for outcomes.",
+    site: "@kynato",
+    creator: "@kynato",
+    title: "Kynato — AI Intelligence Ecosystem India | SEO, GEO, AEO, RAG, Agentic Automation, Knowledge AI & Business Analytics",
+    description: "Kynato is an AI services consultancy based in India that builds and operates intelligence ecosystems for B2B businesses. Measured by revenue gained or hours saved.",
     images: ["https://kynato.com/og-image.jpg"],
   },
   alternates: {
@@ -71,17 +75,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${urbanist.variable} ${robotoCondensed.variable} h-full antialiased`}
+      className={`${syne.variable} ${plusJakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
         <meta name="geo.region" content="IN-JH" />
         <meta name="geo.placename" content="Ratu, Ranchi, Jharkhand, India" />
-        <meta name="geo.position" content="23.425404;85.219271" />
-        <meta name="ICBM" content="23.425404, 85.219271" />
+        <meta name="geo.position" content="23.3441;85.3096" />
+        <meta name="ICBM" content="23.3441, 85.3096" />
         <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
-        
+
         {/* Schema Block 1: Organization */}
         <script
           type="application/ld+json"
@@ -89,170 +93,40 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "@id": "https://kynato.com/#organization",
               "name": "Kynato",
-              "legalName": "Kynato Nexinnovations LLP",
-              "alternateName": ["Kynato", "Kynato AI", "Kynato Agency"],
               "url": "https://kynato.com",
-              "logo": {
-                "@type": "ImageObject",
-                "@id": "https://kynato.com/#logo",
-                "url": "https://kynato.com/logo.png",
-                "contentUrl": "https://kynato.com/logo.png",
-                "width": 300,
-                "height": 80,
-                "caption": "Kynato"
-              },
-              "image": {
-                "@type": "ImageObject",
-                "url": "https://kynato.com/og-image.jpg",
-                "width": 1200,
-                "height": 630
-              },
-              "description": "Kynato is a B2B artificial intelligence (AI) agency based in India that functions as an intelligence ecosystem, building and operating growth, intelligence, and automation systems for businesses. The company combines AI capability with human expertise across core practice areas: Search Engine Optimisation (SEO) and AI visibility, Lead Generation, Knowledge AI, Agentic Automation, and Business Performance Analytics. Kynato's services include Generative Engine Optimisation, Custom Retrieval-Augmented Generation (RAG) Systems, Agentic Workflow Automation, AI-powered Lead Generation and Nurturing, Conversational and Outreach Automation, and Unified Search and AI visibility Analytics. The agency builds, integrates, and directly manages these systems for its clients. Kynato works with founders, startups, growth teams, and operations leaders to help businesses capture organic and AI search visibility, automate lead conversion at scale, and replace manual processes with AI-powered systems.",
-              "slogan": "Make Intelligence Work.",
-              "foundingDate": "2024",
-              "foundingLocation": {
-                "@type": "Place",
-                "name": "Jharkhand, India"
-              },
+              "logo": "https://kynato.com/assets/kynato-logo.svg",
+              "foundingDate": "2025",
+              "description": "Kynato is an AI services consultancy based in India that functions as an intelligence ecosystem, building and operating growth, intelligence, and automation systems for B2B businesses.",
+              "email": "hello@kynato.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Ratu",
-                "addressLocality": "Ratu",
+                "addressLocality": "Ranchi",
                 "addressRegion": "Jharkhand",
                 "postalCode": "835222",
                 "addressCountry": "IN"
               },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "23.425404",
-                "longitude": "85.219271"
-              },
-              "areaServed": [
-                {
-                  "@type": "Country",
-                  "name": "India"
-                },
-                {
-                  "@type": "AdministrativeArea",
-                  "name": "Global"
-                }
-              ],
-              "contactPoint": [
-                {
-                  "@type": "ContactPoint",
-                  "contactType": "sales",
-                  "email": "hello@kynato.com",
-                  "availableLanguage": ["English", "Hindi"],
-                  "areaServed": "Worldwide"
-                },
-                {
-                  "@type": "ContactPoint",
-                  "contactType": "customer support",
-                  "email": "hello@kynato.com",
-                  "availableLanguage": ["English", "Hindi"],
-                  "areaServed": "Worldwide"
-                }
-              ],
               "sameAs": [
-                "https://www.linkedin.com/company/KynatoAI",
-                "https://twitter.com/KynatoAI",
-                "https://www.facebook.com/KynatoAI",
-                "https://www.instagram.com/KynatoAI",
-                "https://www.pinterest.com/KynatoAI"
+                "https://www.linkedin.com/company/kynato",
+                "https://twitter.com/kynato"
               ],
               "knowsAbout": [
-                "Search Engine Optimisation",
-                "AI Visibility",
                 "Generative Engine Optimisation",
-                "Answer Engine Optimisation",
-                "AI Search Visibility",
-                "Knowledge AI",
-                "Retrieval-Augmented Generation",
+                "AI Visibility",
                 "RAG Systems",
                 "Agentic Automation",
-                "Agentic AI",
-                "Multi-Agent AI Systems",
-                "B2B Lead Generation",
-                "WhatsApp Automation",
-                "Voice AI",
+                "Knowledge AI",
+                "Search Engine Optimisation",
+                "Answer Engine Optimisation",
+                "Lead Generation AI",
+                "AI Readiness Audit",
                 "Document Intelligence",
+                "Voice AI",
                 "Business Performance Analytics",
-                "GEO Optimisation",
-                "ChatGPT Visibility",
-                "Perplexity Visibility",
-                "Google AI Overviews Optimisation"
-              ],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Kynato AI Agency Services",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "SEO and Organic Visibility",
-                      "url": "https://kynato.com/services/search-ai-visibility/seo/",
-                      "description": "Technical SEO, content strategy, local SEO, off-page SEO, and Knowledge Graph entity building — designed to drive compounding organic growth for businesses in India and globally."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "AI Search Visibility and Generative Engine Optimisation (GEO)",
-                      "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/",
-                      "description": "GEO builds your business's presence in AI-generated answers on ChatGPT, Perplexity, Google AI Overviews, and Gemini through citation authority building, prompt-gap content, and E-E-A-T amplification for AI engines."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Answer Engine Optimisation (AEO) and Featured Snippet Capture",
-                      "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/aeo/",
-                      "description": "AEO captures Featured Snippets, People Also Ask positions, and Google AI Overviews through FAQ schema, answer-first content architecture, and conversational keyword optimisation."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Inbound Lead Architecture and B2B Lead Generation",
-                      "url": "https://kynato.com/services/demand-generation/inbound-lead-architecture/",
-                      "description": "AI-powered inbound and outbound lead generation — LinkedIn outreach automation, cold email sequencing, WhatsApp lead capture, landing page CRO, and AI lead scoring and nurturing."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Custom RAG Systems and Knowledge AI",
-                      "url": "https://kynato.com/services/knowledge-applied-ai/rag-systems/",
-                      "description": "Custom Retrieval-Augmented Generation (RAG) systems, AI knowledge bases, document intelligence pipelines, and AI assistants for CA firms, healthcare providers, legal teams, and B2B operations."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Agentic Workflow Systems and Core Automation",
-                      "url": "https://kynato.com/services/agentic-automation/agentic-workflows/",
-                      "description": "Multi-step autonomous AI agents for document collection, CRM updates, compliance reminders, invoice automation, HR onboarding, WhatsApp automation, Voice AI, and complex operational workflows."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Intelligence, Analytics, and AI Visibility Tracking",
-                      "url": "https://kynato.com/services/intelligence-analytics/search-intelligence/",
-                      "description": "Unified search intelligence, AI visibility tracking, marketing ROI analytics, and automation performance dashboards — delivered in plain language without a data team."
-                    }
-                  }
-                ]
-              }
+                "WhatsApp Automation",
+                "AI for CA Firms",
+                "India-Native AI Systems"
+              ]
             })
           }}
         />
@@ -264,81 +138,43 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "@id": "https://kynato.com/#website",
-              "url": "https://kynato.com",
               "name": "Kynato",
-              "alternateName": "Kynato Nexinnovations LLP",
-              "description": "B2B AI agency building and operating SEO, AI Visibility, GEO, AEO, Knowledge AI, RAG Systems, Agentic Automation, and Lead Generation for startups and businesses globally.",
-              "publisher": {
-                "@id": "https://kynato.com/#organization"
-              },
-              "inLanguage": ["en-IN", "en"],
+              "url": "https://kynato.com",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": {
-                  "@type": "EntryPoint",
-                  "urlTemplate": "https://kynato.com/search?q={search_term_string}"
-                },
+                "target": "https://kynato.com/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
           }}
         />
 
-        {/* Schema Block 3: ProfessionalService / LocalBusiness */}
+        {/* Schema Block 3: ProfessionalService + LocalBusiness */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["ProfessionalService", "LocalBusiness"],
-              "@id": "https://kynato.com/#localbusiness",
               "name": "Kynato",
-              "legalName": "Kynato Nexinnovations LLP",
-              "image": "https://kynato.com/og-image.jpg",
+              "image": "https://kynato.com/assets/kynato-logo.svg",
               "url": "https://kynato.com",
               "email": "hello@kynato.com",
-              "description": "Kynato (Kynato Nexinnovations LLP) is a B2B artificial intelligence (AI) agency based in India that functions as an intelligence ecosystem, building and operating growth, intelligence, and automation systems for businesses. The company combines AI capability with human expertise across core practice areas: Search Engine Optimisation (SEO) and AI visibility, Lead Generation, Knowledge AI, Agentic Automation, and Business Performance Analytics.",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Ratu",
-                "addressLocality": "Ratu",
+                "addressLocality": "Ranchi",
                 "addressRegion": "Jharkhand",
                 "postalCode": "835222",
                 "addressCountry": "IN"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": "23.425404",
-                "longitude": "85.219271"
+                "latitude": "23.3441",
+                "longitude": "85.3096"
               },
-              "areaServed": [
-                {
-                  "@type": "Country",
-                  "name": "India"
-                },
-                {
-                  "@type": "AdministrativeArea",
-                  "name": "Global"
-                }
-              ],
-              "priceRange": "₹₹₹",
-              "currenciesAccepted": "INR, USD",
-              "paymentAccepted": "Bank Transfer, UPI, International Wire",
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-                "opens": "09:00",
-                "closes": "18:00"
-              },
-              "hasMap": "https://maps.google.com/?q=23.425404,85.219271",
-              "sameAs": [
-                "https://www.linkedin.com/company/kynato",
-                "https://twitter.com/kynato"
-              ],
-              "parentOrganization": {
-                "@id": "https://kynato.com/#organization"
-              }
+              "openingHours": "Mo-Fr 09:00-18:00",
+              "priceRange": "₹₹₹"
             })
           }}
         />
@@ -355,61 +191,38 @@ export default function RootLayout({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://kynato.com"
+                  "item": "https://kynato.com/"
                 }
               ]
             })
           }}
         />
 
-        {/* Schema Block 5: ItemList: Services */}
+        {/* Schema Block 5: ItemList — Service signals */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ItemList",
-              "name": "Kynato AI Agency Services",
-              "description": "Complete list of AI agency services offered by Kynato Nexinnovations LLP",
-              "url": "https://kynato.com",
-              "numberOfItems": 5,
+              "name": "Kynato Capabilities",
               "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Search & AI Visibility",
-                  "url": "https://kynato.com/services/search-ai-visibility/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Demand Generation",
-                  "url": "https://kynato.com/services/demand-generation/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Knowledge & Applied AI",
-                  "url": "https://kynato.com/services/knowledge-applied-ai/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Agentic Automation",
-                  "url": "https://kynato.com/services/agentic-automation/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 5,
-                  "name": "Intelligence & Analytics",
-                  "url": "https://kynato.com/services/intelligence-analytics/"
-                }
+                { "@type": "ListItem", "position": 1, "name": "SEO & AI Visibility", "url": "https://kynato.com/services/search-ai-visibility/seo/" },
+                { "@type": "ListItem", "position": 2, "name": "Generative Engine Optimisation (GEO)", "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/geo-optimisation/" },
+                { "@type": "ListItem", "position": 3, "name": "Answer Engine Optimisation (AEO)", "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/aeo/" },
+                { "@type": "ListItem", "position": 4, "name": "AI Readiness Audit", "url": "https://kynato.com/services/search-ai-visibility/ai-visibility/ai-readiness-audit/" },
+                { "@type": "ListItem", "position": 5, "name": "Inbound Lead Architecture", "url": "https://kynato.com/services/demand-generation/inbound-lead-architecture/" },
+                { "@type": "ListItem", "position": 6, "name": "Knowledge AI & RAG Systems", "url": "https://kynato.com/services/knowledge-applied-ai/rag-systems/" },
+                { "@type": "ListItem", "position": 7, "name": "Agentic Automation", "url": "https://kynato.com/services/agentic-automation/agentic-workflows/" },
+                { "@type": "ListItem", "position": 8, "name": "Voice AI", "url": "https://kynato.com/services/agentic-automation/conversational-automation/voice-ai/" },
+                { "@type": "ListItem", "position": 9, "name": "Document Intelligence", "url": "https://kynato.com/services/knowledge-applied-ai/document-intelligence/" },
+                { "@type": "ListItem", "position": 10, "name": "Business Performance Analytics", "url": "https://kynato.com/services/intelligence-analytics/business-analytics/" }
               ]
             })
           }}
         />
-        
-        {/* Schema Block 6: FAQPage */}
+
+        {/* Schema Block 6: FAQPage — 15 PAA-sourced questions */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -419,146 +232,122 @@ export default function RootLayout({
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "What is an AI agency and what does one actually do for a business?",
+                  "name": "What is Kynato?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "An AI agency designs, builds, and operates AI-powered systems that drive measurable business outcomes — covering SEO and AI Visibility, Generative Engine Optimisation (GEO), Answer Engine Optimisation (AEO), Lead Generation, Knowledge AI, RAG Systems, and Agentic Automation. Unlike a digital marketing agency that runs campaigns, an AI agency like Kynato stays accountable for outcomes after go-live, measuring everything against revenue gained or hours saved — not impressions or reports."
+                    "text": "Kynato is an AI services consultancy based in India that functions as an intelligence ecosystem, building and operating growth, intelligence, and automation systems for B2B businesses. It combines five capabilities — SEO and AI Visibility, Demand Generation, Knowledge AI, Agentic Automation, and Business Analytics — into one connected, operated system."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is Generative Engine Optimisation (GEO) and why does my business need it now?",
+                  "name": "What is Generative Engine Optimisation (GEO)?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Generative Engine Optimisation (GEO) is the discipline of making your business visible in AI-generated answers — on ChatGPT, Perplexity, Google AI Overviews, and Gemini — rather than only in traditional search results. AI Overviews now appear in over 13% of Google queries and growing. Buyers are getting answers from AI before clicking any website. If your business is not cited in AI-generated results, you are invisible to a rapidly expanding share of your market. GEO is no longer optional for businesses that rely on organic discovery."
+                    "text": "Generative Engine Optimisation (GEO) is the practice of making a business visible in AI-generated answers — ChatGPT, Perplexity, Google AI Overviews, and Gemini. It involves citation authority building, prompt-gap content mapping, and E-E-A-T amplification so AI engines cite your business when buyers ask relevant questions."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is Answer Engine Optimisation (AEO) and how is it different from SEO?",
+                  "name": "What is the difference between GEO and SEO?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Answer Engine Optimisation (AEO) focuses on capturing zero-click positions — Featured Snippets, People Also Ask boxes, and Google AI Overviews — where buyers get answers without clicking through to a site. SEO drives ranking and traffic. AEO drives visibility and authority at the moment of intent, before the click. Kynato deploys AEO through FAQ schema markup, answer-first content architecture, conversational keyword targeting, and AI Overview presence monitoring. Both work together — AEO amplifies the trust value of SEO traffic."
+                    "text": "SEO optimises for rankings in traditional search results (Google, Bing). GEO optimises for citations in AI-generated answers (ChatGPT, Perplexity, Gemini, Google AI Overviews). SEO drives clicks; GEO drives AI citations and brand recommendations. Both are necessary — Kynato deploys them as a connected system."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is AI Visibility and how does Kynato measure it?",
+                  "name": "What is a RAG system and how does it work?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "AI Visibility refers to how prominently and accurately your brand appears across AI-generated answer surfaces — ChatGPT, Perplexity, Gemini, Google AI Overviews, and Claude. Kynato measures AI Visibility through AI share of voice tracking, sentiment analysis in AI-generated brand mentions, competitor citation tracking across LLMs, and prompt performance monitoring against your buyer's actual search questions. All tracked in a unified dashboard, updated monthly."
+                    "text": "A RAG (Retrieval-Augmented Generation) system builds an AI layer over a business's own knowledge — documents, compliance circulars, SOPs, client records. When queried in plain language, it retrieves the relevant information and generates an accurate, cited answer in real time, without the AI inventing facts."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is a RAG system and when does my business actually need one?",
+                  "name": "What is agentic automation?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A Retrieval-Augmented Generation (RAG) system builds an AI layer over your own knowledge — documents, compliance data, client records, SOPs, case histories — so that your team or customers can query it in plain language and get accurate, cited answers in real time. A business needs RAG when institutional knowledge is slow to access, inconsistently applied, or trapped in PDFs and email threads. Kynato builds and operates RAG systems for CA firms, clinics, legal teams, and B2B operations teams."
+                    "text": "Agentic automation uses multi-step autonomous AI agents to execute complex business processes end to end — making decisions, calling APIs, handling exceptions, and escalating to humans only when necessary. Unlike basic chatbots or workflow tools, agentic systems complete entire workflows: document collection, CRM updates, compliance reminders, and invoice processing without manual input."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is Agentic Automation and how is it different from a chatbot or basic workflow tool?",
+                  "name": "How long does SEO take to show results?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A chatbot answers questions. A basic workflow tool moves data between apps on triggers. Agentic Automation deploys multi-step autonomous AI agents that execute complex processes end to end — making conditional decisions, calling external APIs, handling exceptions, and escalating to a human only when a situation falls outside defined parameters. Kynato builds agentic systems for document collection, compliance reminders, CRM updates, invoice processing, HR onboarding, and multi-step operational workflows."
+                    "text": "Technical SEO shows crawlability improvements within 4–6 weeks. Keyword ranking gains compound from month 3, with significant organic traffic traction by month 5–6. GEO (AI citation visibility) shows first results within 4–8 weeks. All Kynato systems are instrumented from day one — there are no black-box waiting periods."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "How long does it take to see results from SEO, GEO, and AEO?",
+                  "name": "What is an AI readiness audit?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Technical SEO remediation produces measurable data within 4–6 weeks. Keyword ranking gains compound from month 3, with significant traction by month 5–6. GEO — securing citations in AI-generated answers — shows early signals within 4–8 weeks for domains with existing authority. AEO Featured Snippet gains can appear within 2–6 weeks of deployment. Every system is instrumented from day one, so there are no black-box waiting periods."
+                    "text": "An AI readiness audit checks whether a website can be read, crawled, and cited by AI engines. It covers llms.txt deployment, JavaScript rendering for AI crawlers (GPTBot, ClaudeBot, PerplexityBot), semantic HTML clarity, Schema Actions for agentic callability, and agentic traffic monitoring. It is the prerequisite for effective GEO and AEO."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "How long does it take to deploy an Agentic Automation or RAG system?",
+                  "name": "What is the difference between AEO and GEO?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Agentic workflow systems and RAG deployments typically go live within 4–8 weeks from engagement start. Simple single-workflow automations often go live in 3–4 weeks. Multi-agent pipeline systems with external API integrations take 6–10 weeks. Kynato delivers a system architecture document before build begins, so timelines are agreed before a single line of code is written."
+                    "text": "AEO (Answer Engine Optimisation) targets zero-click positions in search engines — Featured Snippets, People Also Ask, and Google AI Overviews within search results pages. GEO (Generative Engine Optimisation) targets citations inside AI chat interfaces like ChatGPT and Perplexity where no search results page exists. Both are deployed together by Kynato."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Does Kynato work with businesses that have no existing AI infrastructure?",
+                  "name": "How does WhatsApp automation work for Indian businesses?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes — this is the starting point for most Kynato clients. No AI stack, no existing automation, no prior SEO systems. The process begins with a gap analysis against your current operations, tools, and business goals. The entry point is determined by where the highest return on investment is for your specific business, not a standard package applied uniformly."
+                    "text": "WhatsApp automation for Indian businesses uses the WhatsApp Business API to build automated flows for lead capture, document collection, compliance reminders, appointment booking, and payment collection via Razorpay or PayU. Kynato builds these flows with CRM integration, DLT-compliant SMS fallback, and Hindi or Hinglish language support."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Does Kynato work with international clients or only Indian businesses?",
+                  "name": "How can AI help CA firms in India?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Kynato is headquartered in India and serves Indian startups, SMEs, growth teams, and founders as its primary market. We also work with international businesses — particularly those operating in India, building India-market products, or requiring AI systems with India-specific context (GST, ICAI, SEBI regulations, vernacular language AI, WhatsApp-first workflows). Global clients in legal, compliance, healthcare, and B2B SaaS who want Indian AI delivery expertise are welcome to book a strategy call."
+                    "text": "AI helps CA firms in India by automating GST document collection via WhatsApp, monitoring CBDT, GSTN, and ICAI circulars in real time, building RAG systems for instant client query resolution, sending pre-deadline compliance reminders, and auto-updating CRMs from calls and emails — reducing partner time on repetitive tasks by up to 70%."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What tools and platforms does Kynato integrate with?",
+                  "name": "What is knowledge AI and how is it different from ChatGPT?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Kynato is tool-agnostic and builds integrations based on your existing stack. Common integrations include HubSpot, Zoho CRM, Salesforce, Tally, Zoho Books, QuickBooks, WhatsApp Business API, Gmail, Google Drive, SharePoint, Razorpay, and PayU. For AI infrastructure: Pinecone, Qdrant, Weaviate for vector search; OpenAI, Anthropic, and Google Gemini as LLM providers; and domain-tuned embedding models for legal, accounting, and compliance corpora."
+                    "text": "Knowledge AI builds a private AI layer over a business's own data — documents, policies, client records, compliance circulars — so queries return accurate, cited answers from that specific knowledge base. Unlike ChatGPT, which has no access to your data and can hallucinate, Knowledge AI is grounded in your verified documents and attributes every answer to its source."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "How is Kynato different from buying a SaaS AI tool or using ChatGPT directly?",
+                  "name": "How much does AI automation cost for small businesses in India?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A SaaS AI tool gives you a generic capability you must configure and maintain yourself. Using ChatGPT directly gives you a general-purpose model with no memory of your business, no integration with your data, and no accountability for results. Kynato builds custom systems designed around your specific business — integrated into your stack, trained on your data, and operated by Kynato on an ongoing basis. The outcome is measurable. The accountability is Kynato's."
+                    "text": "AI automation cost for small businesses in India varies by system complexity. Kynato works on retainer-based engagements scoped after a diagnostic conversation — there is no standard package. Single-workflow automations are scoped differently from full five-capability deployments. The entry point is always a no-commitment strategy conversation that maps the highest-return system for your specific situation."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What does Kynato's reporting look like?",
+                  "name": "Can AI replace manual operations in Indian businesses?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Monthly reporting covers SEO performance (rankings, traffic, Core Web Vitals), AI Visibility metrics (citation frequency across ChatGPT, Perplexity, Gemini, AI Overview presence), lead pipeline health, automation efficiency (hours saved, error rates, escalation frequency), and campaign ROI. All delivered in plain language — not a dashboard that requires a data analyst to interpret."
+                    "text": "AI can automate the repeatable, rule-based, and data-handling portions of manual operations — document collection, CRM updates, compliance reminders, invoice follow-up, lead qualification, and reporting. It does not replace judgment-dependent decisions. Kynato's agentic systems automate standard cases and escalate to humans only when the situation genuinely requires it."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Can Kynato work alongside our existing SEO or marketing agency?",
+                  "name": "What tools does Kynato integrate with?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. Kynato can operate as a specialist layer alongside an existing generalist marketing agency — handling AI Visibility (GEO, AEO), Agentic Automation, and Knowledge AI, while another agency handles brand, paid media, or creative. We provide a clear scope with no overlap and defined accountability for our specific systems. The one requirement: full data access to the systems we operate."
+                    "text": "Kynato integrates with HubSpot, Zoho CRM, Salesforce, Tally, Zoho Books, QuickBooks, WhatsApp Business API, Google Drive, SharePoint, LinkedIn, Instagram, Razorpay, PayU, Google Search Console, and Bing Webmaster Tools. AI infrastructure uses Pinecone, Qdrant, Weaviate for vector search, and OpenAI, Anthropic, and Google Gemini as LLM providers."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is Kynato's pricing model?",
+                  "name": "How is Kynato different from other AI agencies in India?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Kynato works on a retainer-based engagement model, scoped per system. Retainers cover build, integration, operation, and monthly reporting. Kynato does not charge per deliverable or per tool — it charges for running systems and measurable outcomes. Pricing is scoped after the initial strategy call, once the system requirements are understood."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Does Kynato offer one-time projects or audits without a retainer?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Kynato offers a strategy call and system blueprint as the entry point — this is the diagnostic and design phase, scoped separately. For businesses not ready for a full engagement, this produces a specific, actionable architecture document. Ongoing retainers follow if the scope is agreed. Pure one-time audits without an operational follow-through are not Kynato's model — the value is in the system running, not the report."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How does Kynato handle data privacy for sensitive business and client information?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "All client data processed through Kynato's systems is handled under strict confidentiality agreements. RAG systems are built on client-controlled or Kynato-managed private instances — not shared environments. Data is never used to train general models. India DPDP Act 2023 alignment is built into data handling design. GDPR-compatible data handling is available for international clients. Full data handling terms are provided before engagement begins."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What is the first step to working with Kynato?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Book a 30-minute Strategy Call. In that call, Kynato maps your current operations against two filters — where is revenue leaking, and where are hours being wasted — and identifies the highest-return system to build first. If there is a fit, a system blueprint follows. No pitch deck, no generic proposal. A real conversation about your specific situation."
+                    "text": "Kynato builds and operates AI systems — it does not deliver reports, demos, or software to manage yourself. Every system is instrumented from day one and measured by revenue gained or hours saved. Kynato is India-native — built for WhatsApp, GST compliance, Tally integrations, and Hindi or Hinglish AI — not a Western platform adapted for India."
                   }
                 }
               ]
@@ -566,13 +355,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-roboto bg-background text-foreground">
+      <body className="min-h-full flex flex-col font-jakarta bg-background text-foreground">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
         >
-          {children}
+          <SidebarProvider>
+            {children}
+            <ContactSidebar />
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>

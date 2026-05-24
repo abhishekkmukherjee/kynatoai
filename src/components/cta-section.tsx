@@ -1,97 +1,294 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+"use client";
+import { useState } from "react";
+import { ArrowRight, X } from "lucide-react";
 
-const checks = [
-  "No pitch deck. No generic proposal.",
-  "Responds within 1 business day.",
-  "No commitment required.",
+const roleOptions = [
+  "Founder / Co-founder",
+  "Startup (< 3 years)",
+  "Growth-stage business",
+  "Operations / Leadership",
+  "Other",
 ];
 
 export function CtaSection() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => {
+      setSidebarOpen(false);
+      setSubmitted(false);
+    }, 2500);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+    setSubmitted(false);
+  };
+
   return (
-    <section className="relative bg-black overflow-hidden py-28 md:py-44 section-line-top">
+    <>
+      {/* CTA Section */}
+      <section className="closing-cta section-dark relative bg-[#080808] overflow-hidden py-28 md:py-44">
 
-      {/* Fine grid */}
-      <div className="absolute inset-0 bg-grid-fine opacity-100 pointer-events-none" />
+        {/* Ambient green glow */}
+        <div className="absolute bottom-0 left-0 w-[600px] h-[400px] rounded-full bg-[#00FF88]/[0.04] blur-[140px] pointer-events-none" />
 
-      {/* Gradient mesh */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140%] h-[60%] bg-[radial-gradient(ellipse_at_50%_0%,rgba(2,124,136,0.12)_0%,transparent_65%)]" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[50%] bg-[radial-gradient(ellipse_at_50%_100%,rgba(0,106,240,0.08)_0%,transparent_65%)]" />
-      </div>
+        {/* Top rule */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-white/[0.06]" />
 
-      {/* Ambient orbs */}
-      <div className="absolute top-1/4 left-[15%] w-[500px] h-[500px] rounded-full bg-[#027C88]/[0.07] blur-[150px] animate-pulse-glow pointer-events-none" />
-      <div className="absolute bottom-1/4 right-[15%] w-[400px] h-[400px] rounded-full bg-[#006AF0]/[0.06] blur-[130px] animate-pulse-glow pointer-events-none" style={{ animationDelay: "2s" }} />
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10">
 
-      {/* Top border glow */}
-      <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-accent-teal/35 to-transparent" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-
-          {/* Badge */}
-          <div className="mb-8">
-            <span className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-accent-teal/18 bg-accent-teal/[0.06] text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase">
-              <span className="relative flex h-2 w-2 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-teal" />
-              </span>
-              Let&apos;s Build Your System
+          {/* Section label */}
+          <div className="section-rule mb-16">
+            <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
+              [ LET&apos;S BUILD ]
             </span>
           </div>
 
-          {/* Headline */}
-          <h2 className="font-urbanist font-black text-[clamp(2.4rem,6vw,5rem)] leading-[1.02] tracking-[-0.035em] text-white mb-6">
-            Stop Losing Revenue to{" "}
-            <span className="gradient-text-teal">Manual Operations.</span>
-            <br />
-            Start with a 30-Minute Diagnosis.
-          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-6">
 
-          {/* Description */}
-          <p className="font-roboto text-white/35 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Book a Strategy Call. We will map exactly where your business is leaking revenue
-            or wasting hours — and show you what a Kynato system would look like in your context.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-            <Link href="/strategy" className="w-full sm:w-auto">
-              <HoverBorderGradient
-                containerClassName="rounded-xl w-full sm:w-auto"
-                as="span"
-                className="bg-[#006AF0] text-white flex items-center justify-center gap-2 text-sm font-semibold px-10 h-13 w-full sm:w-auto shadow-[0_0_50px_rgba(0,106,240,0.45)] hover:shadow-[0_0_80px_rgba(0,106,240,0.65)] transition-all duration-300"
-              >
-                Book Your Strategy Call <ArrowRight className="h-4 w-4" />
-              </HoverBorderGradient>
-            </Link>
-
-            <Link href="/contact" className="inline-flex items-center justify-center h-13 px-8 rounded-xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.12] text-white/55 hover:text-white text-sm font-medium transition-all duration-300 w-full sm:w-auto backdrop-blur-sm">
-              Send Us a Message
-            </Link>
-          </div>
-
-          {/* Trust checks */}
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-14">
-            {checks.map((c) => (
-              <span key={c} className="flex items-center gap-1.5 text-sm text-white/70 font-roboto">
-                <CheckCircle2 className="h-3.5 w-3.5 text-accent-teal shrink-0" />
-                {c}
+              <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-6">
+                Start Here
               </span>
-            ))}
-          </div>
 
-          {/* Quote pill */}
-          <div className="inline-flex items-center gap-4 px-7 py-3.5 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm">
-            <div className="w-px h-5 rounded-full bg-gradient-to-b from-transparent via-accent-teal/50 to-transparent" />
-            <p className="font-roboto italic text-white/60 text-sm">
-              &quot;Revenue gained or hours saved. Everything else is noise.&quot; — Kynato
-            </p>
+              <h2
+                className="font-syne font-black text-white leading-[1.05] tracking-[-0.03em] mb-6"
+                style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)" }}
+              >
+                A Specific Diagnosis for Your Business.
+                <br />Not a Deck. Not a Demo.
+              </h2>
+
+              <p className="font-jakarta text-white/40 text-base leading-relaxed mb-5">
+                In a 30-minute conversation, Kynato will map your current operations against
+                two filters — where is revenue leaking, and where are hours being wasted —
+                and show you what a system built for your specific situation would look like.
+              </p>
+              <p className="font-jakarta text-white/40 text-base leading-relaxed mb-10">
+                If there is a fit, a system blueprint follows.
+                If there is not, you leave with an honest diagnosis that is useful regardless.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  className="group inline-flex items-center justify-center gap-2 px-8 border border-[#00FF88]/50 rounded-xl font-jakarta text-sm font-semibold text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] transition-all duration-300"
+                  style={{ height: "3.25rem" }}
+                >
+                  Talk to Our Team
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </button>
+
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  className="inline-flex items-center justify-center px-7 border border-white/[0.1] rounded-xl font-jakarta text-sm font-medium text-white/40 hover:border-white/[0.2] hover:text-white/60 transition-all duration-300"
+                  style={{ height: "3.25rem" }}
+                >
+                  Send a Message
+                </button>
+              </div>
+
+              <p className="font-jakarta text-white/25 text-sm mb-10">
+                Or write directly:{" "}
+                <a href="mailto:hello@kynato.com" className="text-white/40 hover:text-white transition-colors">
+                  hello@kynato.com
+                </a>
+                {" "}·{" "}
+                <a href="https://wa.me/91" className="text-white/40 hover:text-white transition-colors">
+                  WhatsApp available
+                </a>
+              </p>
+
+              <p className="font-jakarta italic text-[#00FF88]/50 text-sm">
+                &ldquo;Revenue gained or hours saved. Everything else is noise.&rdquo; — Kynato
+              </p>
+            </div>
+
+            {/* Right side stat block */}
+            <div className="lg:col-span-5 lg:col-start-8 flex items-center">
+              <div className="border border-white/[0.08] bg-white/[0.02] rounded-2xl p-8 w-full">
+                <p className="font-jakarta text-[10px] font-bold tracking-[0.2em] uppercase text-white/25 mb-6">
+                  What a strategy conversation covers
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Your current lead response speed and what it is costing you",
+                    "Where your team spends time on work that AI should handle",
+                    "Whether you are visible in ChatGPT, Perplexity, and Google AI Overviews",
+                    "Which single system would deliver the highest return in the next 90 days",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="font-jakarta text-[11px] font-black text-[#00FF88]/40 tabular-nums shrink-0 mt-0.5">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="font-jakarta text-white/40 text-sm leading-relaxed">{item}</p>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 pt-6 border-t border-white/[0.06]">
+                  <p className="font-jakarta text-white/20 text-[12px]">
+                    No commitment. DPDP compliant. Responds within 1 business day.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sidebar overlay — always in DOM, CSS controls visibility */}
+      <div
+        className={`fixed inset-0 z-[100] transition-all duration-300 ${
+          sidebarOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
+            sidebarOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={closeSidebar}
+        />
+
+        {/* Sidebar panel */}
+        <div
+          className={`absolute right-0 top-0 bottom-0 w-full md:w-[440px] bg-[#0C0C0C] border-l border-white/[0.08] overflow-y-auto transition-transform duration-500 ${
+            sidebarOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+        >
+          <div className="p-10">
+            {/* Header */}
+            <div className="flex items-start justify-between mb-8">
+              <div>
+                <p className="font-syne font-black text-white text-xl tracking-tight">KYNATO</p>
+                <p className="font-jakarta text-white/40 text-sm mt-1">
+                  Let&apos;s talk about your situation.
+                </p>
+              </div>
+              <button
+                onClick={closeSidebar}
+                className="text-white/30 hover:text-white transition-colors p-1 mt-0.5"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {submitted ? (
+              <div className="flex flex-col items-center justify-center py-16 text-center">
+                <div className="w-12 h-12 rounded-full border border-[#00FF88]/30 bg-[#00FF88]/[0.08] flex items-center justify-center mb-4">
+                  <span className="text-[#00FF88] text-xl">✓</span>
+                </div>
+                <p className="font-syne font-bold text-white text-lg mb-2">Message Sent</p>
+                <p className="font-jakarta text-white/40 text-sm">
+                  We&apos;ll be in touch within 1 business day.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Name */}
+                <div>
+                  <label className="font-jakarta text-[11px] font-bold text-white/40 tracking-[0.15em] uppercase block mb-2">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 font-jakarta text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#00FF88]/30 transition-colors"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="font-jakarta text-[11px] font-bold text-white/40 tracking-[0.15em] uppercase block mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 font-jakarta text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#00FF88]/30 transition-colors"
+                    placeholder="you@company.com"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="font-jakarta text-[11px] font-bold text-white/40 tracking-[0.15em] uppercase block mb-2">
+                    Phone / WhatsApp
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 font-jakarta text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#00FF88]/30 transition-colors"
+                    placeholder="+91 XXXXX XXXXX"
+                  />
+                </div>
+
+                {/* Role */}
+                <div>
+                  <label className="font-jakarta text-[11px] font-bold text-white/40 tracking-[0.15em] uppercase block mb-3">
+                    I am a... *
+                  </label>
+                  <div className="space-y-2">
+                    {roleOptions.map((role) => (
+                      <label key={role} className="flex items-center gap-3 cursor-pointer group/role">
+                        <div
+                          className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-all cursor-pointer ${
+                            selectedRole === role
+                              ? "border-[#00FF88] bg-[#00FF88]/20"
+                              : "border-white/20 group-hover/role:border-[#00FF88]/40"
+                          }`}
+                          onClick={() => setSelectedRole(role)}
+                        >
+                          {selectedRole === role && (
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#00FF88]" />
+                          )}
+                        </div>
+                        <span
+                          className="font-jakarta text-sm text-white/50 group-hover/role:text-white/70 transition-colors cursor-pointer"
+                          onClick={() => setSelectedRole(role)}
+                        >
+                          {role}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* What to solve */}
+                <div>
+                  <label className="font-jakarta text-[11px] font-bold text-white/40 tracking-[0.15em] uppercase block mb-2">
+                    What are you looking to solve? *
+                  </label>
+                  <textarea
+                    required
+                    rows={3}
+                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 font-jakarta text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#00FF88]/30 transition-colors resize-none"
+                    placeholder="leads, automation, AI visibility, knowledge..."
+                  />
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  className="w-full bg-[#00FF88] hover:bg-[#00FF88]/90 text-black font-jakarta text-sm font-bold h-12 rounded-xl flex items-center justify-center gap-2 transition-all duration-300"
+                >
+                  Send Message <ArrowRight className="h-4 w-4" />
+                </button>
+
+                <p className="font-jakarta text-[11px] text-white/20 text-center">
+                  No commitment. DPDP compliant. Responds within 1 business day.
+                </p>
+              </form>
+            )}
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }

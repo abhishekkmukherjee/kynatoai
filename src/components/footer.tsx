@@ -1,42 +1,39 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-[#030305] border-t border-white/[0.04] pt-16 pb-8 relative overflow-hidden">
-      {/* Ambient top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-accent-teal/20 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#027C88]/[0.025] blur-[100px] rounded-full pointer-events-none" />
+    <footer className="kyn-footer bg-[#080808] border-t border-white/[0.04] relative overflow-hidden">
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10 pt-16 pb-0">
+
+        {/* 4-column footer grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-16">
 
           {/* Column 1 — Brand */}
-          <div className="space-y-6">
+          <div className="lg:col-span-3 space-y-5">
             <div>
-              <span className="font-urbanist font-black text-2xl gradient-text-teal tracking-tight block mb-1">
+              <span className="font-syne font-black text-white text-2xl tracking-tight block mb-1">
                 KYNATO
               </span>
-              <span className="text-xs font-bold text-white/30 tracking-[0.15em] uppercase">Make Intelligence Work.</span>
+              <span className="font-jakarta text-[11px] font-bold text-[#00FF88]/50 tracking-[0.2em] uppercase">
+                Make Intelligence Work.
+              </span>
             </div>
-            <p className="text-sm text-white/30 leading-relaxed">
-              Kynato is a B2B artificial intelligence (AI) agency based in India that functions
-              as an intelligence ecosystem, building and operating growth, intelligence, and
-              automation systems for businesses.
+            <p className="font-jakarta text-white/30 text-[13px] leading-relaxed max-w-[240px]">
+              AI intelligence ecosystem building and operating growth, knowledge, and automation systems for Indian B2B businesses.
             </p>
-            <div className="pt-1">
+            <a
+              href="mailto:hello@kynato.com"
+              className="block font-jakarta text-sm text-white/40 hover:text-[#00FF88] transition-colors duration-300"
+            >
+              hello@kynato.com
+            </a>
+            <div className="flex gap-2">
               <a
-                href="mailto:hello@kynato.com"
-                className="text-sm font-medium text-white/50 hover:text-accent-teal transition-colors duration-300"
-              >
-                hello@kynato.com
-              </a>
-            </div>
-            <div className="flex space-x-3">
-              <a
-                href="https://linkedin.com/company/KynatoAI"
+                href="https://linkedin.com/company/kynato"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/40 hover:text-white hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300"
+                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-white hover:border-white/[0.15] transition-all duration-300"
               >
                 <span className="sr-only">LinkedIn</span>
                 <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -44,99 +41,201 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="https://twitter.com/KynatoAI"
+                href="https://twitter.com/kynato"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/40 hover:text-white hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300"
+                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-white hover:border-white/[0.15] transition-all duration-300"
               >
                 <span className="sr-only">Twitter / X</span>
                 <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                 </svg>
               </a>
+              <a
+                href="https://instagram.com/kynato"
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-white hover:border-white/[0.15] transition-all duration-300"
+              >
+                <span className="sr-only">Instagram</span>
+                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
             </div>
           </div>
 
-          {/* Column 2 — Search & Demand */}
-          <div className="space-y-8">
-            <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Search &amp; AI Visibility</h4>
-              <ul className="space-y-2 text-sm text-white/30">
-                <li><Link href="/services/search-ai-visibility/seo/" className="hover:text-white transition-colors duration-300">SEO &amp; Organic Visibility</Link></li>
-                <li><Link href="/services/search-ai-visibility/seo/technical-seo" className="hover:text-white transition-colors duration-300">Technical SEO</Link></li>
-                <li><Link href="/services/search-ai-visibility/seo/content-strategy" className="hover:text-white transition-colors duration-300">Content Strategy &amp; Authority</Link></li>
-                <li><Link href="/services/search-ai-visibility/seo/local-seo" className="hover:text-white transition-colors duration-300">Local SEO India</Link></li>
-                <li><Link href="/services/search-ai-visibility/ai-visibility/" className="hover:text-white transition-colors duration-300">AI Search Visibility &amp; GEO</Link></li>
-                <li><Link href="/services/search-ai-visibility/ai-visibility/geo-optimisation/" className="hover:text-white transition-colors duration-300">Generative Engine Opt. (GEO)</Link></li>
-                <li><Link href="/services/search-ai-visibility/ai-visibility/aeo/" className="hover:text-white transition-colors duration-300">Answer Engine Opt. (AEO)</Link></li>
-              </ul>
+          {/* Column 2 — Capabilities */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-7">
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                  Search &amp; Visibility
+                </h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "SEO & AI Visibility", href: "/services/search-ai-visibility/seo/" },
+                    { label: "Generative Engine Optimisation", href: "/services/search-ai-visibility/ai-visibility/geo-optimisation/" },
+                    { label: "Answer Engine Optimisation", href: "/services/search-ai-visibility/ai-visibility/aeo/" },
+                    { label: "AI Readiness Audit", href: "/services/search-ai-visibility/ai-visibility/ai-readiness-audit/" },
+                    { label: "Local SEO India", href: "/services/search-ai-visibility/seo/local-seo/" },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                  Demand Generation
+                </h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "Inbound Lead Architecture", href: "/services/demand-generation/inbound-lead-architecture/" },
+                    { label: "Outbound & Paid Acquisition", href: "/services/demand-generation/outbound-paid-acquisition/" },
+                    { label: "AI Lead Scoring & Nurturing", href: "/services/demand-generation/ai-lead-nurturing/" },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                  Knowledge &amp; Applied AI
+                </h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "Knowledge AI & RAG Systems", href: "/services/knowledge-applied-ai/rag-systems/" },
+                    { label: "Document Intelligence", href: "/services/knowledge-applied-ai/document-intelligence/" },
+                    { label: "AI Assistant Deployment", href: "/services/knowledge-applied-ai/ai-assistant/" },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Demand Generation</h4>
-              <ul className="space-y-2 text-sm text-white/30">
-                <li><Link href="/services/demand-generation/inbound-lead-architecture/" className="hover:text-white transition-colors duration-300">Inbound Lead Architecture</Link></li>
-                <li><Link href="/services/demand-generation/outbound-paid-acquisition/" className="hover:text-white transition-colors duration-300">Outbound &amp; Paid Acquisition</Link></li>
-                <li><Link href="/services/demand-generation/ai-lead-nurturing/" className="hover:text-white transition-colors duration-300">AI Lead Nurturing</Link></li>
-              </ul>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                  Agentic Automation
+                </h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "Agentic Workflow Automation", href: "/services/agentic-automation/agentic-workflows/" },
+                    { label: "Core Business Automation", href: "/services/agentic-automation/core-automation/" },
+                    { label: "WhatsApp Automation", href: "/services/agentic-automation/conversational-automation/" },
+                    { label: "Voice AI", href: "/services/agentic-automation/conversational-automation/voice-ai/" },
+                    { label: "Content Production Automation", href: "/services/agentic-automation/conversational-automation/content-automation/" },
+                    { label: "RPA", href: "/services/agentic-automation/core-automation/" },
+                  ].map((item) => (
+                    <li key={item.label}>
+                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                  Intelligence &amp; Analytics
+                </h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "Search & AI Analytics", href: "/services/intelligence-analytics/search-intelligence/" },
+                    { label: "AI Visibility Tracking", href: "/services/intelligence-analytics/ai-visibility-tracking/" },
+                    { label: "Business Performance Analytics", href: "/services/intelligence-analytics/business-analytics/" },
+                    { label: "Predictive Analytics", href: "/services/intelligence-analytics/business-analytics/predictive-analytics/" },
+                    { label: "Competitive Intelligence", href: "/services/intelligence-analytics/ai-visibility-tracking/competitive-intelligence/" },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* Column 3 — Knowledge, Agentic, Analytics */}
-          <div className="space-y-8">
+          {/* Column 3 — Intelligence Lab + Company */}
+          <div className="lg:col-span-2 space-y-7">
             <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Knowledge &amp; Applied AI</h4>
-              <ul className="space-y-2 text-sm text-white/30">
-                <li><Link href="/services/knowledge-applied-ai/rag-systems/" className="hover:text-white transition-colors duration-300">Custom RAG Systems</Link></li>
-                <li><Link href="/services/knowledge-applied-ai/ai-assistant/" className="hover:text-white transition-colors duration-300">AI Assistant Deployment</Link></li>
-                <li><Link href="/services/knowledge-applied-ai/document-intelligence/" className="hover:text-white transition-colors duration-300">Document Intelligence</Link></li>
+              <h4 className="font-jakarta text-[10px] font-black text-white/30 mb-3 tracking-[0.2em] uppercase">
+                Intelligence Lab
+              </h4>
+              <ul className="space-y-2">
+                {[
+                  { label: "Insights", href: "/intelligence-lab/" },
+                  { label: "Perspectives", href: "/intelligence-lab/" },
+                  { label: "Resources", href: "/intelligence-lab/" },
+                  { label: "Founder Notes", href: "/intelligence-lab/" },
+                  { label: "Case Studies", href: "/intelligence-lab/case-studies/" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
-            <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Agentic Automation</h4>
-              <ul className="space-y-2 text-sm text-white/30">
-                <li><Link href="/services/agentic-automation/agentic-workflows/" className="hover:text-white transition-colors duration-300">Agentic Workflow Systems</Link></li>
-                <li><Link href="/services/agentic-automation/core-automation/" className="hover:text-white transition-colors duration-300">Core Process Automation</Link></li>
-                <li><Link href="/services/agentic-automation/conversational-automation/" className="hover:text-white transition-colors duration-300">Conversational Automation &amp; Voice AI</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Intelligence &amp; Analytics</h4>
-              <ul className="space-y-2 text-sm text-white/30">
-                <li><Link href="/services/intelligence-analytics/search-intelligence/" className="hover:text-white transition-colors duration-300">Search Intelligence</Link></li>
-                <li><Link href="/services/intelligence-analytics/ai-visibility-tracking/" className="hover:text-white transition-colors duration-300">AI Visibility Tracking</Link></li>
-                <li><Link href="/services/intelligence-analytics/business-analytics/" className="hover:text-white transition-colors duration-300">Business Analytics</Link></li>
-              </ul>
-            </div>
-          </div>
 
-          {/* Column 4 — Company */}
-          <div className="space-y-8">
             <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Company</h4>
-              <ul className="space-y-2 text-sm text-white/30">
-                <li><Link href="/who-we-are" className="hover:text-white transition-colors duration-300">Who We Are</Link></li>
-                <li><Link href="/industries" className="hover:text-white transition-colors duration-300">Industries</Link></li>
-                <li><Link href="/insights" className="hover:text-white transition-colors duration-300">Insights</Link></li>
-                <li><Link href="/careers" className="hover:text-white transition-colors duration-300">Careers</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors duration-300">Contact</Link></li>
+              <h4 className="font-jakarta text-[10px] font-black text-white/30 mb-3 tracking-[0.2em] uppercase">
+                Company
+              </h4>
+              <ul className="space-y-2">
+                {[
+                  { label: "About Kynato", href: "/who-we-are" },
+                  { label: "Industries", href: "/industries" },
+                  { label: "Who We Work With", href: "/who-we-are" },
+                  { label: "Careers", href: "/careers" },
+                  { label: "Contact", href: "/contact" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
+
             <div>
-              <h4 className="text-[10px] font-black text-white/40 mb-4 tracking-[0.2em] uppercase">Quick Actions</h4>
-              <ul className="space-y-2 text-sm font-medium">
+              <h4 className="font-jakarta text-[10px] font-black text-white/30 mb-3 tracking-[0.2em] uppercase">
+                Start Here
+              </h4>
+              <ul className="space-y-2">
                 <li>
-                  <Link href="/strategy" className="text-accent-teal/80 hover:text-accent-teal transition-colors duration-300 flex items-center gap-1.5">
-                    Book a Strategy Call <span className="opacity-60">→</span>
+                  <Link href="/contact" className="font-jakarta text-[13px] font-semibold text-[#00FF88]/60 hover:text-[#00FF88] link-underline transition-colors duration-300">
+                    Talk to Our Team →
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-white/30 hover:text-white transition-colors duration-300 flex items-center gap-1.5">
-                    Send a Message <span className="opacity-60">→</span>
+                  <Link href="/contact" className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                    Send a Message →
                   </Link>
                 </li>
                 <li>
-                  <a href="https://wa.me/919100000000" className="text-white/30 hover:text-white transition-colors duration-300 flex items-center gap-1.5">
-                    WhatsApp Us <span className="opacity-60">→</span>
+                  <a href="https://wa.me/91" className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                    WhatsApp Us →
                   </a>
                 </li>
               </ul>
@@ -144,26 +243,38 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/[0.04] pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div className="text-xs text-white/20">
+        {/* Bottom bar */}
+        <div className="border-t border-white/[0.06] py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="font-jakarta text-[12px] text-white/20">
             <p>© 2026 Kynato Nexinnovations LLP. All rights reserved.</p>
-            <div className="mt-1.5 flex items-center gap-2">
-              <Link href="/privacy" className="hover:text-white/50 transition-colors duration-300">Privacy Policy</Link>
+            <div className="mt-1 flex items-center gap-3">
+              <Link href="/privacy" className="hover:text-white/40 transition-colors duration-300">Privacy Policy</Link>
               <span className="text-white/[0.1]">·</span>
-              <Link href="/terms" className="hover:text-white/50 transition-colors duration-300">Terms of Service</Link>
+              <Link href="/terms" className="hover:text-white/40 transition-colors duration-300">Terms of Service</Link>
               <span className="text-white/[0.1]">·</span>
-              <Link href="/sitemap" className="hover:text-white/50 transition-colors duration-300">Sitemap</Link>
+              <Link href="/sitemap" className="hover:text-white/40 transition-colors duration-300">Sitemap</Link>
             </div>
           </div>
           <div className="text-right">
-            <span className="block text-xs font-bold text-white/30 mb-1 tracking-wider">Built in India. Deployed everywhere.</span>
-            <span className="text-[10px] text-white/15 leading-relaxed">
-              AI Agency India · GEO Agency India · AI Visibility · Knowledge AI · RAG Systems · Agentic Automation India
+            <span className="font-jakarta block text-[12px] font-bold text-white/20 mb-0.5 tracking-wider">
+              Built in India. Deployed everywhere.
+            </span>
+            <span className="font-jakarta text-[11px] text-white/10 leading-relaxed">
+              AI Intelligence Ecosystem · GEO Services India · Knowledge AI · Agentic Automation
             </span>
           </div>
         </div>
       </div>
+
+      {/* Massive typographic brand watermark */}
+      <div className="overflow-hidden pt-2 pb-0">
+        <p
+          className="font-syne font-black leading-none tracking-[-0.04em] text-white/[0.04] select-none whitespace-nowrap px-6 lg:px-12"
+          style={{ fontSize: "clamp(80px, 15vw, 200px)" }}
+        >
+          KYNATO
+        </p>
+      </div>
     </footer>
-  )
+  );
 }
