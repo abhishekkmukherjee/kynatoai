@@ -20,7 +20,7 @@ import { CtaSection } from "@/components/cta-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#080808] selection:bg-[#00FF88]/20 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-1">
         {/* Part 3 — Hero */}

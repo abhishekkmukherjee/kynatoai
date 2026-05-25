@@ -1,30 +1,51 @@
+"use client";
 import Link from "next/link";
+import { ModeToggle } from "@/components/theme-toggle";
 
 export function Footer() {
   return (
-    <footer className="kyn-footer bg-[#080808] border-t border-white/[0.04] relative overflow-hidden">
+    <footer className="bg-gray-50 dark:bg-[#07070C] border-t border-gray-200 dark:border-white/[0.05] relative overflow-hidden">
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10 pt-10 md:pt-16 pb-0">
+      {/* Near-footer brand description band */}
+      <div className="border-b border-gray-200 dark:border-white/[0.05] py-10 md:py-12">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+          <div className="max-w-[640px]">
+            <p className="font-syne font-black text-gray-900 dark:text-white text-2xl tracking-tight mb-2">KYNATO</p>
+            <p className="font-jakarta text-[#027C88] text-sm font-semibold mb-4">Make Intelligence Work.</p>
+            <p className="font-jakarta text-gray-600 dark:text-white/80 text-[13px] leading-relaxed">
+              Kynato is an AI services consultancy based in India that functions as an intelligence
+              ecosystem, building and operating growth, intelligence, and automation systems for
+              B2B businesses. Five practice areas: Search Engine Optimisation (SEO) and AI Visibility,
+              Demand Generation, Knowledge AI, Agentic Automation, and Business Performance Analytics.
+            </p>
+            <p className="font-jakarta text-gray-500 dark:text-white/65 text-[13px] mt-3 italic">
+              We don&apos;t sell AI. We deploy it where your revenue lives.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10 pt-14 md:pt-18 pb-0">
 
         {/* 4-column footer grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 mb-10 md:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-16">
 
           {/* Column 1 — Brand */}
           <div className="lg:col-span-3 space-y-5">
             <div>
-              <span className="font-syne font-black text-white text-2xl tracking-tight block mb-1">
+              <span className="font-syne font-black text-gray-900 dark:text-white text-2xl tracking-tight block mb-1">
                 KYNATO
               </span>
-              <span className="font-jakarta text-[11px] font-bold text-[#00FF88]/50 tracking-[0.2em] uppercase">
+              <span className="font-jakarta text-[11px] font-semibold text-[#027C88] tracking-wider uppercase">
                 Make Intelligence Work.
               </span>
             </div>
-            <p className="font-jakarta text-white/30 text-[13px] leading-relaxed max-w-full md:max-w-[240px]">
+            <p className="font-jakarta text-gray-600 dark:text-white/80 text-[13px] leading-relaxed max-w-full md:max-w-[240px]">
               AI intelligence ecosystem building and operating growth, knowledge, and automation systems for Indian B2B businesses.
             </p>
             <a
               href="mailto:hello@kynato.com"
-              className="block font-jakarta text-sm text-white/40 hover:text-[#00FF88] transition-colors duration-300"
+              className="block font-jakarta text-sm text-gray-500 dark:text-white/60 hover:text-[#027C88] transition-colors duration-200"
             >
               hello@kynato.com
             </a>
@@ -33,7 +54,7 @@ export function Footer() {
                 href="https://linkedin.com/company/kynato"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-white hover:border-white/[0.15] transition-all duration-300"
+                className="w-8 h-8 rounded-lg border border-gray-200 dark:border-white/[0.08] flex items-center justify-center text-gray-500 dark:text-white/65 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/[0.2] transition-all duration-200"
               >
                 <span className="sr-only">LinkedIn</span>
                 <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -44,7 +65,7 @@ export function Footer() {
                 href="https://twitter.com/kynato"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-white hover:border-white/[0.15] transition-all duration-300"
+                className="w-8 h-8 rounded-lg border border-gray-200 dark:border-white/[0.08] flex items-center justify-center text-gray-500 dark:text-white/65 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/[0.2] transition-all duration-200"
               >
                 <span className="sr-only">Twitter / X</span>
                 <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -55,7 +76,7 @@ export function Footer() {
                 href="https://instagram.com/kynato"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg border border-white/[0.07] bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-white hover:border-white/[0.15] transition-all duration-300"
+                className="w-8 h-8 rounded-lg border border-gray-200 dark:border-white/[0.08] flex items-center justify-center text-gray-500 dark:text-white/65 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/[0.2] transition-all duration-200"
               >
                 <span className="sr-only">Instagram</span>
                 <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -66,10 +87,10 @@ export function Footer() {
           </div>
 
           {/* Column 2 — Capabilities */}
-          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-2 gap-5 sm:gap-7">
+          <div className="lg:col-span-5 grid grid-cols-2 gap-5 sm:gap-7">
             <div className="space-y-6">
               <div>
-                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                <h4 className="font-jakarta text-[10px] font-black text-[#027C88] mb-3 tracking-wider uppercase">
                   Search &amp; Visibility
                 </h4>
                 <ul className="space-y-2">
@@ -81,7 +102,7 @@ export function Footer() {
                     { label: "Local SEO India", href: "/services/search-ai-visibility/seo/local-seo/" },
                   ].map((item) => (
                     <li key={item.href}>
-                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                         {item.label}
                       </Link>
                     </li>
@@ -90,7 +111,7 @@ export function Footer() {
               </div>
 
               <div>
-                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                <h4 className="font-jakarta text-[10px] font-black text-[#027C88] mb-3 tracking-wider uppercase">
                   Demand Generation
                 </h4>
                 <ul className="space-y-2">
@@ -100,7 +121,7 @@ export function Footer() {
                     { label: "AI Lead Scoring & Nurturing", href: "/services/demand-generation/ai-lead-nurturing/" },
                   ].map((item) => (
                     <li key={item.href}>
-                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                         {item.label}
                       </Link>
                     </li>
@@ -109,7 +130,7 @@ export function Footer() {
               </div>
 
               <div>
-                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                <h4 className="font-jakarta text-[10px] font-black text-[#027C88] mb-3 tracking-wider uppercase">
                   Knowledge &amp; Applied AI
                 </h4>
                 <ul className="space-y-2">
@@ -119,7 +140,7 @@ export function Footer() {
                     { label: "AI Assistant Deployment", href: "/services/knowledge-applied-ai/ai-assistant/" },
                   ].map((item) => (
                     <li key={item.href}>
-                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                         {item.label}
                       </Link>
                     </li>
@@ -130,7 +151,7 @@ export function Footer() {
 
             <div className="space-y-6">
               <div>
-                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                <h4 className="font-jakarta text-[10px] font-black text-[#027C88] mb-3 tracking-wider uppercase">
                   Agentic Automation
                 </h4>
                 <ul className="space-y-2">
@@ -143,7 +164,7 @@ export function Footer() {
                     { label: "RPA", href: "/services/agentic-automation/core-automation/" },
                   ].map((item) => (
                     <li key={item.label}>
-                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                         {item.label}
                       </Link>
                     </li>
@@ -152,7 +173,7 @@ export function Footer() {
               </div>
 
               <div>
-                <h4 className="font-jakarta text-[10px] font-black text-[#00FF88]/50 mb-3 tracking-[0.2em] uppercase">
+                <h4 className="font-jakarta text-[10px] font-black text-[#027C88] mb-3 tracking-wider uppercase">
                   Intelligence &amp; Analytics
                 </h4>
                 <ul className="space-y-2">
@@ -164,7 +185,7 @@ export function Footer() {
                     { label: "Competitive Intelligence", href: "/services/intelligence-analytics/ai-visibility-tracking/competitive-intelligence/" },
                   ].map((item) => (
                     <li key={item.href}>
-                      <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                      <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                         {item.label}
                       </Link>
                     </li>
@@ -177,7 +198,7 @@ export function Footer() {
           {/* Column 3 — Intelligence Lab + Company */}
           <div className="lg:col-span-2 space-y-7">
             <div>
-              <h4 className="font-jakarta text-[10px] font-black text-white/30 mb-3 tracking-[0.2em] uppercase">
+              <h4 className="font-jakarta text-[10px] font-black text-gray-700 dark:text-white/80 mb-3 tracking-wider uppercase">
                 Intelligence Lab
               </h4>
               <ul className="space-y-2">
@@ -189,7 +210,7 @@ export function Footer() {
                   { label: "Case Studies", href: "/intelligence-lab/case-studies/" },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                    <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                       {item.label}
                     </Link>
                   </li>
@@ -198,7 +219,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="font-jakarta text-[10px] font-black text-white/30 mb-3 tracking-[0.2em] uppercase">
+              <h4 className="font-jakarta text-[10px] font-black text-gray-700 dark:text-white/80 mb-3 tracking-wider uppercase">
                 Company
               </h4>
               <ul className="space-y-2">
@@ -210,7 +231,7 @@ export function Footer() {
                   { label: "Contact", href: "/contact" },
                 ].map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                    <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                       {item.label}
                     </Link>
                   </li>
@@ -219,22 +240,22 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="font-jakarta text-[10px] font-black text-white/30 mb-3 tracking-[0.2em] uppercase">
+              <h4 className="font-jakarta text-[10px] font-black text-gray-700 dark:text-white/80 mb-3 tracking-wider uppercase">
                 Start Here
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/contact" className="font-jakarta text-[13px] font-semibold text-[#00FF88]/60 hover:text-[#00FF88] link-underline transition-colors duration-300">
+                  <Link href="/contact" className="font-jakarta text-[13px] font-semibold text-[#027C88] hover:text-[#026070] link-underline transition-colors duration-200">
                     Talk to Our Team →
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                  <Link href="/contact" className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                     Send a Message →
                   </Link>
                 </li>
                 <li>
-                  <a href="https://wa.me/91" className="font-jakarta text-[13px] text-white/30 hover:text-white transition-colors duration-300">
+                  <a href="https://wa.me/91" className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                     WhatsApp Us →
                   </a>
                 </li>
@@ -244,32 +265,35 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] py-5 md:py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4">
-          <div className="font-jakarta text-[12px] text-white/20">
-            <p>© 2026 Kynato Nexinnovations LLP. All rights reserved.</p>
-            <div className="mt-1 flex items-center gap-3">
-              <Link href="/privacy" className="hover:text-white/40 transition-colors duration-300">Privacy Policy</Link>
-              <span className="text-white/[0.1]">·</span>
-              <Link href="/terms" className="hover:text-white/40 transition-colors duration-300">Terms of Service</Link>
-              <span className="text-white/[0.1]">·</span>
-              <Link href="/sitemap" className="hover:text-white/40 transition-colors duration-300">Sitemap</Link>
+        <div className="border-t border-gray-200 dark:border-white/[0.06] py-5 md:py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+            <ModeToggle />
+            <div className="font-jakarta text-[12px] text-gray-500 dark:text-white/65">
+              <p>© 2026 Kynato Nexinnovations LLP. All rights reserved.</p>
+              <div className="mt-1 flex items-center gap-3">
+                <Link href="/privacy" className="hover:text-gray-700 dark:hover:text-white/70 transition-colors duration-200">Privacy Policy</Link>
+                <span className="text-gray-300 dark:text-white/[0.1]">·</span>
+                <Link href="/terms" className="hover:text-gray-700 dark:hover:text-white/70 transition-colors duration-200">Terms of Service</Link>
+                <span className="text-gray-300 dark:text-white/[0.1]">·</span>
+                <Link href="/sitemap" className="hover:text-gray-700 dark:hover:text-white/70 transition-colors duration-200">Sitemap</Link>
+              </div>
             </div>
           </div>
           <div className="text-right">
-            <span className="font-jakarta block text-[12px] font-bold text-white/20 mb-0.5 tracking-wider">
+            <span className="font-jakarta block text-[12px] font-bold text-gray-400 dark:text-white/35 mb-0.5 tracking-wider">
               Built in India. Deployed everywhere.
             </span>
-            <span className="font-jakarta text-[11px] text-white/10 leading-relaxed">
-              AI Intelligence Ecosystem · GEO Services India · Knowledge AI · Agentic Automation
+            <span className="font-jakarta text-[11px] text-gray-400 dark:text-white/25 leading-relaxed">
+              AI Intelligence Ecosystem · GEO Services India · AI Visibility · Knowledge AI · RAG Systems · Agentic Automation India
             </span>
           </div>
         </div>
       </div>
 
-      {/* Massive typographic brand watermark */}
+      {/* Brand watermark */}
       <div className="overflow-hidden pt-2 pb-0">
         <p
-          className="font-syne font-black leading-none tracking-[-0.04em] text-white/[0.04] select-none whitespace-nowrap px-6 lg:px-12"
+          className="font-syne font-black leading-none tracking-[-0.04em] text-gray-200 dark:text-white/[0.03] select-none whitespace-nowrap w-full text-center"
           style={{ fontSize: "clamp(80px, 15vw, 200px)" }}
         >
           KYNATO

@@ -66,29 +66,27 @@ export function IntelligenceLabSection() {
     : posts.filter(p => p.category === activeFilter);
 
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#0C0C0C] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-gray-50 dark:bg-[#0C0C0C] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
-        <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ INTELLIGENCE LAB ]
-          </span>
+        {/* Section rule */}
+        <div className="section-rule mb-14">
+          <span>Intelligence Lab</span>
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-8 md:mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-8 md:mb-12">
           <div className="lg:col-span-5">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <p className="font-jakarta text-sm font-semibold text-[#027C88] mb-3">
               From the Intelligence Lab
-            </span>
+            </p>
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em] mb-4"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em] mb-4"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               What We Know, We Publish.
             </h2>
-            <p className="font-jakarta text-white/40 text-base leading-relaxed">
+            <p className="font-jakarta text-gray-700 dark:text-white/70 text-base leading-relaxed">
               Original analysis, case breakdowns, and specific perspectives on AI visibility,
               agentic automation, and growth systems for Indian businesses. No fluff.
             </p>
@@ -101,10 +99,10 @@ export function IntelligenceLabSection() {
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`font-jakarta text-[11px] font-medium px-4 py-2 rounded-full border transition-all duration-200 ${
+              className={`font-jakarta text-[11px] font-semibold px-4 py-2 rounded-full border transition-all duration-200 ${
                 activeFilter === cat
-                  ? "bg-[#00FF88] text-black border-[#00FF88]"
-                  : "bg-transparent text-white/35 border-white/[0.1] hover:border-white/[0.2] hover:text-white/60"
+                  ? "bg-[#027C88] text-white border-[#027C88]"
+                  : "bg-white dark:bg-transparent text-gray-700 dark:text-white/60 border-gray-200 dark:border-white/[0.1] hover:border-gray-300 dark:hover:border-white/[0.2] hover:text-gray-700 dark:hover:text-white/70"
               }`}
             >
               {cat}
@@ -115,41 +113,36 @@ export function IntelligenceLabSection() {
         {/* Post cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {filtered.map((post, i) => (
-            <div
-              key={i}
-              className="border border-white/[0.08] bg-white/[0.03] rounded-2xl overflow-hidden hover:border-white/[0.15] transition-all duration-300 flex flex-col group"
-            >
+            <div key={i} className="kyn-card overflow-hidden flex flex-col group">
               {/* Visual placeholder */}
-              <div className="h-[120px] bg-[#080808] flex items-center justify-center border-b border-white/[0.06]">
-                <span className="font-jakarta text-[10px] text-white/10 tracking-[0.2em] uppercase">
-                  {post.category} Visual
+              <div className="h-[100px] bg-gray-50 dark:bg-[#080808] flex items-center justify-center border-b border-gray-100 dark:border-white/[0.06]">
+                <span className="font-jakarta text-[10px] text-gray-300 dark:text-white/25 tracking-widest uppercase">
+                  {post.category}
                 </span>
               </div>
 
               <div className="p-6 flex flex-col flex-1">
-                <span className="inline-block mb-3 font-jakarta text-[10px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full border border-[#00FF88]/20 text-[#00FF88]/50 w-fit">
-                  {post.category}
-                </span>
+                <span className="kyn-badge mb-3">{post.category}</span>
 
-                <h3 className="font-syne font-bold text-white text-base leading-snug mb-3 flex-1 group-hover:text-white transition-colors">
+                <h3 className="font-syne font-bold text-gray-900 dark:text-white text-base leading-snug mb-3 flex-1">
                   {post.headline}
                 </h3>
 
-                <p className="font-jakarta text-white/35 text-[13px] leading-relaxed mb-4">
+                <p className="font-jakarta text-gray-700 dark:text-white/60 text-[13px] leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
 
                 {post.author && (
-                  <p className="font-jakarta text-[12px] text-white/25 mb-3">{post.author}</p>
+                  <p className="font-jakarta text-[12px] text-gray-600 dark:text-white/50 mb-3">{post.author}</p>
                 )}
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/[0.06]">
-                  <span className="font-jakarta text-[11px] text-white/20">
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-white/[0.06]">
+                  <span className="font-jakarta text-[11px] text-gray-600 dark:text-white/45">
                     {post.readTime} · {post.tags}
                   </span>
                   <Link
                     href={post.href}
-                    className="font-jakarta text-[12px] font-semibold text-[#00FF88]/50 hover:text-[#00FF88] transition-colors flex items-center gap-1"
+                    className="font-jakarta text-[12px] font-semibold text-[#027C88] hover:text-[#026070] transition-colors flex items-center gap-1"
                   >
                     {post.cta ?? "Read"} <ArrowRight className="h-3 w-3" />
                   </Link>
@@ -162,8 +155,7 @@ export function IntelligenceLabSection() {
         {/* CTA */}
         <Link
           href="/intelligence-lab/"
-          className="inline-flex items-center gap-2 px-7 border border-white/[0.12] rounded-xl font-jakarta text-sm font-medium text-white/40 hover:border-[#00FF88]/40 hover:text-[#00FF88]/70 transition-all duration-300"
-          style={{ height: "3rem" }}
+          className="inline-flex items-center gap-2 px-6 h-11 border border-gray-200 dark:border-white/[0.12] rounded-xl font-jakarta text-sm font-medium text-gray-600 dark:text-white/70 hover:border-[#027C88]/40 hover:text-[#027C88] dark:hover:text-[#027C88]/70 transition-all duration-200"
         >
           Browse the Intelligence Lab <ArrowRight className="h-3.5 w-3.5" />
         </Link>

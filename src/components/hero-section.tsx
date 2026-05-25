@@ -1,65 +1,62 @@
 import { ArrowRight, ArrowDown } from "lucide-react";
 import Link from "next/link";
+import { Spotlight } from "@/components/ui/spotlight";
+import { Highlight } from "@/components/ui/hero-highlight";
 
 export function HeroSection() {
   return (
-    <section className="hero-section relative min-h-screen flex flex-col justify-center bg-[#080808] overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center bg-gray-50 dark:bg-[#07070C] overflow-hidden">
 
-      {/* Subtle dot grid */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-[0.35] pointer-events-none" />
+      {/* Aceternity Spotlight */}
+      <Spotlight
+        className="-top-40 left-0 md:left-1/4 md:-top-20"
+        fill="white"
+      />
 
-      {/* Ambient accent glow — bottom left */}
-      <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-[#00FF88]/[0.04] blur-[160px] rounded-full pointer-events-none" />
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-20 dark:opacity-40 pointer-events-none" />
 
-      {/* Decorative oversized number */}
-      <span
-        className="absolute right-0 top-1/2 -translate-y-1/2 font-syne font-black select-none pointer-events-none leading-none"
-        style={{
-          fontSize: "clamp(12rem, 28vw, 24rem)",
-          color: "rgba(255,255,255,0.025)",
-          lineHeight: 1,
-        }}
-      >
-        01
-      </span>
+      {/* Soft teal glow */}
+      <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#027C88]/[0.04] dark:bg-[#027C88]/[0.06] blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-[#006AF0]/[0.03] dark:bg-[#006AF0]/[0.04] blur-[100px] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-24 sm:pt-28 md:pt-32 pb-14 sm:pb-18 md:pb-24">
-
-        {/* Section label */}
-        <div className="hero-line-1 flex items-center gap-3 mb-6 sm:mb-10">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.08em] sm:tracking-[0.25em] uppercase text-[#00FF88]/70 shrink-0">
-            THE INTELLIGENCE ECOSYSTEM
-          </span>
-          <div className="h-px w-10 sm:w-16 bg-[#00FF88]/30 shrink-0" />
-        </div>
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-28 sm:pt-32 pb-16 sm:pb-20">
 
         {/* Eyebrow */}
-        <p className="hero-line-2 font-jakarta text-[11px] font-semibold text-white/35 tracking-[0.04em] sm:tracking-[0.15em] uppercase mb-4 sm:mb-6">
+        <div className="hero-line-1 flex items-center gap-3 mb-8">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#027C88]/25 bg-[#027C88]/[0.08]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#027C88]" />
+            <span className="font-jakarta text-[11px] font-semibold text-[#027C88] tracking-wider uppercase">
+              The Intelligence Ecosystem
+            </span>
+          </span>
+        </div>
+
+        {/* Target line */}
+        <p className="hero-line-2 font-jakarta text-sm font-medium text-gray-500 dark:text-white/70 tracking-wide mb-5">
           Founders · Startups · Growth Teams · Operations Leaders
         </p>
 
         {/* H1 */}
         <h1
-          className="hero-line-3 font-syne font-black text-white leading-[1.05] tracking-[-0.02em] sm:tracking-[-0.035em] mb-5 sm:mb-8"
-          style={{ fontSize: "clamp(2rem, 7.5vw, 6.5rem)" }}
+          className="hero-line-3 font-syne font-black text-gray-900 dark:text-white leading-[1.04] tracking-[-0.03em] mb-6"
+          style={{ fontSize: "clamp(2.25rem, 7vw, 6rem)" }}
         >
           The Intelligence
           <br />
           Ecosystem Built for
           <br />
-          <span className="hero-gradient-text">
-            Business Growth.
-          </span>
+          <Highlight>Business Growth.</Highlight>
         </h1>
 
         {/* Manifesto */}
-        <p className="hero-line-4 font-jakarta text-base sm:text-lg md:text-xl text-white/40 font-light mb-4 sm:mb-5 italic max-w-xl">
+        <p className="hero-line-4 font-jakarta text-lg md:text-xl text-gray-500 dark:text-white/60 font-light italic mb-4 max-w-lg">
           &ldquo;We don&apos;t sell AI. We deploy it where your revenue lives.&rdquo;
         </p>
 
-        {/* Subheadline */}
-        <p className="hero-line-4 font-jakarta text-base md:text-lg text-white/50 max-w-[520px] leading-relaxed mb-8 sm:mb-12">
+        {/* Subline */}
+        <p className="hero-line-4 font-jakarta text-base md:text-lg text-gray-600 dark:text-white/70 max-w-[520px] leading-relaxed mb-10">
           Kynato is an AI services consultancy based in India that functions as an intelligence
           ecosystem, building and operating growth, intelligence, and automation systems
           for B2B businesses.
@@ -69,16 +66,15 @@ export function HeroSection() {
         <div className="hero-line-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 px-8 h-13 border border-[#00FF88]/60 rounded-xl font-jakarta text-sm font-semibold text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] transition-all duration-300"
-            style={{ height: "3.25rem" }}
+            className="group inline-flex items-center gap-2.5 px-7 h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-sm font-semibold hover:bg-[#026070] transition-colors duration-200"
           >
             Talk to Our Team
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 
           <Link
             href="#how-we-work"
-            className="inline-flex items-center gap-2 font-jakarta text-sm font-medium text-white/40 hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 font-jakarta text-sm font-medium text-gray-500 dark:text-white/60 hover:text-gray-700 dark:hover:text-white/70 transition-colors duration-200"
           >
             See How It Works
             <ArrowDown className="h-4 w-4" />
@@ -87,7 +83,7 @@ export function HeroSection() {
       </div>
 
       {/* Bottom fade */}
-      <div className="hero-bottom-fade absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#080808] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-gray-50 dark:from-[#07070C] to-transparent pointer-events-none" />
     </section>
   );
 }

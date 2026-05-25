@@ -65,24 +65,22 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#0C0C0C] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-white dark:bg-[#080808] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
-        <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ FAQ ]
-          </span>
+        {/* Section rule */}
+        <div className="section-rule mb-14">
+          <span>FAQ</span>
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12 md:mb-16">
           <div className="lg:col-span-7">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <p className="font-jakarta text-sm font-semibold text-[#027C88] mb-3">
               Common Questions
-            </span>
+            </p>
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em]"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Questions Founders, Growth Teams, and Operators Ask
@@ -92,31 +90,31 @@ export function FaqSection() {
         </div>
 
         {/* Accordion */}
-        <div className="space-y-2">
+        <div className="space-y-2 max-w-4xl">
           {faqs.map((faq, i) => (
             <details
               key={i}
-              className="group border border-white/[0.08] bg-white/[0.03] rounded-2xl overflow-hidden hover:border-white/[0.13] transition-colors duration-300 open:border-white/[0.13]"
+              className="group border border-gray-100 dark:border-white/[0.08] bg-white dark:bg-white/[0.02] rounded-2xl overflow-hidden hover:border-gray-200 dark:hover:border-white/[0.13] transition-colors duration-200 open:border-gray-200 dark:open:border-white/[0.13]"
             >
               <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">
                 <div className="flex items-center gap-4 min-w-0">
-                  <span className="font-jakarta text-[11px] font-black text-[#00FF88]/30 tabular-nums shrink-0">
+                  <span className="font-jakarta text-[11px] font-black text-[#027C88] tabular-nums shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-syne font-semibold text-white/60 text-sm md:text-base leading-snug group-open:text-white transition-colors duration-200">
+                  <span className="font-syne font-semibold text-gray-700 dark:text-white/70 text-sm md:text-base leading-snug group-open:text-gray-900 dark:group-open:text-white transition-colors duration-200">
                     {faq.q}
                   </span>
                 </div>
-                <span className="shrink-0 w-7 h-7 rounded-full border border-white/[0.1] flex items-center justify-center text-white/30 group-open:border-[#00FF88]/30 group-open:text-[#00FF88]/60 transition-all duration-300 ml-2">
-                  <Plus className="h-3 w-3 group-open:rotate-45 transition-transform duration-300" />
+                <span className="shrink-0 w-7 h-7 rounded-full border border-gray-200 dark:border-white/[0.1] flex items-center justify-center text-gray-600 dark:text-white/55 group-open:border-[#027C88]/30 group-open:text-[#027C88] transition-all duration-200 ml-2">
+                  <Plus className="h-3 w-3 group-open:rotate-45 transition-transform duration-200" />
                 </span>
               </summary>
 
               <div className="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-all duration-300 ease-out">
                 <div className="overflow-hidden">
                   <div className="px-6 pb-6 pl-[3.75rem]">
-                    <div className="h-px bg-white/[0.06] mb-4" />
-                    <p className="font-jakarta text-white/40 text-sm leading-relaxed">
+                    <div className="h-px bg-gray-100 dark:bg-white/[0.06] mb-4" />
+                    <p className="font-jakarta text-gray-700 dark:text-white/70 text-sm leading-relaxed">
                       {faq.a}
                     </p>
                   </div>

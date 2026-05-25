@@ -38,31 +38,29 @@ const personas = [
 
 export function IcpSection() {
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#0C0C0C] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-white dark:bg-[#080808] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
-        <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ WHO WE WORK WITH ]
-          </span>
+        {/* Section rule */}
+        <div className="section-rule mb-14">
+          <span>Who We Work With</span>
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <p className="font-jakarta text-sm font-semibold text-[#027C88] mb-3">
               Who We Work With
-            </span>
+            </p>
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em] mb-4"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em] mb-4"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Built for Businesses That Intend to Lead Their Categories.
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="font-jakarta text-white/40 text-base leading-relaxed">
+            <p className="font-jakarta text-gray-700 dark:text-white/70 text-base leading-relaxed">
               Kynato works with founders, startups, growth teams, and operations leaders
               who have decided that AI is infrastructure — not an experiment to observe from a distance.
             </p>
@@ -70,46 +68,33 @@ export function IcpSection() {
         </div>
 
         {/* Persona cards — 2×2 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 md:mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 md:mb-14">
           {personas.map((p) => (
-            <div
-              key={p.number}
-              className="border border-white/[0.08] bg-white/[0.03] rounded-2xl p-8 hover:border-white/[0.14] transition-all duration-300 relative overflow-hidden group"
-            >
-              {/* Number watermark */}
-              <span
-                className="absolute -right-2 -top-2 font-syne font-black leading-none select-none pointer-events-none"
-                style={{ fontSize: "6rem", color: "rgba(0,255,136,0.04)" }}
-              >
-                {p.number}
-              </span>
+            <div key={p.number} className="kyn-card p-8 relative overflow-hidden">
+              <span className="kyn-badge mb-4 inline-block">Persona {p.number}</span>
 
-              <span className="inline-block mb-4 font-jakarta text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full border border-[#00FF88]/20 text-[#00FF88]/50">
-                Persona {p.number}
-              </span>
-
-              <h3 className="font-syne font-bold text-white text-xl mb-2 leading-snug">
+              <h3 className="font-syne font-bold text-gray-900 dark:text-white text-xl mb-2 leading-snug">
                 {p.title}
               </h3>
-              <p className="font-syne font-semibold text-white/60 text-base mb-4 italic">
+              <p className="font-syne font-semibold text-gray-600 dark:text-white/70 text-base mb-4 italic">
                 {p.hook}
               </p>
-              <p className="font-jakarta text-white/35 text-sm leading-relaxed mb-5">
+              <p className="font-jakarta text-gray-700 dark:text-white/60 text-sm leading-relaxed mb-5">
                 {p.body}
               </p>
 
               <div className="mb-5">
-                <p className="font-jakarta text-[10px] font-bold tracking-[0.18em] uppercase text-[#00FF88]/50 mb-2">
+                <p className="font-jakarta text-[10px] font-bold tracking-wider uppercase text-[#027C88] mb-2">
                   What Kynato builds for you
                 </p>
-                <p className="font-jakarta text-white/35 text-sm leading-relaxed">{p.builds}</p>
+                <p className="font-jakarta text-gray-700 dark:text-white/60 text-sm leading-relaxed">{p.builds}</p>
               </div>
 
-              <div className="bg-white/[0.03] rounded-xl border border-white/[0.06] p-4">
-                <p className="font-jakarta text-[10px] font-bold text-white/20 tracking-[0.12em] uppercase mb-1.5">
+              <div className="kyn-inner-card p-4">
+                <p className="font-jakarta text-[10px] font-bold text-gray-600 dark:text-white/45 tracking-wider uppercase mb-1.5">
                   You recognise yourself here if:
                 </p>
-                <p className="font-jakarta text-white/35 text-sm leading-relaxed">{p.recognition}</p>
+                <p className="font-jakarta text-gray-700 dark:text-white/60 text-sm leading-relaxed">{p.recognition}</p>
               </div>
             </div>
           ))}
@@ -118,11 +103,10 @@ export function IcpSection() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="group inline-flex items-center gap-2 px-8 border border-[#00FF88]/50 rounded-xl font-jakarta text-sm font-semibold text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] transition-all duration-300"
-          style={{ height: "3.25rem" }}
+          className="group inline-flex items-center gap-2.5 px-7 h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-sm font-semibold hover:bg-[#026070] transition-colors duration-200"
         >
           Tell Us About Your Business
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </Link>
       </div>
     </section>

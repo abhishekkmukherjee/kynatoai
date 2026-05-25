@@ -95,9 +95,9 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#080808]/90 backdrop-blur-md border-b border-white/[0.06]"
+            ? "bg-white/95 dark:bg-[#080808]/95 backdrop-blur-md border-b border-gray-100 dark:border-white/[0.06] shadow-sm dark:shadow-none"
             : "bg-transparent"
         }`}
       >
@@ -106,7 +106,7 @@ export function Navbar() {
 
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
-              <span className="font-syne font-black text-[1.25rem] tracking-[-0.02em] text-white hover:text-[#00FF88] transition-colors duration-300">
+              <span className={`font-syne font-black text-[1.2rem] tracking-[-0.02em] transition-colors duration-300 hover:text-[#027C88] ${scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white"}`}>
                 KYNATO
               </span>
             </Link>
@@ -116,24 +116,24 @@ export function Navbar() {
 
               {/* Capabilities dropdown */}
               <div className="group relative">
-                <button className="px-4 py-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 flex items-center gap-1">
+                <button className={`px-4 py-2 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1 ${scrolled ? "text-gray-700 dark:text-white/65 hover:text-gray-900 dark:hover:text-white" : "text-gray-700 hover:text-gray-900 dark:text-white/70 dark:hover:text-white"}`}>
                   Capabilities
                   <span className="text-[10px] opacity-60">↓</span>
                 </button>
                 <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[900px]">
-                  <div className="bg-[#0E0E0E] border border-white/[0.08] rounded-2xl p-6 shadow-2xl">
-                    <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
-                      <span className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase">
+                  <div className="bg-white dark:bg-[#0E0E0E] border border-gray-100 dark:border-white/[0.08] rounded-2xl p-6 shadow-xl dark:shadow-2xl">
+                    <div className="flex items-center justify-between mb-5 pb-4 border-b border-gray-100 dark:border-white/[0.06]">
+                      <span className="font-jakarta text-[10px] font-bold text-gray-600 dark:text-white/50 tracking-[0.22em] uppercase">
                         Five Capabilities — Built &amp; Operated by Kynato
                       </span>
-                      <Link href="/services/" className="font-jakarta text-[11px] font-semibold text-[#00FF88]/70 hover:text-[#00FF88] transition-colors flex items-center gap-1">
+                      <Link href="/services/" className="font-jakarta text-[11px] font-semibold text-[#027C88] hover:text-[#026070] transition-colors flex items-center gap-1">
                         All capabilities <ArrowUpRight className="h-3 w-3" />
                       </Link>
                     </div>
                     <div className="grid grid-cols-5 gap-4">
                       {capabilities.map((cap) => (
                         <div key={cap.id}>
-                          <Link href={cap.href} className="block font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.15em] uppercase mb-3 hover:text-[#00FF88] transition-colors">
+                          <Link href={cap.href} className="block font-jakarta text-[10px] font-bold text-[#027C88] tracking-[0.15em] uppercase mb-3 hover:text-[#026070] transition-colors">
                             {cap.title}
                           </Link>
                           <div className="space-y-0.5">
@@ -141,7 +141,7 @@ export function Navbar() {
                               <Link
                                 key={s.href + s.title}
                                 href={s.href}
-                                className="block px-2 py-1.5 text-[12px] text-white/40 hover:text-white hover:bg-white/[0.04] rounded-lg transition-all duration-150"
+                                className="block px-2 py-1.5 text-[12px] text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/[0.04] rounded-lg transition-all duration-150"
                               >
                                 {s.title}
                               </Link>
@@ -156,19 +156,19 @@ export function Navbar() {
 
               {/* Intelligence Lab dropdown */}
               <div className="group relative">
-                <button className="px-4 py-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200 flex items-center gap-1">
+                <button className={`px-4 py-2 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1 ${scrolled ? "text-gray-700 dark:text-white/65 hover:text-gray-900 dark:hover:text-white" : "text-gray-700 hover:text-gray-900 dark:text-white/70 dark:hover:text-white"}`}>
                   Intelligence Lab
                   <span className="text-[10px] opacity-60">↓</span>
                 </button>
-                <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-3 w-[260px]">
-                  <div className="bg-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 shadow-2xl">
-                    <p className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase mb-3">Intelligence Lab</p>
+                <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-3 w-[240px]">
+                  <div className="bg-white dark:bg-[#0E0E0E] border border-gray-100 dark:border-white/[0.08] rounded-2xl p-5 shadow-xl dark:shadow-2xl">
+                    <p className="font-jakarta text-[10px] font-bold text-gray-600 dark:text-white/50 tracking-[0.22em] uppercase mb-3">Intelligence Lab</p>
                     <div className="space-y-0.5">
                       {intelligenceLabLinks.map((link) => (
                         <Link
                           key={link.title}
                           href={link.href}
-                          className="block px-2 py-2 text-[13px] text-white/50 hover:text-white hover:bg-white/[0.04] rounded-lg transition-all duration-150"
+                          className="block px-2 py-2 text-[13px] text-gray-700 dark:text-white/65 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/[0.04] rounded-lg transition-all duration-150"
                         >
                           {link.title}
                         </Link>
@@ -182,7 +182,7 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="px-4 py-2 text-[13px] font-medium text-white/50 hover:text-white transition-colors duration-200"
+                  className={`px-4 py-2 text-[13px] font-medium transition-colors duration-200 ${scrolled ? "text-gray-700 dark:text-white/65 hover:text-gray-900 dark:hover:text-white" : "text-gray-700 hover:text-gray-900 dark:text-white/70 dark:hover:text-white"}`}
                 >
                   {link.label}
                 </Link>
@@ -195,7 +195,11 @@ export function Navbar() {
               {mounted && (
                 <button
                   onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                  className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/[0.12] text-white/40 hover:text-white hover:border-white/[0.25] transition-all duration-200"
+                  className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 ${
+                    scrolled
+                      ? "border-gray-200 dark:border-white/[0.12] text-gray-600 dark:text-white/70 hover:text-gray-700 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/[0.25]"
+                      : "border-gray-300 dark:border-white/[0.2] text-gray-600 dark:text-white/65 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-white/[0.4]"
+                  }`}
                   aria-label="Toggle theme"
                 >
                   {resolvedTheme === "dark"
@@ -206,13 +210,13 @@ export function Navbar() {
               )}
               <Link
                 href="/contact"
-                className="hidden lg:inline-flex items-center gap-2 px-5 h-9 border border-white/[0.15] rounded-lg text-[13px] font-semibold text-white hover:border-[#00FF88] hover:text-[#00FF88] transition-all duration-300 ml-1"
+                className="hidden lg:inline-flex items-center gap-1.5 px-5 h-9 bg-[#027C88] text-white rounded-xl text-[13px] font-semibold font-jakarta hover:bg-[#026070] transition-colors duration-200 ml-1"
               >
                 Talk to Our Team
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 text-white/50 hover:text-white transition-colors"
+                className={`lg:hidden p-2 transition-colors ${scrolled ? "text-gray-700 hover:text-gray-900 dark:text-white/65 dark:hover:text-white" : "text-gray-700 hover:text-gray-900 dark:text-white/70 dark:hover:text-white"}`}
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -224,23 +228,23 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed top-16 left-0 right-0 z-40 bg-[#080808]/98 backdrop-blur-2xl border-b border-white/[0.06] overflow-y-auto max-h-[85vh] transition-all duration-300 ${
+        className={`lg:hidden fixed top-16 left-0 right-0 z-40 bg-white dark:bg-[#080808] border-b border-gray-100 dark:border-white/[0.06] overflow-y-auto max-h-[85vh] transition-all duration-300 ${
           mobileOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
         <nav className="max-w-[1280px] mx-auto px-6 py-6 space-y-6">
           <div>
-            <p className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase mb-4">Capabilities</p>
+            <p className="font-jakarta text-[10px] font-bold text-gray-600 dark:text-white/50 tracking-[0.22em] uppercase mb-4">Capabilities</p>
             <div className="space-y-5">
               {capabilities.map((cap) => (
                 <div key={cap.id}>
-                  <p className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.15em] uppercase mb-2">{cap.title}</p>
-                  <div className="pl-3 space-y-0.5 border-l border-white/[0.06]">
+                  <p className="font-jakarta text-[10px] font-bold text-[#027C88] tracking-[0.15em] uppercase mb-2">{cap.title}</p>
+                  <div className="pl-3 space-y-0.5 border-l border-gray-100 dark:border-white/[0.06]">
                     {cap.services.map((s) => (
                       <Link
                         key={s.href + s.title}
                         href={s.href}
-                        className="block font-jakarta text-sm text-white/40 hover:text-white transition-colors py-1.5"
+                        className="block font-jakarta text-sm text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors py-1.5"
                         onClick={() => setMobileOpen(false)}
                       >
                         {s.title}
@@ -252,14 +256,14 @@ export function Navbar() {
             </div>
           </div>
 
-          <div className="border-t border-white/[0.06] pt-4">
-            <p className="font-jakarta text-[10px] font-bold text-white/25 tracking-[0.25em] uppercase mb-3">Intelligence Lab</p>
+          <div className="border-t border-gray-100 dark:border-white/[0.06] pt-4">
+            <p className="font-jakarta text-[10px] font-bold text-gray-600 dark:text-white/50 tracking-[0.22em] uppercase mb-3">Intelligence Lab</p>
             <div className="space-y-0.5">
               {intelligenceLabLinks.map((link) => (
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="block font-jakarta text-sm text-white/40 hover:text-white transition-colors py-1.5"
+                  className="block font-jakarta text-sm text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors py-1.5"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.title}
@@ -268,12 +272,12 @@ export function Navbar() {
             </div>
           </div>
 
-          <div className="border-t border-white/[0.06] pt-4 space-y-0.5">
+          <div className="border-t border-gray-100 dark:border-white/[0.06] pt-4 space-y-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="block font-jakarta text-sm font-medium text-white/50 hover:text-white transition-colors py-2"
+                className="block font-jakarta text-sm font-medium text-gray-600 dark:text-white/65 hover:text-gray-900 dark:hover:text-white transition-colors py-2"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -281,11 +285,11 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="border-t border-white/[0.06] pt-4 pb-2">
+          <div className="border-t border-gray-100 dark:border-white/[0.06] pt-4 pb-2">
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center h-12 border border-[#00FF88]/50 rounded-xl font-jakarta text-sm font-semibold text-[#00FF88] hover:bg-[#00FF88] hover:text-black transition-all duration-300"
+              className="flex items-center justify-center h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-sm font-semibold hover:bg-[#026070] transition-colors duration-200"
             >
               Talk to Our Team
             </Link>

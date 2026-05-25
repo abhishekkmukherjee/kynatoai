@@ -77,7 +77,7 @@ const practices = [
 
 export function PracticeAreasSection() {
   return (
-    <section className="py-28 md:py-36 bg-[#030305] relative overflow-hidden section-line-top">
+    <section className="py-28 md:py-36 bg-gray-50 dark:bg-[#030305] relative overflow-hidden section-line-top">
 
       {/* Background */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
@@ -90,13 +90,13 @@ export function PracticeAreasSection() {
           <span className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase">
             The Intelligence Ecosystem
           </span>
-          <h2 className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6">
+          <h2 className="font-urbanist font-black text-[clamp(2rem,5vw,3.8rem)] leading-[1.05] tracking-[-0.025em] text-gray-900 dark:text-white mb-6">
             Five Capabilities.{" "}
             <PointerHighlight containerClassName="mt-1 inline-block">
               <span className="gradient-text-teal">One Intelligence Ecosystem.</span>
             </PointerHighlight>
           </h2>
-          <p className="font-roboto text-white/40 text-base md:text-lg leading-relaxed max-w-2xl">
+          <p className="font-roboto text-gray-700 dark:text-white/70 text-base md:text-lg leading-relaxed max-w-2xl">
             Kynato doesn&apos;t sell AI software or run one-off campaigns. We build, integrate,
             and directly operate AI-powered systems across five interconnected capabilities —
             designed so that every service feeds the next. Measured by revenue gained or hours saved.
@@ -117,7 +117,7 @@ export function PracticeAreasSection() {
               />
 
               {/* Card itself */}
-              <div className="relative border border-white/[0.06] group-hover:border-white/[0.1] transition-colors duration-500 rounded-2xl bg-black/40 backdrop-blur-sm">
+              <div className="relative border border-gray-200 dark:border-white/[0.06] group-hover:border-gray-300 dark:group-hover:border-white/[0.1] transition-colors duration-500 rounded-2xl bg-white dark:bg-black/40 backdrop-blur-sm">
                 {/* Top accent line */}
                 <div
                   className="absolute top-0 left-0 right-0 h-px transition-opacity duration-500"
@@ -134,7 +134,7 @@ export function PracticeAreasSection() {
                   {/* Left Column */}
                   <div className="md:col-span-4 p-8 md:p-10 md:border-r border-white/[0.04]">
                     <div className="flex items-center gap-4 mb-6">
-                      <span className="text-[3rem] font-urbanist font-black text-white/[0.05] leading-none select-none">
+                      <span className="text-[3rem] font-urbanist font-black text-gray-200 dark:text-white/[0.05] leading-none select-none">
                         {practice.id}
                       </span>
                       <span
@@ -148,15 +148,15 @@ export function PracticeAreasSection() {
                         {practice.tag}
                       </span>
                     </div>
-                    <h3 className="font-urbanist font-black text-2xl md:text-[1.6rem] text-white mb-5 leading-snug">
+                    <h3 className="font-urbanist font-black text-2xl md:text-[1.6rem] text-gray-900 dark:text-white mb-5 leading-snug">
                       {practice.title}
                     </h3>
-                    <p className="font-roboto text-white/35 text-sm leading-relaxed mb-8">
+                    <p className="font-roboto text-gray-700 dark:text-white/60 text-sm leading-relaxed mb-8">
                       {practice.desc}
                     </p>
                     <Link
                       href={practice.href}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white group/link transition-all duration-300"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white/65 hover:text-white group/link transition-all duration-300"
                     >
                       View Full Capability
                       <ArrowRight className="h-3.5 w-3.5 group-hover/link:translate-x-1 transition-transform duration-300" />
@@ -178,10 +178,10 @@ export function PracticeAreasSection() {
                             <Check className="h-2.5 w-2.5" style={{ color: practice.accentColor }} />
                           </div>
                           <div>
-                            <h4 className="font-urbanist font-bold text-base text-white mb-1.5 transition-colors">
+                            <h4 className="font-urbanist font-bold text-base text-gray-900 dark:text-white mb-1.5 transition-colors">
                               {feature.t}
                             </h4>
-                            <p className="font-roboto text-white/30 text-sm leading-relaxed">
+                            <p className="font-roboto text-gray-600 dark:text-white/55 text-sm leading-relaxed">
                               {feature.d}
                             </p>
                           </div>
@@ -193,7 +193,7 @@ export function PracticeAreasSection() {
                         className="mt-6 p-5 rounded-xl border-l-2 bg-white/[0.02] backdrop-blur-sm"
                         style={{ borderColor: practice.accentColor }}
                       >
-                        <p className="text-sm text-white/50 font-roboto leading-relaxed">
+                        <p className="text-sm text-gray-600 dark:text-white/65 font-roboto leading-relaxed">
                           <span className="font-bold mr-2" style={{ color: practice.accentColor }}>Outcome:</span>
                           {practice.outcome}
                         </p>

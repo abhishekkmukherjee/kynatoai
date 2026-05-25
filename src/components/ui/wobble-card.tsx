@@ -37,7 +37,7 @@ export const WobbleCard = ({
         transition: "transform 0.1s ease-out",
       }}
       className={cn(
-        "mx-auto w-full bg-zinc-900 relative rounded-2xl overflow-hidden",
+        "mx-auto w-full bg-gray-100 dark:bg-zinc-900 relative rounded-2xl overflow-hidden",
         containerClassName
       )}
     >
@@ -45,7 +45,7 @@ export const WobbleCard = ({
         className="relative h-full sm:mx-0 sm:rounded-2xl overflow-hidden"
         style={{
           boxShadow:
-            "0 10px 32px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(0, 0, 0, 0.3)",
+            "0 4px 24px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.06)",
           backgroundImage:
             "radial-gradient(88% 100% at top, rgba(255,255,255,0.05), rgba(255,255,255,0))",
         }}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function SocialProofSection() {
   return (
-    <section className="relative bg-black border-y border-white/[0.04] overflow-hidden section-line-top">
+    <section className="relative bg-gray-50 dark:bg-black border-y border-gray-100 dark:border-white/[0.04] overflow-hidden section-line-top">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,rgba(2,124,136,0.03),transparent)] pointer-events-none" />
 
@@ -16,20 +16,20 @@ export function SocialProofSection() {
           viewport={{ once: true }}
           className="inline-flex items-center gap-3"
         >
-          <div className="h-px w-8 bg-gradient-to-r from-transparent to-white/20" />
-          <span className="text-[10px] font-bold text-white/25 tracking-[0.3em] uppercase">
+          <div className="h-px w-8 bg-gradient-to-r from-transparent to-gray-300 dark:to-white/20" />
+          <span className="text-[10px] font-bold text-gray-500 dark:text-white/50 tracking-[0.3em] uppercase">
             Trusted by Founders, Growth Teams &amp; Operations Leaders Across India
           </span>
-          <div className="h-px w-8 bg-gradient-to-l from-transparent to-white/20" />
+          <div className="h-px w-8 bg-gradient-to-l from-transparent to-gray-300 dark:to-white/20" />
         </motion.div>
       </div>
 
       {/* Moving cards with edge fade */}
       <div className="pb-14 relative">
         {/* Left fade */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 md:w-64 z-10 bg-gradient-to-r from-black to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 md:w-64 z-10 bg-gradient-to-r from-gray-50 dark:from-black to-transparent" />
         {/* Right fade */}
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 md:w-64 z-10 bg-gradient-to-l from-black to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 md:w-64 z-10 bg-gradient-to-l from-gray-50 dark:from-black to-transparent" />
 
         <InfiniteMovingCards
           items={[
@@ -43,7 +43,7 @@ export function SocialProofSection() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-gray-50 dark:from-black to-transparent pointer-events-none" />
     </section>
   );
 }

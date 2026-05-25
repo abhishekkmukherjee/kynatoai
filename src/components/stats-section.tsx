@@ -55,7 +55,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-[#09090B] relative overflow-hidden min-h-screen flex flex-col justify-center section-line-top">
+    <section className="py-24 md:py-32 bg-gray-50 dark:bg-[#09090B] relative overflow-hidden min-h-screen flex flex-col justify-center section-line-top">
       {/* Background glow */}
       <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#027C88] opacity-[0.04] blur-[130px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#006AF0] opacity-[0.02] blur-[150px] rounded-full pointer-events-none" />
@@ -74,7 +74,7 @@ export function StatsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-urbanist font-black text-4xl md:text-5xl lg:text-6xl text-white mb-20 tracking-[-0.025em] leading-tight"
+          className="font-urbanist font-black text-4xl md:text-5xl lg:text-6xl text-gray-900 dark:text-white mb-20 tracking-[-0.025em] leading-tight"
         >
           Revenue Gained or Hours Saved.<br />
           <span className="gradient-text-teal">Here&apos;s What That Looks Like.</span>
@@ -99,7 +99,7 @@ export function StatsSection() {
                 {stat.value}
               </div>
               <div className="w-12 h-0.5 bg-gradient-to-r from-accent-teal/40 to-accent-blue/40 mx-auto mb-6 group-hover:w-20 transition-all duration-500" />
-              <p className="text-white/40 text-base leading-relaxed font-roboto px-4 group-hover:text-white/55 transition-colors duration-500">
+              <p className="text-gray-700 dark:text-white/70 text-base leading-relaxed font-roboto px-4 group-hover:text-white/65 transition-colors duration-500">
                 {stat.desc}
               </p>
             </motion.div>
@@ -111,16 +111,16 @@ export function StatsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="mt-16 md:mt-24 inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm"
+          className="mt-16 md:mt-24 inline-flex items-center gap-3 px-6 py-3 rounded-full kyn-inner-card backdrop-blur-sm"
         >
           <div className="w-px h-4 bg-gradient-to-b from-transparent via-accent-teal/60 to-transparent" />
-          <p className="text-white/30 font-roboto text-xs uppercase tracking-[0.2em]">
+          <p className="text-gray-500 dark:text-white/55 font-roboto text-xs uppercase tracking-[0.2em]">
             Every number above is measured. None is estimated. We instrument every system from day one.
           </p>
         </motion.div>
       </div>
 
-      <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-[#09090B] z-10" />
+      <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-gray-50 dark:to-[#09090B] z-10" />
       <div className="absolute w-full -bottom-40 md:-bottom-80 h-[40rem] md:h-[60rem] z-0 opacity-80 mix-blend-screen pointer-events-none">
         <World data={sampleArcs} globeConfig={globeConfig} />
       </div>

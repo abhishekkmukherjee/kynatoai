@@ -34,24 +34,22 @@ const steps = [
 
 export function WorkflowSection() {
   return (
-    <section id="how-we-work" className="section-dark py-28 md:py-36 bg-[#0C0C0C] relative overflow-hidden">
+    <section id="how-we-work" className="section-pad py-24 md:py-32 bg-gray-50 dark:bg-[#0C0C0C] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
-        <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ HOW WE WORK ]
-          </span>
+        {/* Section rule */}
+        <div className="section-rule mb-14">
+          <span>How We Work</span>
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-7">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <p className="font-jakarta text-sm font-semibold text-[#027C88] mb-3">
               How We Work
-            </span>
+            </p>
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em]"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               From First Conversation to Running System.
@@ -61,19 +59,19 @@ export function WorkflowSection() {
         </div>
 
         {/* Steps */}
-        <div className="space-y-0 mb-10 md:mb-16">
+        <div className="space-y-0 mb-12">
           {steps.map((item, i) => (
-            <div key={i} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-7 lg:py-10 border-t border-white/[0.06]">
+            <div key={i} className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 py-8 lg:py-10 border-t border-gray-100 dark:border-white/[0.06]">
 
               {/* Step number + title */}
               <div className="lg:col-span-3">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-syne font-black text-[#00FF88]/25 text-3xl leading-none select-none">
+                  <span className="font-syne font-black text-gray-200 dark:text-white/25 text-3xl leading-none select-none">
                     {item.step}
                   </span>
                   <div>
-                    <h3 className="font-syne font-bold text-white text-xl">{item.title}</h3>
-                    <span className="inline-block mt-1.5 font-jakarta text-[10px] font-bold tracking-[0.12em] uppercase px-2.5 py-1 rounded-full border border-white/[0.08] text-white/30">
+                    <h3 className="font-syne font-bold text-gray-900 dark:text-white text-xl">{item.title}</h3>
+                    <span className="inline-block mt-1.5 font-jakarta text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-gray-100 dark:bg-white/[0.05] text-gray-600 dark:text-white/55 border border-gray-200 dark:border-white/[0.07]">
                       {item.timeline}
                     </span>
                   </div>
@@ -82,18 +80,18 @@ export function WorkflowSection() {
 
               {/* Description */}
               <div className="lg:col-span-5">
-                <p className="font-jakarta text-white/45 text-sm md:text-base leading-relaxed">
+                <p className="font-jakarta text-gray-700 dark:text-white/70 text-sm md:text-base leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
               {/* Outcome */}
               <div className="lg:col-span-4">
-                <div className="border-l border-[#00FF88]/20 pl-4">
-                  <p className="font-jakarta text-[11px] font-bold text-[#00FF88]/50 tracking-[0.12em] uppercase mb-2">
+                <div className="border-l-2 border-[#027C88]/20 pl-4">
+                  <p className="font-jakarta text-[11px] font-bold text-[#027C88] tracking-wider uppercase mb-2">
                     What you get
                   </p>
-                  <p className="font-jakarta text-white/40 text-sm leading-relaxed">
+                  <p className="font-jakarta text-gray-700 dark:text-white/70 text-sm leading-relaxed">
                     {item.outcome}
                   </p>
                 </div>
@@ -105,11 +103,10 @@ export function WorkflowSection() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="group inline-flex items-center gap-2 px-8 border border-[#00FF88]/50 rounded-xl font-jakarta text-sm font-semibold text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] transition-all duration-300"
-          style={{ height: "3.25rem" }}
+          className="group inline-flex items-center gap-2.5 px-7 h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-sm font-semibold hover:bg-[#026070] transition-colors duration-200"
         >
           Talk to Our Team
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </Link>
       </div>
     </section>

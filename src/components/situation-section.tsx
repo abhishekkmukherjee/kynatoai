@@ -19,24 +19,22 @@ const cards = [
 
 export function SituationSection() {
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#080808] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-white dark:bg-[#080808] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
-        <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ SITUATION ]
-          </span>
+        {/* Section rule */}
+        <div className="section-rule mb-14">
+          <span>The Situation</span>
         </div>
 
-        {/* Header — asymmetric left-aligned */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <p className="font-jakarta text-sm font-semibold text-[#027C88] mb-3">
               Where Most Businesses Are Right Now
-            </span>
+            </p>
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em]"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               The Gap Between Intent and Execution
@@ -44,7 +42,7 @@ export function SituationSection() {
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="font-jakarta text-white/45 text-base md:text-lg leading-relaxed">
+            <p className="font-jakarta text-gray-700 dark:text-white/70 text-base md:text-lg leading-relaxed">
               Most businesses that want to grow with AI face the same pattern: strong intent,
               fragmented execution. The right tools exist. The right talent is expensive.
               The right systems — the ones that connect and compound — are rarely built.
@@ -56,19 +54,16 @@ export function SituationSection() {
         {/* 4-card 2×2 grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {cards.map((card, i) => (
-            <div
-              key={i}
-              className="border border-white/[0.08] bg-white/[0.03] rounded-2xl p-8 hover:border-white/[0.14] hover:bg-white/[0.05] transition-all duration-300 group"
-            >
+            <div key={i} className="kyn-card p-8 group">
               <div className="flex items-start gap-4 mb-4">
-                <span className="font-syne font-black text-[#00FF88]/20 text-3xl leading-none shrink-0 select-none">
+                <span className="font-syne font-black text-[#027C88] text-3xl leading-none shrink-0 select-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-syne font-bold text-white text-lg leading-snug group-hover:text-white transition-colors">
+                <h3 className="font-syne font-bold text-gray-900 dark:text-white text-lg leading-snug">
                   {card.title}
                 </h3>
               </div>
-              <p className="font-jakarta text-white/40 text-sm leading-relaxed pl-12">
+              <p className="font-jakarta text-gray-700 dark:text-white/70 text-sm leading-relaxed pl-12">
                 {card.body}
               </p>
             </div>

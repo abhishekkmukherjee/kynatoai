@@ -52,7 +52,7 @@ export function ModeToggle() {
       <span
         className={`absolute text-[9px] font-bold uppercase tracking-wider transition-all duration-300 ${
           isDark
-            ? "left-2 text-white/30 group-hover:text-white/50"
+            ? "left-2 text-white/55 group-hover:text-white/65"
             : "right-2 text-black/30 group-hover:text-black/50"
         }`}
       >

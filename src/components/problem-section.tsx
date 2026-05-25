@@ -48,7 +48,7 @@ const items = [
 
 export function ProblemSection() {
   return (
-    <section className="py-28 md:py-36 bg-black relative overflow-hidden section-line-top">
+    <section className="py-28 md:py-36 bg-white dark:bg-black relative overflow-hidden section-line-top">
 
       {/* Background */}
       <div className="absolute inset-0 bg-dot-pattern opacity-35 pointer-events-none" />
@@ -61,11 +61,11 @@ export function ProblemSection() {
           <span className="inline-block mb-4 text-[11px] font-bold text-accent-teal tracking-[0.2em] uppercase">
             The Reality in 2026
           </span>
-          <h2 className="font-urbanist font-black text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.025em] text-white mb-6">
+          <h2 className="font-urbanist font-black text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.025em] text-gray-900 dark:text-white mb-6">
             Every Quarter You Wait,{" "}
             <span className="gradient-text-teal">the Gap Widens.</span>
           </h2>
-          <p className="font-roboto text-white/40 text-lg leading-relaxed max-w-2xl">
+          <p className="font-roboto text-gray-600 dark:text-white/70 text-lg leading-relaxed max-w-2xl">
             AI isn&apos;t coming. It&apos;s already restructuring which businesses win categories and which
             ones get left behind. Here&apos;s what the gap looks like on the ground:
           </p>
@@ -78,7 +78,7 @@ export function ProblemSection() {
             return (
               <div
                 key={i}
-                className={`${item.span} relative group rounded-2xl p-7 overflow-hidden cursor-default premium-card`}
+                className={`${item.span} relative group rounded-2xl p-7 overflow-hidden cursor-default premium-card bg-gray-50 dark:bg-transparent border border-gray-100 dark:border-transparent`}
               >
                 {/* Top accent line */}
                 <div
@@ -104,10 +104,10 @@ export function ProblemSection() {
                   <Icon className="h-4 w-4 transition-colors duration-300" style={{ color: item.accent }} />
                 </div>
 
-                <h3 className="font-urbanist font-bold text-xl text-white mb-3 leading-snug group-hover:text-white transition-colors">
+                <h3 className="font-urbanist font-bold text-xl text-gray-900 dark:text-white mb-3 leading-snug transition-colors">
                   {item.title}
                 </h3>
-                <p className="font-roboto text-white/35 text-sm leading-relaxed group-hover:text-white/45 transition-colors">
+                <p className="font-roboto text-gray-700 dark:text-white/60 text-sm leading-relaxed group-hover:text-white/70 transition-colors">
                   {item.description}
                 </p>
               </div>
@@ -126,12 +126,12 @@ export function ProblemSection() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-accent-teal/40 to-transparent" />
 
           <div className="relative px-8 py-16 text-center">
-            <h2 className="font-urbanist font-black text-2xl md:text-3xl lg:text-4xl text-white max-w-4xl mx-auto leading-tight mb-4">
+            <h2 className="font-urbanist font-black text-2xl md:text-3xl lg:text-4xl text-gray-900 dark:text-white max-w-4xl mx-auto leading-tight mb-4">
               The businesses that close this gap in the next 12 months{" "}
               <span className="gradient-text-teal">will own their categories</span>{" "}
               for the decade after.
             </h2>
-            <p className="font-roboto text-white/30 text-base md:text-lg">
+            <p className="font-roboto text-gray-500 dark:text-white/55 text-base md:text-lg">
               The ones that don&apos;t will spend that decade catching up.
             </p>
           </div>
@@ -147,7 +147,7 @@ export function ProblemSection() {
               className="w-full h-full"
               particleColor="#027C88"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black via-transparent to-transparent" />
           </div>
         </div>
       </div>

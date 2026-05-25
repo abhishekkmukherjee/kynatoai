@@ -18,24 +18,22 @@ const statCards = [
 
 export function UrgencySection() {
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#0C0C0C] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-gray-50 dark:bg-[#0C0C0C] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
-        <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ THE COST OF WAITING ]
-          </span>
+        {/* Section rule */}
+        <div className="section-rule mb-14">
+          <span>The Cost of Waiting</span>
         </div>
 
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-14 md:mb-20">
           <div className="lg:col-span-5">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <p className="font-jakarta text-sm font-semibold text-[#027C88] mb-3">
               Enterprise-grade AI. Built for how India actually works.
-            </span>
+            </p>
             <h2
-              className="font-syne font-black text-white leading-[1.05] tracking-[-0.03em]"
+              className="font-syne font-black text-gray-900 dark:text-white leading-[1.05] tracking-[-0.03em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Every Quarter You Wait,
@@ -43,7 +41,7 @@ export function UrgencySection() {
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="font-jakarta text-white/45 text-base md:text-lg leading-relaxed">
+            <p className="font-jakarta text-gray-700 dark:text-white/70 text-base md:text-lg leading-relaxed">
               The businesses building AI-powered systems now are not just getting ahead.
               They are compounding an advantage that becomes harder to close with every month that passes.
               Search authority compounds. AI citations compound. Automation compounds.
@@ -54,17 +52,14 @@ export function UrgencySection() {
         </div>
 
         {/* Stat cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 md:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14 md:mb-16">
           {statCards.map((card, i) => (
-            <div
-              key={i}
-              className="border border-white/[0.08] bg-white/[0.03] rounded-2xl p-8 hover:border-[#00FF88]/20 transition-all duration-300"
-            >
+            <div key={i} className="kyn-card p-8">
               <div
                 className="font-syne font-black mb-4 leading-none"
                 style={{
                   fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                  background: "linear-gradient(135deg, #00FF88 0%, rgba(0,255,136,0.5) 100%)",
+                  background: "linear-gradient(120deg, #027C88 0%, #006AF0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -72,26 +67,25 @@ export function UrgencySection() {
               >
                 {card.number}
               </div>
-              <div className="h-px w-12 bg-[#00FF88]/20 mb-4" />
-              <p className="font-jakarta text-white/40 text-sm leading-relaxed">{card.text}</p>
+              <div className="h-px w-10 bg-gray-200 dark:bg-[#027C88]/20 mb-4" />
+              <p className="font-jakarta text-gray-700 dark:text-white/70 text-sm leading-relaxed">{card.text}</p>
             </div>
           ))}
         </div>
 
         {/* Closing statement + CTA */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-          <p className="font-syne font-bold text-white text-lg md:text-xl max-w-sm leading-snug">
+          <p className="font-syne font-bold text-gray-900 dark:text-white text-lg md:text-xl max-w-sm leading-snug">
             The right time to build these systems was last quarter.
             <br />
-            <span className="text-[#00FF88]">The second-best time is now.</span>
+            <span className="text-[#027C88]">The second-best time is now.</span>
           </p>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 px-8 border border-[#00FF88]/50 rounded-xl font-jakarta text-sm font-semibold text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] transition-all duration-300 shrink-0"
-            style={{ height: "3.25rem" }}
+            className="group inline-flex items-center gap-2.5 px-7 h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-sm font-semibold hover:bg-[#026070] transition-colors duration-200 shrink-0"
           >
             See What&apos;s Possible for Your Business
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
         </div>
       </div>

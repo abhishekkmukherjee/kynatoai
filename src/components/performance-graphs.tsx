@@ -54,14 +54,14 @@ function LineChart({ data }: { data: typeof organicData }) {
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
       {[0, 0.25, 0.5, 0.75, 1].map(t => {
         const yv = PAD.top + (1 - t) * (H - PAD.top - PAD.bottom);
-        return <line key={t} x1={PAD.left} x2={W - PAD.right} y1={yv} y2={yv} stroke="rgba(255,255,255,0.05)" strokeWidth="1" />;
+        return <line key={t} x1={PAD.left} x2={W - PAD.right} y1={yv} y2={yv} stroke="var(--chart-grid-line)" strokeWidth="1" />;
       })}
-      <polyline points={tLine} fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinejoin="round" />
-      <polyline points={aLine} fill="none" stroke="#00FF88" strokeWidth="2" strokeLinejoin="round" />
+      <polyline points={tLine} fill="none" stroke="var(--chart-line-secondary)" strokeWidth="1.5" strokeLinejoin="round" />
+      <polyline points={aLine} fill="none" stroke="#027C88" strokeWidth="2" strokeLinejoin="round" />
       {data.filter((_, i) => i % 4 === 0).map((d, i) => {
         const idx = i * 4;
         return (
-          <text key={d.month} x={xs[idx]} y={H - 6} textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9" fontFamily="system-ui">
+          <text key={d.month} x={xs[idx]} y={H - 6} textAnchor="middle" fill="var(--chart-axis-label)" fontSize="9" fontFamily="system-ui">
             {d.month}
           </text>
         );
@@ -82,17 +82,17 @@ function BarChart({ data }: { data: typeof hoursData }) {
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
       {[0, 0.25, 0.5, 0.75, 1].map(t => {
         const yv = PAD.top + (1 - t) * (H - PAD.top - PAD.bottom);
-        return <line key={t} x1={PAD.left} x2={W - PAD.right} y1={yv} y2={yv} stroke="rgba(255,255,255,0.05)" strokeWidth="1" />;
+        return <line key={t} x1={PAD.left} x2={W - PAD.right} y1={yv} y2={yv} stroke="var(--chart-grid-line)" strokeWidth="1" />;
       })}
       {data.map((d, i) => {
         const total = d.docCollection + d.crmUpdates + d.compliance + d.invoice;
         const h = barHeight(total);
         const x = barX(i);
         const segments = [
-          { val: d.docCollection, color: "#00FF88" },
-          { val: d.crmUpdates, color: "rgba(0,255,136,0.55)" },
-          { val: d.compliance, color: "rgba(0,255,136,0.3)" },
-          { val: d.invoice, color: "rgba(0,255,136,0.15)" },
+          { val: d.docCollection, color: "#027C88" },
+          { val: d.crmUpdates, color: "rgba(2,124,136,0.55)" },
+          { val: d.compliance, color: "rgba(2,124,136,0.3)" },
+          { val: d.invoice, color: "rgba(2,124,136,0.15)" },
         ];
         let accH = 0;
         return (
@@ -103,7 +103,7 @@ function BarChart({ data }: { data: typeof hoursData }) {
               accH += sh;
               return <rect key={si} x={x} y={ry} width={barW} height={sh} fill={seg.color} rx="1" />;
             })}
-            <text x={x + barW / 2} y={H - 6} textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9" fontFamily="system-ui">
+            <text x={x + barW / 2} y={H - 6} textAnchor="middle" fill="var(--chart-axis-label)" fontSize="9" fontFamily="system-ui">
               {d.week}
             </text>
           </g>
@@ -119,12 +119,12 @@ function FunnelChart({ data }: { data: typeof pipelineData }) {
       {data.map((d, i) => (
         <div key={i} className="space-y-1">
           <div className="flex justify-between items-center">
-            <span className="font-jakarta text-[11px] text-white/30">{d.stage}</span>
-            <span className="font-jakarta text-[11px] font-bold text-[#00FF88]/60">{d.after}%</span>
+            <span className="font-jakarta text-[12px] font-medium text-gray-700 dark:text-white/85">{d.stage}</span>
+            <span className="font-jakarta text-[12px] font-bold text-[#027C88]">{d.after}%</span>
           </div>
-          <div className="relative h-4 rounded overflow-hidden bg-white/[0.04]">
-            <div className="absolute inset-y-0 left-0 bg-white/[0.12] rounded" style={{ width: `${d.before}%` }} />
-            <div className="absolute inset-y-0 left-0 bg-[#00FF88]/50 rounded" style={{ width: `${d.after}%` }} />
+          <div className="relative h-4 rounded overflow-hidden bg-gray-100 dark:bg-white/[0.06]">
+            <div className="absolute inset-y-0 left-0 bg-gray-300 dark:bg-white/[0.12] rounded" style={{ width: `${d.before}%` }} />
+            <div className="absolute inset-y-0 left-0 bg-[#027C88]/60 rounded" style={{ width: `${d.after}%` }} />
           </div>
         </div>
       ))}
@@ -138,23 +138,23 @@ function CitationChart({ data }: { data: typeof citationData }) {
     <div className="space-y-4 py-2">
       <div className="flex gap-4 mb-2">
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-sm bg-white/[0.12]" />
-          <span className="font-jakarta text-[11px] text-white/30">Month 1</span>
+          <div className="w-3 h-3 rounded-sm bg-gray-300 dark:bg-white/[0.15]" />
+          <span className="font-jakarta text-[12px] font-medium text-gray-700 dark:text-white/85">Month 1</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-sm bg-[#00FF88]/50" />
-          <span className="font-jakarta text-[11px] text-white/30">Month 6</span>
+          <div className="w-3 h-3 rounded-sm bg-[#027C88]/60" />
+          <span className="font-jakarta text-[12px] font-medium text-gray-700 dark:text-white/85">Month 6</span>
         </div>
       </div>
       {data.map((d, i) => (
         <div key={i} className="space-y-1">
           <div className="flex justify-between">
-            <span className="font-jakarta text-[11px] text-white/30">{d.engine}</span>
-            <span className="font-jakarta text-[11px] font-bold text-[#00FF88]/60">{d.m6} citations</span>
+            <span className="font-jakarta text-[12px] font-medium text-gray-700 dark:text-white/85">{d.engine}</span>
+            <span className="font-jakarta text-[12px] font-bold text-[#027C88]">{d.m6} citations</span>
           </div>
-          <div className="relative h-4 rounded overflow-hidden bg-white/[0.04]">
-            <div className="absolute inset-y-0 left-0 bg-white/[0.12] rounded" style={{ width: `${(d.m1 / maxVal) * 100}%` }} />
-            <div className="absolute inset-y-0 left-0 bg-[#00FF88]/50 rounded" style={{ width: `${(d.m6 / maxVal) * 100}%` }} />
+          <div className="relative h-4 rounded overflow-hidden bg-gray-100 dark:bg-white/[0.06]">
+            <div className="absolute inset-y-0 left-0 bg-gray-300 dark:bg-white/[0.15] rounded" style={{ width: `${(d.m1 / maxVal) * 100}%` }} />
+            <div className="absolute inset-y-0 left-0 bg-[#027C88]/60 rounded" style={{ width: `${(d.m6 / maxVal) * 100}%` }} />
           </div>
         </div>
       ))}
@@ -164,14 +164,14 @@ function CitationChart({ data }: { data: typeof citationData }) {
 
 function ChartCard({ label, title, caption, children }: { label: string; title: string; caption: string; children: React.ReactNode }) {
   return (
-    <div className="border border-white/[0.08] bg-white/[0.03] rounded-2xl overflow-hidden hover:border-white/[0.14] transition-all duration-300">
+    <div className="bg-white dark:bg-[#0F0F0F] border border-gray-200 dark:border-white/[0.08] rounded-xl overflow-hidden hover:border-gray-300 dark:hover:border-white/[0.14] transition-all duration-300 shadow-sm dark:shadow-none">
       <div className="px-6 pt-6 pb-2">
-        <p className="font-jakarta text-[10px] font-bold text-[#00FF88]/50 tracking-[0.2em] uppercase mb-1">{label}</p>
-        <h4 className="font-syne font-bold text-white text-base mb-4">{title}</h4>
+        <p className="font-jakarta text-[11px] font-bold text-[#027C88] tracking-[0.2em] uppercase mb-1">{label}</p>
+        <h4 className="font-syne font-bold text-gray-900 dark:text-white text-base mb-4">{title}</h4>
       </div>
       <div className="px-6">{children}</div>
       <div className="px-6 py-4">
-        <p className="font-jakarta text-[12px] text-white/30 leading-relaxed">{caption}</p>
+        <p className="font-jakarta text-[13px] font-medium text-gray-600 dark:text-white/75 leading-relaxed">{caption}</p>
       </div>
     </div>
   );
@@ -179,30 +179,28 @@ function ChartCard({ label, title, caption, children }: { label: string; title: 
 
 export function PerformanceGraphsSection() {
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#0C0C0C] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-white dark:bg-[#0C0C0C] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
         {/* Section label */}
         <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ PERFORMANCE DATA ]
-          </span>
+          <span>Performance Data</span>
         </div>
 
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
           <div className="lg:col-span-5">
-            <span className="font-jakarta text-[10px] font-bold text-[#00FF88]/70 tracking-[0.3em] uppercase block mb-4">
+            <span className="font-jakarta text-[10px] font-semibold text-[#027C88] uppercase block mb-4">
               What the Numbers Look Like
             </span>
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em] mb-4"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em] mb-4"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Systems That Compound.
               <br />The Graphs That Show It.
             </h2>
-            <p className="font-jakarta text-white/40 text-base leading-relaxed">
+            <p className="font-jakarta text-gray-600 dark:text-white/70 text-base leading-relaxed">
               Every system Kynato builds is instrumented from day one. These graphs represent
               the shape of what compound results look like across our three core outcome categories.
               Representative data at launch — updated with real client metrics as engagements mature.
@@ -210,7 +208,7 @@ export function PerformanceGraphsSection() {
           </div>
         </div>
 
-        {/* 2×2 chart grid */}
+        {/* Chart grid — always on dark cards for SVG readability */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           <ChartCard
             label="ORGANIC VISIBILITY — COMPOUNDING OVER 12 MONTHS"
@@ -245,8 +243,8 @@ export function PerformanceGraphsSection() {
           </ChartCard>
         </div>
 
-        <div className="flex items-center gap-4 border-t border-white/[0.06] pt-8">
-          <p className="font-jakarta text-[12px] text-white/25 max-w-lg">
+        <div className="flex items-center gap-4 border-t border-gray-100 dark:border-white/[0.1] pt-8">
+          <p className="font-jakarta text-[13px] font-medium text-gray-500 dark:text-white/75 max-w-lg">
             All charts use representative data at launch. Real client metrics replace these values as engagements mature and client permissions are received.
           </p>
         </div>

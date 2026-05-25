@@ -31,21 +31,19 @@ const processPromises = [
 
 export function TestamentSection() {
   return (
-    <section className="section-dark py-28 md:py-36 bg-[#080808] relative overflow-hidden">
+    <section className="section-pad py-24 md:py-32 bg-gray-50 dark:bg-[#0C0C0C] relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
+        {/* Section rule */}
         <div className="section-rule mb-16">
-          <span className="font-jakarta text-[10px] font-bold tracking-[0.35em] uppercase text-white/25 shrink-0">
-            [ WHAT WORKING WITH KYNATO PRODUCES ]
-          </span>
+          <span>What Working with Kynato Produces</span>
         </div>
 
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 md:mb-20">
           <div className="lg:col-span-7">
             <h2
-              className="font-syne font-bold text-white leading-[1.08] tracking-[-0.03em]"
+              className="font-syne font-bold text-gray-900 dark:text-white leading-[1.08] tracking-[-0.03em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               Systems That Change What the Business Can Do.
@@ -59,24 +57,24 @@ export function TestamentSection() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`relative border rounded-2xl p-8 ${
+              className={`relative rounded-2xl p-8 border ${
                 t.isPlaceholder
-                  ? "border-dashed border-white/[0.06] bg-transparent"
-                  : "border-white/[0.08] bg-white/[0.03]"
+                  ? "border-dashed border-gray-200 dark:border-white/[0.08] bg-white dark:bg-transparent"
+                  : "border-gray-200 dark:border-white/[0.1] bg-white dark:bg-white/[0.03]"
               }`}
             >
-              <span className="absolute top-6 left-7 font-syne text-[3.5rem] leading-none text-[#00FF88]/10 select-none">
+              <span className="absolute top-6 left-7 font-syne text-[3.5rem] leading-none text-[#027C88]/15 select-none">
                 &ldquo;
               </span>
               <div className="pt-8">
-                <p className="font-jakarta text-white/35 text-sm leading-relaxed mb-6 italic">
+                <p className="font-jakarta text-gray-700 dark:text-white/75 text-sm leading-relaxed mb-6 italic">
                   {t.quote}
                 </p>
-                <div className="border-t border-white/[0.06] pt-4">
-                  <p className="font-jakarta text-white/40 text-[12px] font-medium">
+                <div className="border-t border-gray-200 dark:border-white/[0.08] pt-4">
+                  <p className="font-jakarta text-gray-800 dark:text-white/80 text-[13px] font-semibold">
                     — {t.role}, {t.city}
                   </p>
-                  <p className="font-jakarta text-[#00FF88]/50 text-[11px] mt-1 tracking-wide">
+                  <p className="font-jakarta text-[#027C88] text-[11px] mt-1 tracking-wide font-medium">
                     {t.capability}
                   </p>
                 </div>
@@ -86,34 +84,34 @@ export function TestamentSection() {
         </div>
 
         {/* Social proof strip */}
-        <div className="border border-white/[0.06] rounded-2xl py-6 px-8 mb-10">
+        <div className="border border-gray-200 dark:border-white/[0.08] rounded-2xl py-6 px-8 mb-10 bg-white dark:bg-transparent">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center justify-center">
-              <div className="w-[160px] h-[44px] border border-white/[0.08] rounded-xl bg-white/[0.02] flex items-center justify-center">
-                <span className="font-jakarta text-[10px] text-white/20 uppercase tracking-wider text-center px-2">GMB Rating — activate when reviews exist</span>
+              <div className="w-[180px] h-[44px] border border-gray-200 dark:border-white/[0.1] rounded-xl bg-gray-50 dark:bg-white/[0.03] flex items-center justify-center">
+                <span className="font-jakarta text-[10px] font-semibold text-gray-500 dark:text-white/55 uppercase tracking-wider text-center px-2">GMB Rating — activate when reviews exist</span>
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="w-[200px] h-[44px] border border-white/[0.08] rounded-xl bg-white/[0.02] flex items-center justify-center">
-                <span className="font-jakarta text-[10px] text-white/20 uppercase tracking-wider">Featured In — [Publication]</span>
+              <div className="w-[210px] h-[44px] border border-gray-200 dark:border-white/[0.1] rounded-xl bg-gray-50 dark:bg-white/[0.03] flex items-center justify-center">
+                <span className="font-jakarta text-[10px] font-semibold text-gray-500 dark:text-white/55 uppercase tracking-wider">Featured In — [Publication]</span>
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="w-[160px] h-[44px] border border-white/[0.08] rounded-xl bg-white/[0.02] flex items-center justify-center">
-                <span className="font-jakarta text-[10px] text-white/20 uppercase tracking-wider">Verified On — [Platform]</span>
+              <div className="w-[180px] h-[44px] border border-gray-200 dark:border-white/[0.1] rounded-xl bg-gray-50 dark:bg-white/[0.03] flex items-center justify-center">
+                <span className="font-jakarta text-[10px] font-semibold text-gray-500 dark:text-white/55 uppercase tracking-wider">Verified On — [Platform]</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Process promise band */}
-        <div className="border border-[#00FF88]/10 bg-[#00FF88]/[0.03] rounded-2xl py-5 px-8">
+        <div className="border border-[#027C88]/20 bg-[#027C88]/[0.04] rounded-2xl py-5 px-8">
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-0 text-center flex-wrap">
             {processPromises.map((item, i) => (
               <span key={i} className="flex items-center">
-                <span className="font-jakarta text-[#00FF88]/50 text-[13px] font-medium">{item}</span>
+                <span className="font-jakarta text-[#027C88] text-[13px] font-semibold">{item}</span>
                 {i < processPromises.length - 1 && (
-                  <span className="hidden md:inline mx-5 text-[#00FF88]/20">·</span>
+                  <span className="hidden md:inline mx-5 text-[#027C88]/40">·</span>
                 )}
               </span>
             ))}
