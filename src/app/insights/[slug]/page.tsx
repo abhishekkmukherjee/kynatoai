@@ -225,6 +225,10 @@ const posts: Post[] = [
   },
 ]
 
+export function generateStaticParams() {
+  return posts.map((p) => ({ slug: p.slug }))
+}
+
 interface Props {
   params: Promise<{ slug: string }>
 }

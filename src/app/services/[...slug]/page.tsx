@@ -8,6 +8,20 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 
+function collectNodeSlugs(nodes: ServiceNode[], prefix: string[]): { slug: string[] }[] {
+  return nodes.flatMap((node) => {
+    const current = [...prefix, node.slug]
+    return [{ slug: current }, ...collectNodeSlugs(node.children ?? [], current)]
+  })
+}
+
+export function generateStaticParams() {
+  return capabilities.flatMap((cap) => [
+    { slug: [cap.slug] },
+    ...collectNodeSlugs(cap.services, [cap.slug]),
+  ])
+}
+
 interface Props {
   params: Promise<{ slug: string[] }>
 }

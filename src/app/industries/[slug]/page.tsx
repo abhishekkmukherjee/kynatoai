@@ -332,6 +332,10 @@ const capabilityColors: Record<string, string> = {
   "Intelligence & Analytics": "#059669",
 }
 
+export function generateStaticParams() {
+  return industries.map((i) => ({ slug: i.slug }))
+}
+
 interface Props {
   params: Promise<{ slug: string }>
 }
