@@ -2,13 +2,11 @@
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 const trustItems = [
-  { quote: "Build and Operate — Not Build and Leave" },
+  { quote: "Build and Operate - Not Build and Leave" },
   { quote: "Measured by Revenue Gained or Hours Saved" },
-  { quote: "India-Native. Built for How India Actually Works." },
   { quote: "Go-Live is the Beginning, Not the End" },
   { quote: "Every System Instrumented From Day One" },
-  { quote: "Enterprise-grade AI. Built for India." },
-  { quote: "No Demos. No Reports. Running Systems Only." },
+  { quote: "Enterprise-grade AI Systems. Built for Growth" },
   { quote: "Five Practice Areas. One Connected System." },
 ];
 

@@ -6,7 +6,6 @@ import { SituationSection } from "@/components/situation-section";
 import { UrgencySection } from "@/components/urgency-section";
 import { SystemSection } from "@/components/system-section";
 import { WorkflowSection } from "@/components/workflow-section";
-import { DifferentiatorSection } from "@/components/differentiator-section";
 import { MetricsSection } from "@/components/metrics-section";
 import { ScreenshotStrip } from "@/components/screenshot-strip";
 import { CaseStudiesSection } from "@/components/case-studies";
@@ -35,8 +34,6 @@ export default function Home() {
         <SystemSection />
         {/* Part 7 — How Kynato Works */}
         <WorkflowSection />
-        {/* Part 8 — The Kynato Difference */}
-        <DifferentiatorSection />
         {/* Part 9 — Metrics and Outcomes */}
         <MetricsSection />
         {/* Part 10 — Screenshot Proof Strip */}

@@ -18,8 +18,8 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Kynato — AI Intelligence Ecosystem India | SEO, GEO, AEO, RAG, Agentic Automation, Knowledge AI & Business Analytics",
-  description: "Kynato is an AI services consultancy based in India that builds and operates intelligence ecosystems for B2B businesses — combining SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics. Measured by revenue gained or hours saved.",
+  title: "Kynato - AI Services Consultancy | AI Visibility, GEO, SEO, RAG, Agentic Automation, Knowledge AI & Analytics",
+  description: "Kynato is an AI Services Consultancy based in India that builds and operates intelligence ecosystems for B2B businesses. Kynato as an AI Agency offers SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics services.",
   keywords: "AI services consultancy India, GEO India, generative engine optimisation India, AEO, answer engine optimisation, AI visibility India, RAG system India, Knowledge AI India, agentic automation India, B2B lead generation AI India, SEO agency India, AI automation India, ChatGPT ranking India, Perplexity visibility, Google AI Overviews optimisation, WhatsApp automation India, document intelligence India, voice AI India, AI for CA firms, intelligence ecosystem India",
   authors: [{ name: "Kynato" }],
   openGraph: {
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     url: "https://kynato.com/",
     siteName: "Kynato",
     locale: "en_IN",
-    title: "Kynato — AI Intelligence Ecosystem India | SEO, GEO, AEO, RAG, Agentic Automation, Knowledge AI & Business Analytics",
-    description: "Kynato is an AI services consultancy based in India that builds and operates intelligence ecosystems for B2B businesses — combining SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics. Measured by revenue gained or hours saved.",
+    title: "Kynato - AI Services Consultancy | AI Visibility, GEO, SEO, RAG, Agentic Automation, Knowledge AI & Analytics",
+    description: "Kynato is an AI Services Consultancy based in India that builds and operates intelligence ecosystems for B2B businesses. Kynato as an AI Agency offers SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics services.",
     images: [
       {
-        url: "https://kynato.com/og-image.jpg",
+        url: "https://cdn.kynato.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Kynato — The Intelligence Ecosystem. AI Services Consultancy India.",
+        alt: "Kynato - The Intelligence Ecosystem. AI Services Consultancy India.",
       },
     ],
   },
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@kynato",
     creator: "@kynato",
-    title: "Kynato — AI Intelligence Ecosystem India | SEO, GEO, AEO, RAG, Agentic Automation, Knowledge AI & Business Analytics",
-    description: "Kynato is an AI services consultancy based in India that builds and operates intelligence ecosystems for B2B businesses. Measured by revenue gained or hours saved.",
-    images: ["https://kynato.com/og-image.jpg"],
+    title: "Kynato - AI Services Consultancy | AI Visibility, GEO, SEO, RAG, Agentic Automation, Knowledge AI & Analytics",
+    description: "Kynato is an AI Services Consultancy based in India that builds and operates intelligence ecosystems for B2B businesses. Kynato as an AI Agency offers SEO & AI Visibility, GEO, RAG Systems, Agentic Automation, Knowledge AI, Lead Generation, and Business Performance Analytics services.",
+    images: ["https://cdn.kynato.com/og-image.jpg"],
   },
   alternates: {
     canonical: "https://kynato.com/",
@@ -351,8 +351,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-jakarta bg-background text-foreground">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem={true}
         >
           <SidebarProvider>
             {children}

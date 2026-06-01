@@ -1,88 +1,102 @@
-import { ArrowRight, ArrowDown } from "lucide-react";
-import Link from "next/link";
+"use client"
+import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useSidebar } from "@/context/SidebarContext";
 import { Spotlight } from "@/components/ui/spotlight";
-import { Highlight } from "@/components/ui/hero-highlight";
+
+const cyclingWords = ["Founders", "Startups", "Growth Teams", "Operations Leaders", "B2B Businesses"];
 
 export function HeroSection() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const { openSidebar } = useSidebar();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setWordIndex(i => (i + 1) % cyclingWords.length);
+        setVisible(true);
+      }, 300);
+    }, 2200);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center bg-gray-50 dark:bg-[#07070C] overflow-hidden">
-
-      {/* Aceternity Spotlight */}
-      <Spotlight
-        className="-top-40 left-0 md:left-1/4 md:-top-20"
-        fill="white"
-      />
-
-      {/* Subtle grid */}
+      <Spotlight className="-top-40 left-0 md:left-1/4 md:-top-20" fill="white" />
       <div className="absolute inset-0 bg-grid-pattern opacity-20 dark:opacity-40 pointer-events-none" />
-
-      {/* Soft teal glow */}
       <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#027C88]/[0.04] dark:bg-[#027C88]/[0.06] blur-[120px] pointer-events-none" />
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] rounded-full bg-[#006AF0]/[0.03] dark:bg-[#006AF0]/[0.04] blur-[100px] pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-28 sm:pt-32 pb-16 sm:pb-20">
-
-        {/* Eyebrow */}
-        <div className="hero-line-1 flex items-center gap-3 mb-8">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#027C88]/25 bg-[#027C88]/[0.08]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#027C88]" />
-            <span className="font-jakarta text-[11px] font-semibold text-[#027C88] tracking-wider uppercase">
-              The Intelligence Ecosystem
-            </span>
-          </span>
-        </div>
-
-        {/* Target line */}
-        <p className="hero-line-2 font-jakarta text-sm font-medium text-gray-500 dark:text-white/70 tracking-wide mb-5">
-          Founders · Startups · Growth Teams · Operations Leaders
-        </p>
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-12 pt-24 sm:pt-28 pb-10">
 
         {/* H1 */}
         <h1
-          className="hero-line-3 font-syne font-black text-gray-900 dark:text-white leading-[1.04] tracking-[-0.03em] mb-6"
-          style={{ fontSize: "clamp(2.25rem, 7vw, 6rem)" }}
+          className="hero-line-3 font-syne font-black text-gray-900 dark:text-white leading-[1.04] tracking-[-0.03em] mb-5"
+          style={{ fontSize: "clamp(1.9rem, 5.5vw, 4.5rem)" }}
         >
-          The Intelligence
-          <br />
-          Ecosystem Built for
-          <br />
-          <Highlight>Business Growth.</Highlight>
+          The Intelligence Ecosystem
+          <br />Built for Business Growth.
         </h1>
 
+        {/* Animated text */}
+        <div className="hero-line-4 mb-5">
+          <p className="font-jakarta text-xl md:text-2xl font-semibold text-gray-700 dark:text-white/80">
+            AI Supporting{" "}
+            <span
+              className="text-[#027C88] inline-block transition-all duration-300"
+              style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(8px)" }}
+            >
+              {cyclingWords[wordIndex]}
+            </span>
+          </p>
+        </div>
+
         {/* Manifesto */}
-        <p className="hero-line-4 font-jakarta text-lg md:text-xl text-gray-500 dark:text-white/60 font-light italic mb-4 max-w-lg">
+        <p className="hero-line-4 font-jakarta text-lg md:text-xl text-gray-500 dark:text-white/60 font-light italic mb-8 max-w-lg">
           &ldquo;We don&apos;t sell AI. We deploy it where your revenue lives.&rdquo;
         </p>
 
-        {/* Subline */}
-        <p className="hero-line-4 font-jakarta text-base md:text-lg text-gray-600 dark:text-white/70 max-w-[520px] leading-relaxed mb-10">
-          Kynato is an AI services consultancy based in India that functions as an intelligence
-          ecosystem, building and operating growth, intelligence, and automation systems
-          for B2B businesses.
-        </p>
-
-        {/* CTA row */}
-        <div className="hero-line-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2.5 px-7 h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-sm font-semibold hover:bg-[#026070] transition-colors duration-200"
+        {/* CTA buttons */}
+        <div className="hero-line-5 flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-10">
+          <a
+            href="#talk"
+            onClick={(e) => { e.preventDefault(); openSidebar(); }}
+            className="inline-flex items-center gap-2.5 px-7 h-12 bg-[#006AF0] text-white rounded-xl font-jakarta text-base font-semibold hover:bg-[#0052C4] transition-colors duration-200"
           >
             Talk to Our Team
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
-
-          <Link
-            href="#how-we-work"
-            className="inline-flex items-center gap-2 font-jakarta text-sm font-medium text-gray-500 dark:text-white/60 hover:text-gray-700 dark:hover:text-white/70 transition-colors duration-200"
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <a
+            href="#book"
+            onClick={(e) => { e.preventDefault(); openSidebar(); }}
+            className="inline-flex items-center gap-2.5 px-7 h-12 bg-[#027C88] text-white rounded-xl font-jakarta text-base font-semibold hover:bg-[#026070] transition-colors duration-200"
           >
-            See How It Works
-            <ArrowDown className="h-4 w-4" />
-          </Link>
+            Book a Free Call
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+
+        {/* Stats strip */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 bg-white/60 dark:bg-white/[0.02] backdrop-blur-sm">
+          {[
+            { num: "58+", label: "Satisfied Clients" },
+            { num: "1200+", label: "AI Work Hours" },
+            { num: "147", label: "Systems Deployed" },
+            { num: "4.8/5", label: "Rated" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="font-syne font-black text-2xl md:text-3xl text-gray-900 dark:text-white mb-1"
+                style={{ background: "linear-gradient(120deg, #027C88 0%, #006AF0 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                {stat.num}
+              </p>
+              <p className="font-jakarta text-[12px] text-gray-500 dark:text-white/55 font-medium">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-gray-50 dark:from-[#07070C] to-transparent pointer-events-none" />
     </section>
   );

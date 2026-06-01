@@ -6,31 +6,12 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-[#07070C] border-t border-gray-200 dark:border-white/[0.05] relative overflow-hidden">
 
-      {/* Near-footer brand description band */}
-      <div className="border-b border-gray-200 dark:border-white/[0.05] py-10 md:py-12">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="max-w-[640px]">
-            <p className="font-syne font-black text-gray-900 dark:text-white text-2xl tracking-tight mb-2">KYNATO</p>
-            <p className="font-jakarta text-[#027C88] text-sm font-semibold mb-4">Make Intelligence Work.</p>
-            <p className="font-jakarta text-gray-600 dark:text-white/80 text-[13px] leading-relaxed">
-              Kynato is an AI services consultancy based in India that functions as an intelligence
-              ecosystem, building and operating growth, intelligence, and automation systems for
-              B2B businesses. Five practice areas: Search Engine Optimisation (SEO) and AI Visibility,
-              Demand Generation, Knowledge AI, Agentic Automation, and Business Performance Analytics.
-            </p>
-            <p className="font-jakarta text-gray-500 dark:text-white/65 text-[13px] mt-3 italic">
-              We don&apos;t sell AI. We deploy it where your revenue lives.
-            </p>
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12 relative z-10 pt-14 md:pt-18 pb-0">
 
-        {/* 4-column footer grid */}
+        {/* Footer grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-16">
 
-          {/* Column 1 — Brand */}
+          {/* Column 1 - Brand */}
           <div className="lg:col-span-3 space-y-5">
             <div>
               <span className="font-syne font-black text-gray-900 dark:text-white text-2xl tracking-tight block mb-1">
@@ -41,13 +22,13 @@ export function Footer() {
               </span>
             </div>
             <p className="font-jakarta text-gray-600 dark:text-white/80 text-[13px] leading-relaxed max-w-full md:max-w-[240px]">
-              AI intelligence ecosystem building and operating growth, knowledge, and automation systems for Indian B2B businesses.
+              Kynato is an AI services consultancy based in India that functions as an intelligence ecosystem, building and operating growth, intelligence, and automation systems for B2B businesses.
             </p>
             <a
-              href="mailto:hello@kynato.com"
+              href="mailto:support@kynato.com"
               className="block font-jakarta text-sm text-gray-500 dark:text-white/60 hover:text-[#027C88] transition-colors duration-200"
             >
-              hello@kynato.com
+              support@kynato.com
             </a>
             <div className="flex gap-2">
               <a
@@ -86,8 +67,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 2 — Capabilities */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-5 sm:gap-7">
+          {/* Column 2 - Capabilities */}
+          <div className="lg:col-span-4 grid grid-cols-2 gap-5 sm:gap-7">
             <div className="space-y-6">
               <div>
                 <h4 className="font-jakarta text-[10px] font-black text-[#027C88] mb-3 tracking-wider uppercase">
@@ -195,7 +176,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 3 — Intelligence Lab + Company */}
+          {/* Column 3 - Intelligence Lab + Company */}
           <div className="lg:col-span-2 space-y-7">
             <div>
               <h4 className="font-jakarta text-[10px] font-black text-gray-700 dark:text-white/80 mb-3 tracking-wider uppercase">
@@ -238,27 +219,45 @@ export function Footer() {
                 ))}
               </ul>
             </div>
+          </div>
+
+          {/* Column 4 - Products */}
+          <div className="lg:col-span-1 space-y-7">
+            <div>
+              <h4 className="font-jakarta text-[10px] font-black text-gray-700 dark:text-white/80 mb-3 tracking-wider uppercase">
+                Products
+              </h4>
+              <ul className="space-y-2">
+                {[
+                  { label: "Pran Sathi - AI Healthcare System", href: "#" },
+                  { label: "Hawk Eye - AI Analytics", href: "#" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div>
               <h4 className="font-jakarta text-[10px] font-black text-gray-700 dark:text-white/80 mb-3 tracking-wider uppercase">
-                Start Here
+                Solutions
               </h4>
               <ul className="space-y-2">
-                <li>
-                  <Link href="/contact" className="font-jakarta text-[13px] font-semibold text-[#027C88] hover:text-[#026070] link-underline transition-colors duration-200">
-                    Talk to Our Team →
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
-                    Send a Message →
-                  </Link>
-                </li>
-                <li>
-                  <a href="https://wa.me/91" className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
-                    WhatsApp Us →
-                  </a>
-                </li>
+                {[
+                  { label: "Health Tech AI Solutions", href: "#" },
+                  { label: "Legal & Finance AI Solutions", href: "#" },
+                  { label: "B2B Operations AI Solutions", href: "#" },
+                  { label: "EdTech AI Solutions", href: "#" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="font-jakarta text-[13px] text-gray-600 dark:text-white/75 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -267,7 +266,6 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-gray-200 dark:border-white/[0.06] py-5 md:py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
-            <ModeToggle />
             <div className="font-jakarta text-[12px] text-gray-500 dark:text-white/65">
               <p>© 2026 Kynato Nexinnovations LLP. All rights reserved.</p>
               <div className="mt-1 flex items-center gap-3">
@@ -279,13 +277,16 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <div className="text-right">
-            <span className="font-jakarta block text-[12px] font-bold text-gray-400 dark:text-white/35 mb-0.5 tracking-wider">
-              Built in India. Deployed everywhere.
-            </span>
-            <span className="font-jakarta text-[11px] text-gray-400 dark:text-white/25 leading-relaxed">
-              AI Intelligence Ecosystem · GEO Services India · AI Visibility · Knowledge AI · RAG Systems · Agentic Automation India
-            </span>
+          <div className="flex items-center gap-4">
+            <ModeToggle />
+            <div className="text-right">
+              <span className="font-jakarta block text-[12px] font-bold text-gray-400 dark:text-white/35 mb-0.5 tracking-wider">
+                Built in India. Deployed Everywhere.
+              </span>
+              <span className="font-jakarta text-[11px] text-gray-400 dark:text-white/25 leading-relaxed">
+                AI Intelligence Ecosystem · GEO Services India · AI Visibility · Knowledge AI · RAG Systems · Agentic Automation India
+              </span>
+            </div>
           </div>
         </div>
       </div>

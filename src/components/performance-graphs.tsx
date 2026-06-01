@@ -244,8 +244,8 @@ export function PerformanceGraphsSection() {
         </div>
 
         <div className="flex items-center gap-4 border-t border-gray-100 dark:border-white/[0.1] pt-8">
-          <p className="font-jakarta text-[13px] font-medium text-gray-500 dark:text-white/75 max-w-lg">
-            All charts use representative data at launch. Real client metrics replace these values as engagements mature and client permissions are received.
+          <p className="font-jakarta text-[11px] text-gray-400 dark:text-white/45 max-w-lg">
+            *All charts use representative data at launch. Real client metrics replace these values as engagements mature and client permissions are received.
           </p>
         </div>
       </div>
